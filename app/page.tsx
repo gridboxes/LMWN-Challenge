@@ -11,7 +11,8 @@ const evaluationMetrics = [
   ["Retrieval", "First-attempt open rate", "Can users unlock without help?"],
   ["Efficiency", "Median time at locker", "Is pickup actually faster?"],
   ["Reliability", "Support contacts / 1k orders", "Where does the journey break?"],
-  ["Trust", "Priority regret rate", "Did the nudge set a fair expectation?"],
+  ["Purpose", "Donation comprehension", "Do users understand how much is donated, when, and why?"],
+  ["Trust", "Priority regret rate", "Did the purpose-led nudge set a fair expectation?"],
 ];
 
 function StatusBar() {
@@ -100,9 +101,9 @@ export default function Home() {
           </article>
           <article className="challenge-card blue">
             <span className="card-index">B</span>
-            <h3>Choice without pressure</h3>
-            <p>Priority can be persuasive by making its value concrete—not by hiding alternatives, preselecting a premium, or manufacturing urgency.</p>
-            <div className="scribble">value ≠ dark pattern</div>
+            <h3>Value with purpose</h3>
+            <p>Priority becomes more meaningful when the premium funds both a faster match and a visible donation—without hiding cheaper choices.</p>
+            <div className="scribble">speed + generosity</div>
           </article>
         </div>
 
@@ -239,31 +240,48 @@ export default function Home() {
 
       <section className="priority section-pad" id="priority">
         <div className="section-heading priority-heading">
-          <p className="eyebrow">04 · Ethical persuasion</p>
-          <h2>Make the value louder.<br />Keep the choice equal.</h2>
-          <p>Priority earns attention through a better value story: a specific time benefit, a transparent fee, and an explanation grounded in the current order.</p>
+          <p className="eyebrow">04 · Question 2 · Proposed solution</p>
+          <h2>Move faster.<br />Pass good forward.</h2>
+          <p><b>Priority with Purpose</b> keeps the original ฿40 Priority economics, then adds a clearly disclosed ฿10 donation. Compared with ฿30 Normal delivery, half of the ฿20 premium goes to a verified food charity.</p>
+        </div>
+
+        <div className="price-logic" aria-label="Delivery pricing and donation breakdown">
+          <div><span>LOW-COST</span><b>฿20</b><p>Save money<br />Wait longer</p></div>
+          <div><span>NORMAL</span><b>฿30</b><p>Standard match<br />Standard time</p></div>
+          <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>฿40 fast delivery<br /><strong>+ ฿10 donated</strong></p></div>
+          <div className="logic-note"><b>50%</b><p>of the ฿20 premium over Normal supports charity.</p></div>
         </div>
 
         <div className="priority-layout">
-          <Phone label="DELIVERY SPEED">
-            <div className="app-header"><button aria-label="Back">←</button><b>Delivery speed</b><span /></div>
+          <Phone label="CHOOSE DELIVERY">
+            <div className="app-header"><button aria-label="Back">←</button><b>Choose delivery</b><span /></div>
             <div className="basket-summary"><span>Arrives to</span><b>Central Office</b></div>
             <div className="speed-card recommended">
-              <div className="recommended-label">FASTEST · SAVE 15 MIN</div>
-              <span className="speed-icon">⚡</span><div><b>Priority</b><p>Arrives 12:40–12:50</p><small>Matched with the next available rider</small></div><strong>฿15</strong><i>✓</i>
+              <div className="recommended-label">FASTEST · GIVES BACK</div>
+              <span className="speed-icon">♥</span><div><b>Priority with Purpose</b><p>Arrives 12:40–12:50</p><small>Next available rider · ฿10 donated</small></div><strong>฿50</strong><i>✓</i>
+              <div className="donation-breakdown"><span>Fast Priority delivery <b>฿40</b></span><span>Donation to food charity <b>฿10</b></span></div>
             </div>
-            <div className="speed-card"><span className="speed-icon">●</span><div><b>Normal</b><p>Arrives 12:55–1:05</p></div><strong>฿0</strong><i /></div>
-            <div className="speed-card"><span className="speed-icon">⌁</span><div><b>Low-cost</b><p>Arrives 1:05–1:20</p></div><strong>–฿8</strong><i /></div>
-            <button className="primary-btn">Continue · Priority</button>
-            <p className="fine-print">Times are estimates and may change with traffic.</p>
+            <div className="speed-card"><span className="speed-icon">●</span><div><b>Normal</b><p>Arrives 12:55–1:05</p></div><strong>฿30</strong><i /></div>
+            <div className="speed-card"><span className="speed-icon">⌁</span><div><b>Low-cost</b><p>Arrives 1:05–1:20</p></div><strong>฿20</strong><i /></div>
+            <button className="primary-btn">Continue · ฿50</button>
+            <p className="fine-print">฿10 is donated after delivery. Times are estimates. <u>How it works</u></p>
           </Phone>
 
           <div className="ethics-panel">
-            <div className="ethics-title"><span>THE FAIR NUDGE</span><h3>Four guardrails</h3></div>
-            <article><span>01</span><div><h4>Explain the benefit</h4><p>“Save 15 min” is more meaningful than a vague “best” badge.</p></div></article>
-            <article><span>02</span><div><h4>Show the full price</h4><p>No surprise fee downstream and no crossed-out fictional price.</p></div></article>
-            <article><span>03</span><div><h4>Preserve equal access</h4><p>Every option remains visible, readable, and selectable in one tap.</p></div></article>
-            <article><span>04</span><div><h4>Remember, don’t assume</h4><p>Respect the user’s last deliberate choice; never silently upgrade it.</p></div></article>
+            <div className="ethics-title"><span>WHY IT CAN WORK</span><h3>Fast feels good.</h3></div>
+            <article><span>01</span><div><h4>Two benefits, one choice</h4><p>The user gets the fastest delivery window and a concrete positive impact.</p></div></article>
+            <article><span>02</span><div><h4>Make the money visible</h4><p>The ฿50 total is split into ฿40 delivery and ฿10 donation before checkout.</p></div></article>
+            <article><span>03</span><div><h4>Keep alternatives equal</h4><p>Normal and Low-cost stay visible and selectable in one tap—no guilt copy.</p></div></article>
+            <article><span>04</span><div><h4>Close the impact loop</h4><p>The receipt confirms the donation only after a completed delivery.</p></div></article>
+          </div>
+        </div>
+
+        <div className="impact-flow">
+          <div className="impact-copy"><p className="eyebrow">The complete persuasion loop</p><h3>Promise → proof → good feeling</h3><p>The donation is not just a badge at selection. It is explained before payment and confirmed after the service succeeds.</p></div>
+          <div className="impact-steps">
+            <article><span>1</span><div><b>Choose</b><p>See speed, total price, and ฿10 donation together.</p></div></article>
+            <article><span>2</span><div><b>Understand</b><p>Expand the price split and charity terms before paying.</p></div></article>
+            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>฿10 donated</b><p>Your Priority delivery supported a verified food charity.</p></div></article>
           </div>
         </div>
       </section>
@@ -277,7 +295,7 @@ export default function Home() {
         <div className="test-plan">
           <article><span>BEFORE BUILD</span><h3>Prototype test</h3><p>5–7 participants in a simulated lobby. Test first-click locker choice, QR failure recovery, passcode entry, and compartment identification.</p><b>Signal: ≥ 80% complete unassisted</b></article>
           <article><span>PILOT</span><h3>Shadow launch</h3><p>Instrument a small set of locations. Observe retrieval time, locker errors, and where users open help without changing operational rules.</p><b>Signal: &lt; 90 sec median pickup</b></article>
-          <article><span>SCALE</span><h3>Controlled experiment</h3><p>Compare the new flow with the current drop-off experience. For Priority, test value framing—not access friction—against an honest baseline.</p><b>Signal: lift with stable regret</b></article>
+          <article><span>SCALE</span><h3>Controlled experiment</h3><p>Compare standard Priority with Priority + donation. Measure choice lift alongside price comprehension, donation recall, and post-purchase regret.</p><b>Signal: lift with stable trust</b></article>
         </div>
 
         <div className="metrics-table">
