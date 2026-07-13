@@ -149,7 +149,7 @@ main { overflow: clip; }
 .price-logic .logic-priority p { color: var(--ink); }
 .price-logic .logic-priority p strong { padding: 2px 5px; background: var(--acid); }
 .price-logic .logic-note { background: var(--ink); color: var(--white); }
-.price-logic .logic-note b { color: var(--acid); }
+.price-logic .logic-note b { color: var(--acid); font-size: 38px; line-height: .9; }
 .price-logic .logic-note p { color: #ccc; }
 .priority-layout { display: grid; grid-template-columns: 450px 1fr; gap: 10vw; align-items: center; }
 .basket-summary { margin: 0 18px 18px; padding: 14px; background: #ecece6; border-radius: 12px; font-size: 10px; }.basket-summary span { display:block; color:#777; }.basket-summary b { display:block; margin-top:4px; font-size:13px; }

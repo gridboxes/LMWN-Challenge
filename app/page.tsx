@@ -242,14 +242,14 @@ export default function Home() {
         <div className="section-heading priority-heading">
           <p className="eyebrow">04 · Question 2 · Proposed solution</p>
           <h2>Move faster.<br />Pass good forward.</h2>
-          <p><b>Priority with Purpose</b> keeps the original ฿40 Priority economics, then adds a clearly disclosed ฿10 donation. Compared with ฿30 Normal delivery, half of the ฿20 premium goes to a verified food charity.</p>
+          <p><b>Priority with Purpose</b> combines the fastest delivery window with a charitable contribution. Users see one simple promise: up to 50% of the extra amount paid for Priority goes to charity.</p>
         </div>
 
         <div className="price-logic" aria-label="Delivery pricing and donation breakdown">
           <div><span>LOW-COST</span><b>฿20</b><p>Save money<br />Wait longer</p></div>
           <div><span>NORMAL</span><b>฿30</b><p>Standard match<br />Standard time</p></div>
-          <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>฿40 fast delivery<br /><strong>+ ฿10 donated</strong></p></div>
-          <div className="logic-note"><b>50%</b><p>of the ฿20 premium over Normal supports charity.</p></div>
+          <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
+          <div className="logic-note"><b>UP TO 50%</b><p>of the Priority premium goes to charity.</p></div>
         </div>
 
         <div className="priority-layout">
@@ -258,30 +258,30 @@ export default function Home() {
             <div className="basket-summary"><span>Arrives to</span><b>Central Office</b></div>
             <div className="speed-card recommended">
               <div className="recommended-label">FASTEST · GIVES BACK</div>
-              <span className="speed-icon">♥</span><div><b>Priority with Purpose</b><p>Arrives 12:40–12:50</p><small>Next available rider · ฿10 donated</small></div><strong>฿50</strong><i>✓</i>
-              <div className="donation-breakdown"><span>Fast Priority delivery <b>฿40</b></span><span>Donation to food charity <b>฿10</b></span></div>
+              <span className="speed-icon">♥</span><div><b>Priority with Purpose</b><p>Arrives 12:40–12:50</p><small>Next available rider · gives back</small></div><strong>฿50</strong><i>✓</i>
+              <div className="donation-breakdown"><span>Fastest Priority delivery <b>Included</b></span><span>Charity contribution <b>Up to 50% of premium</b></span></div>
             </div>
             <div className="speed-card"><span className="speed-icon">●</span><div><b>Normal</b><p>Arrives 12:55–1:05</p></div><strong>฿30</strong><i /></div>
             <div className="speed-card"><span className="speed-icon">⌁</span><div><b>Low-cost</b><p>Arrives 1:05–1:20</p></div><strong>฿20</strong><i /></div>
             <button className="primary-btn">Continue · ฿50</button>
-            <p className="fine-print">฿10 is donated after delivery. Times are estimates. <u>How it works</u></p>
+            <p className="fine-print">We donate up to 50% of the Priority premium to charity. Terms apply. <u>How it works</u></p>
           </Phone>
 
           <div className="ethics-panel">
             <div className="ethics-title"><span>WHY IT CAN WORK</span><h3>Fast feels good.</h3></div>
-            <article><span>01</span><div><h4>Two benefits, one choice</h4><p>The user gets the fastest delivery window and a concrete positive impact.</p></div></article>
-            <article><span>02</span><div><h4>Make the money visible</h4><p>The ฿50 total is split into ฿40 delivery and ฿10 donation before checkout.</p></div></article>
+            <article><span>01</span><div><h4>Two benefits, one choice</h4><p>The user gets the fastest delivery window and the feeling of giving back.</p></div></article>
+            <article><span>02</span><div><h4>Keep allocation flexible</h4><p>The interface promises up to 50% of the premium without specifying a fixed baht amount.</p></div></article>
             <article><span>03</span><div><h4>Keep alternatives equal</h4><p>Normal and Low-cost stay visible and selectable in one tap—no guilt copy.</p></div></article>
-            <article><span>04</span><div><h4>Close the impact loop</h4><p>The receipt confirms the donation only after a completed delivery.</p></div></article>
+            <article><span>04</span><div><h4>Close the impact loop</h4><p>The receipt confirms that a contribution was made after the delivery succeeds.</p></div></article>
           </div>
         </div>
 
         <div className="impact-flow">
           <div className="impact-copy"><p className="eyebrow">The complete persuasion loop</p><h3>Promise → proof → good feeling</h3><p>The donation is not just a badge at selection. It is explained before payment and confirmed after the service succeeds.</p></div>
           <div className="impact-steps">
-            <article><span>1</span><div><b>Choose</b><p>See speed, total price, and ฿10 donation together.</p></div></article>
-            <article><span>2</span><div><b>Understand</b><p>Expand the price split and charity terms before paying.</p></div></article>
-            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>฿10 donated</b><p>Your Priority delivery supported a verified food charity.</p></div></article>
+            <article><span>1</span><div><b>Choose</b><p>See the fastest window, total price, and charity promise together.</p></div></article>
+            <article><span>2</span><div><b>Understand</b><p>Learn that up to 50% of the premium goes to charity.</p></div></article>
+            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>Donation confirmed</b><p>Your Priority delivery supported a verified charity.</p></div></article>
           </div>
         </div>
       </section>
