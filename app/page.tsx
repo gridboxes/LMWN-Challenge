@@ -295,8 +295,8 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <section className="priority section-pad" id="solution">
         <div className="section-heading priority-heading">
           <p className="eyebrow">02 · The proposed model</p>
-          <h2>Get it faster.<br />Give something back.</h2>
-          <p><b>Priority with Purpose</b> combines the fastest delivery window with a positive contribution: up to 50% of the Priority fee supports a verified charity.</p>
+          <h2>Move faster.<br />Pass good forward.</h2>
+          <p>Faster delivery, with up to 50% of the Priority fee supporting charity.</p>
         </div>
 
         <div className="concept-assumption"><span>FEATURE PROMISE</span><p>One upgrade delivers two benefits: the fastest available arrival and the feeling that part of the fee gives back. The percentage can vary by campaign, up to 50% of the Priority fee.</p></div>
@@ -324,7 +324,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </Phone>
 
           <div className="ethics-panel">
-            <div className="ethics-title"><span>WHY USERS MAY CHOOSE IT</span><h3>Fast feels better.</h3></div>
+            <div className="ethics-title"><span>WHY USERS MAY CHOOSE IT</span><h3>Fast feels good.</h3></div>
             <article><span>01</span><div><h4>Immediate functional value</h4><p>The fastest delivery window gives users a clear, practical reason to upgrade.</p></div></article>
             <article><span>02</span><div><h4>A positive emotional benefit</h4><p>The same choice also lets users feel that part of their fee is doing something good.</p></div></article>
             <article><span>03</span><div><h4>A memorable proposition</h4><p>“Up to 50% of the Priority fee gives back” is simple enough to notice and recall.</p></div></article>

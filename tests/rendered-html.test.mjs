@@ -63,9 +63,10 @@ test("renders Priority with Purpose as a focused feature case study", async () =
     /Priority with Purpose — Sivakorn/,
     /Priority with<br\/><em>Purpose\.<\/em>/,
     /Give Priority a reason/,
-    /Get it faster/,
+    /Move faster/,
+    /Pass good forward/,
     /up to 50%/i,
-    /Fast feels better/,
+    /Fast feels good/,
     /the upgrade feels worth it/,
   ]);
   assert.doesNotMatch(html, /฿10/);
