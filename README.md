@@ -6,7 +6,7 @@ A three-page candidate submission built with vinext and deployed with OpenAI Sit
 
 - `/` — assignment cover and response index
 - `/work/delivering-certainty` — contactless food-locker pickup case study
-- `/work/priority-honestly` — ethical priority-delivery case study
+- `/work/priority-with-purpose` — priority-delivery feature case study
 
 ## Development
 

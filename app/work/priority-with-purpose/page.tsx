@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   description: "A feature-led product design case study that makes Priority more appealing through faster delivery and a gives-back benefit.",
 };
 
-export default function PriorityHonestlyPage() {
+export default function PriorityWithPurposePage() {
   return <CaseStudy variant="priority" />;
 }

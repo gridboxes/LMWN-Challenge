@@ -32,8 +32,10 @@ test("renders the assignment homepage with two distinct responses", async () => 
     /Priority with<br\/>Purpose/,
     /Delivering Certainty/,
     /Priority with Purpose/,
+    /Made with care/,
+    /by Sivakorn S\./,
     /href="\/work\/delivering-certainty"/,
-    /href="\/work\/priority-honestly"/,
+    /href="\/work\/priority-with-purpose"/,
   ]);
   assert.match(html, /class="response-tile response-locker"/);
   assert.match(html, /class="response-tile response-priority"/);
@@ -59,7 +61,7 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
 });
 
 test("renders Priority with Purpose as a focused feature case study", async () => {
-  const html = await expectPage("/work/priority-honestly", [
+  const html = await expectPage("/work/priority-with-purpose", [
     /Priority with Purpose — Product Design Case Study/,
     /Priority with<br\/><em>Purpose\.<\/em>/,
     /Give Priority a reason/,

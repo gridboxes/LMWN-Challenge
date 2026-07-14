@@ -53,13 +53,13 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
   return (
     <main>
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Back to assignment overview">
+        <div className="wordmark">
           <span className="brand-mark" aria-hidden="true" /> / CASE {isPriority ? "02" : "01"}
-        </a>
-        <a className="header-home" href="/">All responses ↗</a>
+        </div>
       </header>
 
-      <nav className="floating-nav" aria-label="Case study sections">
+      <nav className="floating-nav" aria-label="Case study navigation">
+        <a className="nav-home" href="/"><span>←</span>Home</a>
         <a href="#overview"><span>01</span>Overview</a>
         <a href="#approach"><span>02</span>Approach</a>
         <a href="#solution"><span>03</span>Solution</a>
@@ -369,7 +369,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
       </section>
 
-      <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-honestly"}>
+      <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-with-purpose"}>
         <span>NEXT CASE STUDY</span><b>{isPriority ? "Delivering Certainty" : "Priority with Purpose"} →</b>
       </a>
       <footer><span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
@@ -379,10 +379,10 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
 export default function Home() {
   return (
-    <main className="simple-home">
+    <main className="simple-home" id="top">
       <header className="simple-header">
         <a className="simple-brand" href="/" aria-label="Assignment overview"><span className="brand-mark" aria-hidden="true" /><b>Assignment overview</b></a>
-        <nav aria-label="Assignment navigation"><span>Product design assignment</span><a href="/work/delivering-certainty">01</a><a href="/work/priority-honestly">02</a></nav>
+        <nav aria-label="Assignment navigation"><span>Product design assignment</span><a href="/work/delivering-certainty">01</a><a href="/work/priority-with-purpose">02</a></nav>
       </header>
 
       <section className="simple-hero" aria-label="Product design assignment overview">
@@ -400,7 +400,7 @@ export default function Home() {
               <span className="mini-locker-head">M / PICK-UP</span><span /><span /><span className="active" /><span /><span /><span />
             </div><i>→</i>
           </a>
-          <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority with Purpose">
+          <a className="response-tile response-priority" href="/work/priority-with-purpose" aria-label="Read Problem 2: Priority with Purpose">
             <span>02</span><div><small>Feature concept</small><b>Priority with<br />Purpose</b></div>
             <div className="tile-preview mini-priority" aria-hidden="true">
               <span className="mini-speed fast">15–20</span><span className="mini-speed">30–40</span><span className="mini-speed">45–60</span><span className="mini-give">50%</span>
@@ -410,7 +410,14 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="simple-footer"><span>Confidential candidate submission</span><b>Product design candidate · UX/UI</b><span>Bangkok · 2026</span></footer>
+      <footer className="simple-footer">
+        <div className="footer-note"><small>Made with care</small><b>by Sivakorn S.</b></div>
+        <p><span>Assignment complete</span><b>Two case studies · 2026</b></p>
+        <nav aria-label="Footer links">
+          <a href="mailto:sivakorn.sam@mtel.co.th">Say hello ↗</a>
+          <a href="#top">Back to top ↑</a>
+        </nav>
+      </footer>
     </main>
   );
 }
