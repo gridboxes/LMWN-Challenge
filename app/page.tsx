@@ -245,13 +245,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <div className="door-state">
-          <div className="door-copy"><p className="eyebrow">The physical finale</p><h3>Open compartment <em>07</em></h3><p>The layout reflects the reference hardware: mixed compartment sizes, thirteen numbered doors, a kiosk, and indicator lights. The phone repeats the exact door and asks one thing: “Did you get your order?”</p></div>
-          <div className="big-locker" aria-label="Thirteen-compartment locker with compartment 07 open">
-            <div className="locker-kiosk"><b>SCAN</b><span>QR / CODE</span><i /></div>
-            {Array.from({ length: 13 }, (_, i) => {
-              const number = i + 1;
-              return number === 7 ? <div className="open-door" key={number}><span>07</span><i>Order<br />inside</i></div> : <div className={number <= 2 ? "tall-door" : ""} key={number}>{String(number).padStart(2, "0")}<i className="door-light" /></div>;
-            })}
+          <div className="door-copy"><p className="eyebrow">The physical finale</p><h3>Open compartment <em>07</em></h3><p>A pulsing light and oversized number connect the phone to the right door. The confirmation screen asks one thing: “Did you get your order?”</p></div>
+          <div className="big-locker" aria-label="Locker compartment 07 open">
+            <div>06</div><div className="open-door"><span>07</span><i>Order<br />inside</i></div><div>08</div><div>09</div><div>10</div><div>11</div>
           </div>
         </div>
       </section>
@@ -391,9 +387,14 @@ export default function Home() {
 
       <section className="simple-hero" aria-label="Product design assignment overview">
         <div className="simple-intro">
-          <div className="simple-kicker"><span>Product / UX·UI designer</span><p><i />Candidate response · 2026</p></div>
+          <p className="simple-eyebrow">Two product design case studies</p>
           <h1>A clear handoff.<br /><em>A fair choice.</em></h1>
-          <p>Two product design responses for a food-delivery assignment: a contactless locker experience that reduces uncertainty, and a Priority model that persuades without hiding cheaper options.</p>
+          <p className="simple-summary">Two product design responses for a food-delivery assignment: a contactless locker experience that reduces uncertainty, and a Priority model that persuades without hiding cheaper options.</p>
+          <div className="simple-meta">
+            <span>Role<br /><b>Product designer</b></span>
+            <span>Scope<br /><b>UX · UI · Strategy</b></span>
+            <span>Format<br /><b>Two case studies</b></span>
+          </div>
         </div>
 
         <div className="response-board" aria-label="Choose an assignment response">
