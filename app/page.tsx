@@ -53,10 +53,10 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
   return (
     <main>
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Back to portfolio">
+        <a className="wordmark" href="/" aria-label="Back to assignment overview">
           <span className="brand-mark" aria-hidden="true" /> / CASE {isPriority ? "02" : "01"}
         </a>
-        <a className="header-home" href="/">All work ↗</a>
+        <a className="header-home" href="/">All responses ↗</a>
       </header>
 
       <nav className="floating-nav" aria-label="Case study sections">
@@ -88,7 +88,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="route-dot dot-b">2</div>
           <div className="route-dot dot-c">3</div>
           <div className="locker">
-            <div className="locker-head"><span>M</span><b>PICK-UP</b></div>
+            <div className="locker-head"><span className="locker-lineman" aria-hidden="true"><i /></span><b>PICK-UP</b></div>
             {Array.from({ length: 8 }, (_, i) => <div className="locker-cell" key={i}><span>{i + 1}</span></div>)}
             <div className="locker-console"><span>SCAN</span><i /></div>
           </div>
@@ -385,7 +385,7 @@ export default function Home() {
   return (
     <main className="simple-home">
       <header className="simple-header">
-        <a className="simple-brand" href="/" aria-label="Assignment overview"><span className="brand-mark" aria-hidden="true" /><b>Sivakorn.</b><i /></a>
+        <a className="simple-brand" href="/" aria-label="Assignment overview"><span className="brand-mark" aria-hidden="true" /><b>Assignment overview</b></a>
         <nav aria-label="Assignment navigation"><span>Product design assignment</span><a href="/work/delivering-certainty">01</a><a href="/work/priority-honestly">02</a></nav>
       </header>
 
@@ -408,7 +408,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="simple-footer"><span>Confidential candidate submission</span><b>Sivakorn S. · Product designer</b><span>Bangkok · 2026</span></footer>
+      <footer className="simple-footer"><span>Confidential candidate submission</span><b>Product design candidate · UX/UI</b><span>Bangkok · 2026</span></footer>
     </main>
   );
 }

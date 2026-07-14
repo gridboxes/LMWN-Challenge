@@ -45,7 +45,7 @@ test("renders the assignment homepage with two distinct responses", async () => 
 
 test("renders Delivering Certainty as a focused locker case study", async () => {
   const html = await expectPage("/work/delivering-certainty", [
-    /Delivering Certainty — Sivakorn/,
+    /Delivering Certainty — Product Design Case Study/,
     /The locker is only useful/,
     /Operational uncertainty/,
     /1\. Choose a locker/,
@@ -60,7 +60,7 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
 
 test("renders Priority with Purpose as a focused feature case study", async () => {
   const html = await expectPage("/work/priority-honestly", [
-    /Priority with Purpose — Sivakorn/,
+    /Priority with Purpose — Product Design Case Study/,
     /Priority with<br\/><em>Purpose\.<\/em>/,
     /Give Priority a reason/,
     /Move faster/,
