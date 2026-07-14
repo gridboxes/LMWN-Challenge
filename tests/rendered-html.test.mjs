@@ -24,8 +24,9 @@ async function expectPage(pathname, patterns) {
 
 test("renders the assignment homepage with two distinct responses", async () => {
   const html = await expectPage("/", [
-    /Design that gets/,
-    /out of the way/,
+    /A clear handoff/,
+    /A fair choice/,
+    /without hiding cheaper options/,
     /Product design assignment/,
     /Certainty/,
     /Speed/,

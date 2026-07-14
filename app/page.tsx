@@ -392,8 +392,8 @@ export default function Home() {
       <section className="simple-hero" aria-label="Product design assignment overview">
         <div className="simple-intro">
           <div className="simple-kicker"><span>Product / UX·UI designer</span><p><i />Candidate response · 2026</p></div>
-          <h1>Design that gets<br /><em>out of the way.</em></h1>
-          <p>Two focused responses for a food-delivery assignment: make the physical handoff feel certain, and make the premium choice persuasive without taking control away from the user.</p>
+          <h1>A clear handoff.<br /><em>A fair choice.</em></h1>
+          <p>Two product design responses for a food-delivery assignment: a contactless locker experience that reduces uncertainty, and a Priority model that persuades without hiding cheaper options.</p>
         </div>
 
         <div className="response-board" aria-label="Choose an assignment response">
