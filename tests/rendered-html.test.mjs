@@ -59,11 +59,13 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
 test("renders Priority, Honestly as a focused persuasion case study", async () => {
   const html = await expectPage("/work/priority-honestly", [
     /Priority, Honestly — Sivakorn/,
-    /Make speed desirable/,
-    /Move faster/,
-    /฿10 donation/,
-    /Conversion means little/,
+    /Give Priority a reason/,
+    /Get it faster/,
+    /up to 50%/i,
+    /Fast feels better/,
+    /the upgrade feels worth it/,
   ]);
-  assert.doesNotMatch(html, /up to 50%/i);
+  assert.doesNotMatch(html, /฿10/);
+  assert.doesNotMatch(html, /An ethical persuasion case study/);
   assert.doesNotMatch(html, /The locker is only useful/);
 });

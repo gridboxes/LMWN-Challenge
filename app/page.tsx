@@ -17,9 +17,9 @@ const lockerMetrics = [
 
 const priorityMetrics = [
   ["Choice", "Priority selection lift", "Does the clearer value proposition improve adoption?"],
-  ["Purpose", "Donation comprehension", "Do users understand how much is donated, when, and why?"],
-  ["Trust", "Priority regret rate", "Did the purpose-led nudge set a fair expectation?"],
-  ["Equity", "Alternative visibility", "Can people still find and choose the cheaper options easily?"],
+  ["Appeal", "Perceived feature value", "Does faster delivery plus giving back feel worth the premium?"],
+  ["Emotion", "Post-delivery satisfaction", "Does the feature leave users feeling positive about their choice?"],
+  ["Clarity", "Contribution comprehension", "Do users understand that up to 50% applies to the Priority fee?"],
 ];
 
 function StatusBar() {
@@ -261,9 +261,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       {isPriority && <>
       <section className="priority-hero section-pad" id="overview">
         <div className="priority-hero-copy">
-          <p className="eyebrow">An ethical persuasion case study</p>
+          <p className="eyebrow">A feature-led persuasion case study</p>
           <h1>Priority,<br /><em>honestly.</em></h1>
-          <p className="hero-intro">A clearer way to make faster delivery compelling—without hiding cheaper options, manufacturing urgency, or asking people to trade trust for speed.</p>
+          <p className="hero-intro">A purpose-led Priority feature that makes upgrading feel better: users get their food sooner, and up to 50% of the Priority fee supports charity.</p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
             <span>Scope<br /><b>UX · Strategy · Persuasion</b></span>
@@ -271,7 +271,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </div>
         </div>
         <div className="priority-hero-art" aria-label="Delivery speed comparison illustration">
-          <span className="speed-sticker">FAST, FAIR,<br />EXPLAINED.</span>
+          <span className="speed-sticker">FAST +<br />FEELS GOOD.</span>
           <div className="speed-line speed-line-fast"><b>PRIORITY</b><strong>15–20 min</strong><i /></div>
           <div className="speed-line"><b>NORMAL</b><strong>30–40 min</strong><i /></div>
           <div className="speed-line"><b>LOW-COST</b><strong>45–60 min</strong><i /></div>
@@ -281,13 +281,13 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <section className="priority-problem section-pad" id="approach">
         <div className="section-heading">
           <p className="eyebrow">01 · Frame the tension</p>
-          <h2>Make speed desirable.<br />Keep the choice fair.</h2>
+          <h2>Give Priority a reason<br />to feel worth it.</h2>
         </div>
         <div className="challenge-grid">
-          <article className="challenge-card orange"><span className="card-index">A</span><h3>Business pressure</h3><p>Priority needs a compelling reason to command a premium beyond simply placing the fastest option first.</p><div className="scribble">value, not pressure</div></article>
-          <article className="challenge-card acid"><span className="card-index">B</span><h3>User trust</h3><p>Normal and Low-cost must remain easy to compare and select, with no countdowns, guilt, or disguised defaults.</p><div className="scribble">clarity → agency → trust</div></article>
+          <article className="challenge-card orange"><span className="card-index">A</span><h3>Beyond speed</h3><p>Priority competes on arrival time alone. The feature needs an additional benefit that makes the premium feel more meaningful.</p><div className="scribble">functional + emotional value</div></article>
+          <article className="challenge-card acid"><span className="card-index">B</span><h3>A positive payoff</h3><p>Users receive the fastest delivery and the good feeling that part of their fee supports something beyond the order.</p><div className="scribble">faster → gives back → feels good</div></article>
         </div>
-        <div className="north-star"><p>North-star question</p><blockquote>How might we increase the appeal of Priority without reducing the user’s ability to choose freely?</blockquote></div>
+        <div className="north-star"><p>North-star question</p><blockquote>How might we make Priority feel more rewarding—not simply more urgent?</blockquote></div>
       </section>
       </>}
 
@@ -295,17 +295,17 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <section className="priority section-pad" id="solution">
         <div className="section-heading priority-heading">
           <p className="eyebrow">02 · The proposed model</p>
-          <h2>Move faster.<br />Pass good forward.</h2>
-          <p><b>Priority with Purpose</b> combines the fastest delivery window with a transparent charitable contribution. In this concept, the ฿20 premium over Normal includes an exact ฿10 donation.</p>
+          <h2>Get it faster.<br />Give something back.</h2>
+          <p><b>Priority with Purpose</b> combines the fastest delivery window with a positive contribution: up to 50% of the Priority fee supports a verified charity.</p>
         </div>
 
-        <div className="concept-assumption"><span>CONCEPT ASSUMPTION</span><p>A verified charity partnership and fixed ฿10 per-order allocation must be operationally and legally feasible. If the exact amount cannot be guaranteed, the donation claim should not ship.</p></div>
+        <div className="concept-assumption"><span>FEATURE PROMISE</span><p>One upgrade delivers two benefits: the fastest available arrival and the feeling that part of the fee gives back. The percentage can vary by campaign, up to 50% of the Priority fee.</p></div>
 
         <div className="price-logic" aria-label="Delivery pricing and donation breakdown">
           <div><span>LOW-COST</span><b>฿20</b><p>Save money<br />Wait longer</p></div>
           <div><span>NORMAL</span><b>฿30</b><p>Standard match<br />Standard time</p></div>
           <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
-          <div className="logic-note"><b>฿10</b><p>of the ฿20 Priority premium goes to charity.</p></div>
+          <div className="logic-note"><b>UP TO<br />50%</b><p>of the Priority fee supports charity.</p></div>
         </div>
 
         <div className="priority-layout">
@@ -315,29 +315,29 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <div className="speed-card recommended">
               <div className="recommended-label">FASTEST · GIVES BACK</div>
               <span className="speed-icon">♥</span><div><b>Priority with Purpose</b><p>Arrives 12:40–12:50</p><small>Next available rider · gives back</small></div><strong>฿50</strong><i>✓</i>
-              <div className="donation-breakdown"><span>Fastest Priority delivery <b>Included</b></span><span>Charity contribution <b>฿10</b></span></div>
+              <div className="donation-breakdown"><span>Fastest Priority delivery <b>Included</b></span><span>Gives back <b>Up to 50% of fee</b></span></div>
             </div>
             <div className="speed-card"><span className="speed-icon">●</span><div><b>Normal</b><p>Arrives 12:55–1:05</p></div><strong>฿30</strong><i /></div>
             <div className="speed-card"><span className="speed-icon">⌁</span><div><b>Low-cost</b><p>Arrives 1:05–1:20</p></div><strong>฿20</strong><i /></div>
             <button className="primary-btn">Continue · ฿50</button>
-            <p className="fine-print">฿10 from this Priority fee is donated to a verified charity after delivery. <u>How it works</u></p>
+            <p className="fine-print">Up to 50% of this Priority delivery fee supports a verified charity after delivery. <u>How it works</u></p>
           </Phone>
 
           <div className="ethics-panel">
-            <div className="ethics-title"><span>WHY IT CAN WORK</span><h3>Fast feels good.</h3></div>
-            <article><span>01</span><div><h4>Two benefits, one choice</h4><p>The user gets the fastest delivery window and the feeling of giving back.</p></div></article>
-            <article><span>02</span><div><h4>Make the contribution exact</h4><p>The interface states ฿10 before payment so people know precisely what the purpose-led claim means.</p></div></article>
-            <article><span>03</span><div><h4>Keep alternatives equal</h4><p>Normal and Low-cost stay visible and selectable in one tap—no guilt copy.</p></div></article>
-            <article><span>04</span><div><h4>Close the impact loop</h4><p>The receipt confirms that a contribution was made after the delivery succeeds.</p></div></article>
+            <div className="ethics-title"><span>WHY USERS MAY CHOOSE IT</span><h3>Fast feels better.</h3></div>
+            <article><span>01</span><div><h4>Immediate functional value</h4><p>The fastest delivery window gives users a clear, practical reason to upgrade.</p></div></article>
+            <article><span>02</span><div><h4>A positive emotional benefit</h4><p>The same choice also lets users feel that part of their fee is doing something good.</p></div></article>
+            <article><span>03</span><div><h4>A memorable proposition</h4><p>“Up to 50% of the Priority fee gives back” is simple enough to notice and recall.</p></div></article>
+            <article><span>04</span><div><h4>Choice remains intact</h4><p>Normal and Low-cost stay visible as a supporting guardrail, not the main story.</p></div></article>
           </div>
         </div>
 
         <div className="impact-flow">
-          <div className="impact-copy"><p className="eyebrow">The complete persuasion loop</p><h3>Promise → proof → good feeling</h3><p>The donation is not just a badge at selection. It is explained before payment and confirmed after the service succeeds.</p></div>
+          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose → receive → feel good</h3><p>The purpose benefit makes the upgrade appealing at selection, then a lightweight confirmation closes the emotional loop after delivery.</p></div>
           <div className="impact-steps">
-            <article><span>1</span><div><b>Choose</b><p>See the fastest window, total price, and charity promise together.</p></div></article>
-            <article><span>2</span><div><b>Understand</b><p>See that ฿10 of the ฿20 premium goes to a verified charity.</p></div></article>
-            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>฿10 donation confirmed</b><p>Your Priority delivery supported a verified charity.</p></div></article>
+            <article><span>1</span><div><b>Choose</b><p>See the fastest window and the gives-back benefit as one clear feature.</p></div></article>
+            <article><span>2</span><div><b>Receive</b><p>Get the functional payoff first: the food arrives sooner.</p></div></article>
+            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>You moved good forward</b><p>Your Priority delivery supported a verified charity.</p></div></article>
           </div>
         </div>
       </section>
@@ -346,14 +346,14 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <section className="evaluation section-pad" id="evaluation">
         <div className="section-heading">
           <p className="eyebrow">{isPriority ? "03" : "04"} · Evaluate in layers</p>
-          <h2>{isPriority ? <>Conversion means little<br />without comprehension.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
+          <h2>{isPriority ? <>The feature works when<br />the upgrade feels worth it.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
         <div className="test-plan">
           {isPriority ? <>
-            <article><span>BEFORE BUILD</span><h3>Comprehension test</h3><p>Ask people to compare all three options, explain the premium, and describe the donation promise in their own words.</p><b>Signal: ≥ 80% explain it accurately</b></article>
-            <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority + Purpose while keeping timing, placement, and all alternatives consistent.</p><b>Signal: choice lift with stable trust</b></article>
-            <article><span>AFTER DELIVERY</span><h3>Regret check</h3><p>Measure whether the faster arrival and contribution confirmation match what people believed they purchased.</p><b>Signal: no increase in regret</b></article>
+            <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
+            <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
+            <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
           </> : <>
             <article><span>BEFORE BUILD</span><h3>Prototype test</h3><p>5–7 participants in a simulated lobby. Test first-click locker choice, QR failure recovery, passcode entry, and compartment identification.</p><b>Signal: ≥ 80% complete unassisted</b></article>
             <article><span>PILOT</span><h3>Shadow launch</h3><p>Instrument a small set of locations. Observe retrieval time, locker errors, and where users open help without changing operational rules.</p><b>Signal: &lt; 90 sec median pickup</b></article>
@@ -368,7 +368,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="closing-card">
           <p className="eyebrow">{isPriority ? "The principle I would protect" : "What I would explore next"}</p>
-          <h3>{isPriority ? "Grow the value of the premium—not the pressure around the choice." : "Capacity prediction, multi-order pickup, accessibility at the physical locker, and rider-side recovery when no compartment fits."}</h3>
+          <h3>{isPriority ? "Make Priority worth choosing: faster for the user, positive beyond the order." : "Capacity prediction, multi-order pickup, accessibility at the physical locker, and rider-side recovery when no compartment fits."}</h3>
           <a href="#overview">Back to the top ↑</a>
         </div>
       </section>
@@ -402,7 +402,7 @@ export default function Home() {
             <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div><i>↘</i>
           </a>
           <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority, Honestly">
-            <span>02</span><div><small>Ethical persuasion</small><b>Priority,<br />Honestly</b></div><i>→</i>
+            <span>02</span><div><small>Feature concept</small><b>Priority,<br />Honestly</b></div><i>→</i>
           </a>
           <p>Two messy delivery moments.<br />Two calmer ways through.</p>
         </div>
