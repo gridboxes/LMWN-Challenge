@@ -399,7 +399,7 @@ export default function Home() {
         <div className="response-board" aria-label="Choose an assignment response">
           <div className="response-board-head"><span>Selected responses</span><b>01—02</b></div>
           <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
-            <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div><i>↘</i>
+            <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div><i>→</i>
           </a>
           <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority with Purpose">
             <span>02</span><div><small>Feature concept</small><b>Priority with<br />Purpose</b></div><i>→</i>
