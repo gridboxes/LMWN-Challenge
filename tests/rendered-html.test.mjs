@@ -26,7 +26,7 @@ test("renders the assignment homepage with two distinct responses", async () => 
   const html = await expectPage("/", [
     /Better delivery/,
     /by design/,
-    /without hiding cheaper options/,
+    /a clearer locker handoff/,
     /Product design assignment/,
     /Delivering<br\/>Certainty/,
     /Priority with<br\/>Purpose/,

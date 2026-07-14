@@ -389,12 +389,7 @@ export default function Home() {
         <div className="simple-intro">
           <p className="simple-eyebrow">Two product design case studies</p>
           <h1>Better delivery,<br /><em>by design.</em></h1>
-          <p className="simple-summary">Two product design responses for a food-delivery assignment: a contactless locker experience that reduces uncertainty, and a Priority model that persuades without hiding cheaper options.</p>
-          <div className="simple-meta">
-            <span>Role<br /><b>Product designer</b></span>
-            <span>Scope<br /><b>UX · UI · Strategy</b></span>
-            <span>Format<br /><b>Two case studies</b></span>
-          </div>
+          <p className="simple-summary">Two product design responses that improve food delivery: a clearer locker handoff and a more transparent Priority experience.</p>
         </div>
 
         <div className="response-board" aria-label="Choose an assignment response">
