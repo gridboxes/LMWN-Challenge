@@ -1,4 +1,4 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 const flowSteps = [
   ["01", "Choose", "See nearby lockers before placing the order."],
@@ -53,10 +53,10 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
   return (
     <main>
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="Back to portfolio">
+        <a className="wordmark" href="/" aria-label="Back to portfolio">
           <span>S</span> / CASE {isPriority ? "02" : "01"}
-        </Link>
-        <Link className="header-home" href="/">All work ↗</Link>
+        </a>
+        <a className="header-home" href="/">All work ↗</a>
       </header>
 
       <nav className="floating-nav" aria-label="Case study sections">
@@ -363,9 +363,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
       </section>
 
-      <Link className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-honestly"}>
+      <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-honestly"}>
         <span>NEXT CASE STUDY</span><b>{isPriority ? "Delivering Certainty" : "Priority, Honestly"} →</b>
-      </Link>
+      </a>
       <footer><span>{isPriority ? "PRIORITY, HONESTLY" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
     </main>
   );
@@ -375,7 +375,7 @@ export default function Home() {
   return (
     <main className="portfolio-home">
       <header className="portfolio-header">
-        <Link className="portfolio-brand" href="/" aria-label="Sivakorn portfolio home"><span>S</span><b>Sivakorn.</b></Link>
+        <a className="portfolio-brand" href="/" aria-label="Sivakorn portfolio home"><span>S</span><b>Sivakorn.</b></a>
         <nav aria-label="Portfolio navigation"><a className="active" href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
       </header>
 
@@ -390,15 +390,15 @@ export default function Home() {
       <section className="portfolio-work" id="work">
         <div className="work-heading"><p><span>01</span> — The exhibition</p><small>Two problems. Two focused stories. →</small></div>
         <div className="project-grid">
-          <Link className="project-card project-locker" href="/work/delivering-certainty">
+          <a className="project-card project-locker" href="/work/delivering-certainty">
             <div className="project-visual"><span className="project-index">01</span><span className="reel-dot">● CASE</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
             <h2>Delivering Certainty <span>→</span></h2><p>Contactless food lockers, minus the anxiety.</p><div className="project-tags"><span>App</span><span>Service design</span><span>0→1 flow</span></div>
-          </Link>
+          </a>
 
-          <Link className="project-card project-priority" href="/work/priority-honestly">
+          <a className="project-card project-priority" href="/work/priority-honestly">
             <div className="project-visual"><span className="project-index">02</span><span className="reel-dot">● CASE</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
             <h2>Priority, Honestly <span>→</span></h2><p>Faster delivery without dark patterns.</p><div className="project-tags"><span>App</span><span>Strategy</span><span>Persuasion</span></div>
-          </Link>
+          </a>
         </div>
         <div className="more-brewing"><b>More brewing</b><span>Case studies · soon</span></div>
       </section>
