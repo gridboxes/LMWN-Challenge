@@ -383,46 +383,60 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
 export default function Home() {
   return (
-    <main className="portfolio-home">
-      <header className="portfolio-header">
-        <a className="portfolio-brand" href="/" aria-label="Assignment overview"><span>S</span><b>Product design assignment</b></a>
-        <nav aria-label="Assignment navigation"><a className="active" href="#overview">Overview</a><a href="#work">Responses</a><a href="#closing">Summary</a></nav>
+    <main className="assignment-home">
+      <header className="assignment-header">
+        <a className="assignment-brand" href="#overview" aria-label="Assignment overview"><span>SS</span><b>Product design assignment</b></a>
+        <div className="assignment-status"><span>Confidential submission</span><span>Bangkok · 2026</span></div>
       </header>
 
-      <section className="portfolio-hero" id="overview">
-        <div className="home-intro">
-          <div className="availability"><span>Confidential candidate submission · 2026</span><p><i /> Sivakorn S. · Product designer</p></div>
-          <h1>Rethinking the<br /><em>delivery experience.</em></h1>
-          <p>This assignment explores two connected moments in food delivery: making contactless locker pickup feel certain, and making faster delivery compelling without compromising user trust.</p>
-          <div className="assignment-meta"><span>Format<br /><b>Two responses</b></span><span>Focus<br /><b>UX · UI · Strategy</b></span><span>Context<br /><b>Last-mile delivery</b></span></div>
-        </div>
-        <div className="home-hero-board" aria-label="Two product design case studies">
-          <div className="home-board-head"><span>THE ASSIGNMENT</span><b>02 PROBLEMS</b></div>
-          <div className="home-board-case locker-case"><span>01</span><div><small>LOCKER PICKUP</small><b>Certainty<br />at handoff.</b></div><i>↘</i></div>
-          <div className="home-board-case priority-case"><span>02</span><div><small>PRIORITY DELIVERY</small><b>Speed<br />without pressure.</b></div><i>→</i></div>
-          <p>One delivery ecosystem.<br />Two focused design responses.</p>
-        </div>
-      </section>
-
-      <div className="ticker" aria-label="Assignment themes"><span>Last-mile service</span><i>✦</i><span>Physical–digital handoff</span><i>✦</i><span>Accessible recovery</span><i>✦</i><span>Ethical persuasion</span><i>✦</i><span>User trust</span></div>
-
-      <section className="portfolio-work" id="work">
-        <div className="work-heading"><p><span>02</span> — Assignment responses</p><small>Choose a response to review →</small></div>
-        <div className="project-grid">
-          <a className="project-card project-locker" href="/work/delivering-certainty">
-            <div className="project-visual"><span className="project-index">PROBLEM 01</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
-            <h2>Delivering Certainty <span>→</span></h2><p>Contactless food lockers, minus the anxiety.</p><div className="project-tags"><span>App</span><span>Service design</span><span>0→1 flow</span></div>
-          </a>
-
-          <a className="project-card project-priority" href="/work/priority-honestly">
-            <div className="project-visual"><span className="project-index">PROBLEM 02</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
-            <h2>Priority, Honestly <span>→</span></h2><p>Faster delivery without dark patterns.</p><div className="project-tags"><span>App</span><span>Strategy</span><span>Persuasion</span></div>
-          </a>
+      <section className="assignment-cover" id="overview">
+        <div className="cover-kicker"><span>User experience design</span><i /><b>02 problems · 01 principle</b></div>
+        <h1><span>Two moments.</span><span>One delivery.</span><em>Make both feel obvious.</em></h1>
+        <div className="cover-bottom">
+          <p>This response looks at the two moments where delivery can lose trust: the physical handoff and the premium choice.</p>
+          <div className="cover-route" aria-label="Assignment route from order to trust">
+            <span><i>01</i><b>HANDOFF</b><small>Locker pickup</small></span>
+            <span><i>02</i><b>CHOICE</b><small>Priority delivery</small></span>
+            <span><i>✓</i><b>TRUST</b><small>The shared outcome</small></span>
+          </div>
+          <a href="#responses">Explore the responses <b>↓</b></a>
         </div>
       </section>
 
-      <section className="portfolio-contact" id="closing"><small>Submission summary</small><p>Two responses, one principle: make the next decision clear without taking control away from the user.</p><div><span>Prepared by</span><b>Sivakorn S.</b><span>Product designer · 2026</span></div></section>
-      <footer className="portfolio-footer"><span>Product design assignment · Sivakorn S. · 2026</span><nav><a href="#overview">Overview</a><a href="#work">Responses</a></nav></footer>
+      <section className="assignment-thesis">
+        <p className="thesis-label">The through-line</p>
+        <h2>A delivery experience earns trust twice: when the service becomes physical, and when the product asks people to pay more.</h2>
+        <div className="thesis-notes"><span>01 / Reduce uncertainty</span><span>02 / Preserve agency</span><span>03 / Measure trust</span></div>
+      </section>
+
+      <section className="case-chapters" id="responses" aria-label="Assignment responses">
+        <a className="case-chapter chapter-locker" href="/work/delivering-certainty">
+          <div className="chapter-index"><span>PROBLEM</span><b>01</b></div>
+          <div className="chapter-copy"><p>Physical–digital handoff</p><h2>Delivering<br />Certainty</h2><strong>Contactless food lockers, minus the anxiety.</strong><div className="chapter-link">Read the response <i>↗</i></div></div>
+          <div className="chapter-art locker-chapter-art" aria-hidden="true">
+            <div className="locker-signal"><span>ORDER A38</span><b>READY TO COLLECT</b><i>Pick up by 2:10 PM</i></div>
+            <div className="chapter-locker">
+              {Array.from({ length: 8 }, (_, i) => <span className={i === 6 ? "active" : ""} key={i}>{String(i + 1).padStart(2, "0")}</span>)}
+              <div><small>OPEN</small><b>07</b></div>
+            </div>
+            <p>checkout → track → unlock → collect</p>
+          </div>
+        </a>
+
+        <a className="case-chapter chapter-priority" href="/work/priority-honestly">
+          <div className="chapter-index"><span>PROBLEM</span><b>02</b></div>
+          <div className="chapter-copy"><p>Ethical persuasion</p><h2>Priority,<br />Honestly</h2><strong>Faster delivery without dark patterns.</strong><div className="chapter-link">Read the response <i>↗</i></div></div>
+          <div className="chapter-art priority-chapter-art" aria-hidden="true">
+            <div className="priority-row featured"><span>Priority</span><b>15–20 min</b><i>฿50</i></div>
+            <div className="priority-row"><span>Normal</span><b>30–40 min</b><i>฿30</i></div>
+            <div className="priority-row"><span>Low-cost</span><b>45–60 min</b><i>฿20</i></div>
+            <div className="donation-seal"><small>EXACTLY</small><b>฿10</b><span>TO CHARITY</span></div>
+          </div>
+        </a>
+      </section>
+
+      <section className="assignment-ending" id="closing"><span>Submission summary</span><h2>Make the next action clear.<br />Leave the decision with the user.</h2><div><p>Prepared by</p><b>Sivakorn S.</b><small>Product designer · 2026</small></div></section>
+      <footer className="assignment-footer"><span>Private candidate submission</span><nav><a href="#overview">Top ↑</a><a href="/work/delivering-certainty">01</a><a href="/work/priority-honestly">02</a></nav></footer>
     </main>
   );
 }

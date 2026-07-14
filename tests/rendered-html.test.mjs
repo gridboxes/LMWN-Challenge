@@ -24,12 +24,14 @@ async function expectPage(pathname, patterns) {
 
 test("renders the assignment homepage with two distinct responses", async () => {
   const html = await expectPage("/", [
-    /Rethinking the/,
+    /Two moments/,
+    /One delivery/,
+    /Make both feel obvious/,
     /Product design assignment/,
-    /PROBLEM 01/,
-    /PROBLEM 02/,
-    /Delivering Certainty/,
-    /Priority, Honestly/,
+    /<span>PROBLEM<\/span><b>01<\/b>/,
+    /<span>PROBLEM<\/span><b>02<\/b>/,
+    /Delivering<br\/>Certainty/,
+    /Priority,<br\/>Honestly/,
     /href="\/work\/delivering-certainty"/,
     /href="\/work\/priority-honestly"/,
   ]);
