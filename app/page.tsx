@@ -411,10 +411,6 @@ export default function Home() {
 
       <footer className="simple-footer">
         <div className="footer-note"><small>Made with care</small><b>by Sivakorn S.</b></div>
-        <div className="footer-journey">
-          <div className="footer-route" aria-label="Case studies 01 and 02 delivered"><span>01</span><i></i><span>02</span><i></i><b>Done ✓</b></div>
-          <p><i></i>Assignment delivered · 2026</p>
-        </div>
         <nav aria-label="Footer links">
           <a href="mailto:sivakorn.sam@mtel.co.th">Say hello ↗</a>
           <a href="#top">Back to top ↑</a>
