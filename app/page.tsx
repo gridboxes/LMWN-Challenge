@@ -383,60 +383,32 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
 export default function Home() {
   return (
-    <main className="assignment-home">
-      <header className="assignment-header">
-        <a className="assignment-brand" href="#overview" aria-label="Assignment overview"><span>SS</span><b>Product design assignment</b></a>
-        <div className="assignment-status"><span>Confidential submission</span><span>Bangkok · 2026</span></div>
+    <main className="simple-home">
+      <header className="simple-header">
+        <a className="simple-brand" href="/" aria-label="Assignment overview"><span>S</span><b>Sivakorn.</b><i /></a>
+        <nav aria-label="Assignment navigation"><span>Product design assignment</span><a href="/work/delivering-certainty">01</a><a href="/work/priority-honestly">02</a></nav>
       </header>
 
-      <section className="assignment-cover" id="overview">
-        <div className="cover-kicker"><span>User experience design</span><i /><b>02 problems · 01 principle</b></div>
-        <h1><span>Two moments.</span><span>One delivery.</span><em>Make both feel obvious.</em></h1>
-        <div className="cover-bottom">
-          <p>This response looks at the two moments where delivery can lose trust: the physical handoff and the premium choice.</p>
-          <div className="cover-route" aria-label="Assignment route from order to trust">
-            <span><i>01</i><b>HANDOFF</b><small>Locker pickup</small></span>
-            <span><i>02</i><b>CHOICE</b><small>Priority delivery</small></span>
-            <span><i>✓</i><b>TRUST</b><small>The shared outcome</small></span>
-          </div>
-          <a href="#responses">Explore the responses <b>↓</b></a>
+      <section className="simple-hero" aria-label="Product design assignment overview">
+        <div className="simple-intro">
+          <div className="simple-kicker"><span>Product / UX·UI designer</span><p><i />Candidate response · 2026</p></div>
+          <h1>Design that gets<br /><em>out of the way.</em></h1>
+          <p>Two focused responses for a food-delivery assignment: make the physical handoff feel certain, and make the premium choice persuasive without taking control away from the user.</p>
+        </div>
+
+        <div className="response-board" aria-label="Choose an assignment response">
+          <div className="response-board-head"><span>Selected responses</span><b>01—02</b></div>
+          <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
+            <span>01</span><div><small>Service design</small><b>Certainty<br />at handoff.</b></div><i>↘</i>
+          </a>
+          <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority, Honestly">
+            <span>02</span><div><small>Ethical persuasion</small><b>Speed<br />without pressure.</b></div><i>→</i>
+          </a>
+          <p>Two messy delivery moments.<br />Two calmer ways through.</p>
         </div>
       </section>
 
-      <section className="assignment-thesis">
-        <p className="thesis-label">The through-line</p>
-        <h2>A delivery experience earns trust twice: when the service becomes physical, and when the product asks people to pay more.</h2>
-        <div className="thesis-notes"><span>01 / Reduce uncertainty</span><span>02 / Preserve agency</span><span>03 / Measure trust</span></div>
-      </section>
-
-      <section className="case-chapters" id="responses" aria-label="Assignment responses">
-        <a className="case-chapter chapter-case-locker" href="/work/delivering-certainty">
-          <div className="chapter-index"><span>PROBLEM</span><b>01</b></div>
-          <div className="chapter-copy"><p>Physical–digital handoff</p><h2>Delivering<br />Certainty</h2><strong>Contactless food lockers, minus the anxiety.</strong><div className="chapter-link">Read the response <i>↗</i></div></div>
-          <div className="chapter-art locker-chapter-art" aria-hidden="true">
-            <div className="locker-signal"><span>ORDER A38</span><b>READY TO COLLECT</b><i>Pick up by 2:10 PM</i></div>
-            <div className="chapter-locker">
-              {Array.from({ length: 8 }, (_, i) => <span className={i === 6 ? "active" : ""} key={i}>{String(i + 1).padStart(2, "0")}</span>)}
-              <div><small>OPEN</small><b>07</b></div>
-            </div>
-            <p>checkout → track → unlock → collect</p>
-          </div>
-        </a>
-
-        <a className="case-chapter chapter-priority" href="/work/priority-honestly">
-          <div className="chapter-index"><span>PROBLEM</span><b>02</b></div>
-          <div className="chapter-copy"><p>Ethical persuasion</p><h2>Priority,<br />Honestly</h2><strong>Faster delivery without dark patterns.</strong><div className="chapter-link">Read the response <i>↗</i></div></div>
-          <div className="chapter-art priority-chapter-art" aria-hidden="true">
-            <div className="priority-row featured"><span>Priority</span><b>15–20 min</b><i>฿50</i></div>
-            <div className="priority-row"><span>Normal</span><b>30–40 min</b><i>฿30</i></div>
-            <div className="priority-row"><span>Low-cost</span><b>45–60 min</b><i>฿20</i></div>
-            <div className="donation-seal"><small>EXACTLY</small><b>฿10</b><span>TO CHARITY</span></div>
-          </div>
-        </a>
-      </section>
-
-      <section className="assignment-ending" id="closing"><span>Submission summary</span><h2>Make the next action clear.<br />Leave the decision with the user.</h2><div><p>Prepared by</p><b>Sivakorn S.</b><small>Product designer · 2026</small></div></section>
-      <footer className="assignment-footer"><span>Private candidate submission</span><nav><a href="#overview">Top ↑</a><a href="/work/delivering-certainty">01</a><a href="/work/priority-honestly">02</a></nav></footer>
+      <footer className="simple-footer"><span>Confidential candidate submission</span><b>Sivakorn S. · Product designer</b><span>Bangkok · 2026</span></footer>
     </main>
   );
 }

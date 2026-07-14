@@ -24,19 +24,19 @@ async function expectPage(pathname, patterns) {
 
 test("renders the assignment homepage with two distinct responses", async () => {
   const html = await expectPage("/", [
-    /Two moments/,
-    /One delivery/,
-    /Make both feel obvious/,
+    /Design that gets/,
+    /out of the way/,
     /Product design assignment/,
-    /<span>PROBLEM<\/span><b>01<\/b>/,
-    /<span>PROBLEM<\/span><b>02<\/b>/,
-    /Delivering<br\/>Certainty/,
-    /Priority,<br\/>Honestly/,
+    /Certainty/,
+    /Speed/,
+    /Delivering Certainty/,
+    /Priority, Honestly/,
     /href="\/work\/delivering-certainty"/,
     /href="\/work\/priority-honestly"/,
   ]);
-  assert.match(html, /class="case-chapter chapter-case-locker"/);
-  assert.doesNotMatch(html, /class="case-chapter chapter-locker"/);
+  assert.match(html, /class="response-tile response-locker"/);
+  assert.match(html, /class="response-tile response-priority"/);
+  assert.doesNotMatch(html, /assignment-thesis|case-chapters|assignment-ending/);
   assert.doesNotMatch(html, /Question 2/);
   assert.doesNotMatch(html, /Open to 2026 roles|More brewing|The exhibition/);
 });
