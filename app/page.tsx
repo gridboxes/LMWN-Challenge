@@ -399,10 +399,16 @@ export default function Home() {
         <div className="response-board" aria-label="Choose an assignment response">
           <div className="response-board-head"><span>Selected responses</span><b>01—02</b></div>
           <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
-            <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div><i>→</i>
+            <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div>
+            <div className="tile-preview mini-locker" aria-hidden="true">
+              <span className="mini-locker-head">M / PICK-UP</span><span /><span /><span className="active" /><span /><span /><span />
+            </div><i>→</i>
           </a>
           <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority with Purpose">
-            <span>02</span><div><small>Feature concept</small><b>Priority with<br />Purpose</b></div><i>→</i>
+            <span>02</span><div><small>Feature concept</small><b>Priority with<br />Purpose</b></div>
+            <div className="tile-preview mini-priority" aria-hidden="true">
+              <span className="mini-speed fast">15–20</span><span className="mini-speed">30–40</span><span className="mini-speed">45–60</span><span className="mini-give">50%</span>
+            </div><i>→</i>
           </a>
           <p>Two messy delivery moments.<br />Two calmer ways through.</p>
         </div>
