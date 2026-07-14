@@ -381,19 +381,19 @@ export default function Home() {
   return (
     <main className="simple-home" id="top">
       <header className="simple-header">
-        <a className="simple-brand" href="/" aria-label="Assignment overview"><span className="brand-mark" aria-hidden="true" /><b>Assignment overview</b></a>
-        <nav aria-label="Assignment navigation"><span>Product design assignment</span><a href="/work/delivering-certainty">01</a><a href="/work/priority-with-purpose">02</a></nav>
+        <a className="simple-brand" href="/" aria-label="Delivery Experience home"><span className="brand-mark" aria-hidden="true" /><b>Delivery Experience</b></a>
+        <nav aria-label="Case study navigation"><a href="/work/delivering-certainty" aria-label="Case study 1: Delivering Certainty">01</a><a href="/work/priority-with-purpose" aria-label="Case study 2: Priority with Purpose">02</a></nav>
       </header>
 
       <section className="simple-hero" aria-label="Product design assignment overview">
         <div className="simple-intro">
-          <p className="simple-eyebrow">Two product design case studies</p>
+          <p className="simple-eyebrow">Product design assignment · 2026</p>
           <h1>Better delivery,<br /><em>by design.</em></h1>
           <p className="simple-summary">Two product design responses that improve food delivery: a clearer locker handoff and a more transparent Priority experience.</p>
         </div>
 
         <div className="response-board" aria-label="Choose an assignment response">
-          <div className="response-board-head"><span>Selected responses</span><b>01—02</b></div>
+          <div className="response-board-head"><span>Choose a case study</span><b>01—02</b></div>
           <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
             <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div>
             <div className="tile-preview mini-locker" aria-hidden="true">
@@ -406,13 +406,15 @@ export default function Home() {
               <span className="mini-speed fast">15–20</span><span className="mini-speed">30–40</span><span className="mini-speed">45–60</span><span className="mini-give">50%</span>
             </div><i>→</i>
           </a>
-          <p>Two messy delivery moments.<br />Two calmer ways through.</p>
         </div>
       </section>
 
       <footer className="simple-footer">
         <div className="footer-note"><small>Made with care</small><b>by Sivakorn S.</b></div>
-        <p><span>Assignment complete</span><b>Two case studies · 2026</b></p>
+        <div className="footer-journey">
+          <div className="footer-route" aria-label="Case studies 01 and 02 delivered"><span>01</span><i></i><span>02</span><i></i><b>Done ✓</b></div>
+          <p><i></i>Assignment delivered · 2026</p>
+        </div>
         <nav aria-label="Footer links">
           <a href="mailto:sivakorn.sam@mtel.co.th">Say hello ↗</a>
           <a href="#top">Back to top ↑</a>
