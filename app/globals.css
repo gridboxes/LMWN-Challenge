@@ -289,7 +289,7 @@ footer { min-height:160px; padding:50px max(5vw,56px); display:flex; justify-con
 .assignment-footer { min-height:82px; padding:0 max(3vw,34px); display:flex; flex-direction:row; align-items:center; justify-content:space-between; background:var(--ink); color:var(--white); font-family:var(--font-geist-mono); font-size:8px; text-transform:uppercase; letter-spacing:.1em; }.assignment-footer nav { display:flex; gap:26px; }.assignment-footer a:hover { color:var(--acid); }
 
 /* Focused assignment cover: one screen, two direct choices, one footer. */
-.simple-home { min-height:100vh; display:grid; grid-template-rows:72px minmax(720px,1fr) 86px; background:var(--paper); }
+.simple-home { min-height:100vh; display:grid; grid-template-rows:72px minmax(720px,1fr) auto; background:var(--paper); }
 .simple-header { padding:0 3vw; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }.simple-brand { display:flex; align-items:center; gap:10px; text-transform:uppercase; font-family:var(--font-geist-mono); font-size:10px; letter-spacing:.08em; }.simple-brand > span { width:42px; height:42px; display:grid; place-items:center; border-radius:50%; background:var(--ink); color:var(--white); font-family:var(--font-geist-sans); font-size:13px; font-weight:800; letter-spacing:-.05em; }.simple-header nav { display:flex; align-items:center; border:1px solid var(--ink); font-family:var(--font-geist-mono); font-size:8px; text-transform:uppercase; letter-spacing:.09em; }.simple-header nav span,.simple-header nav a { min-height:34px; padding:0 18px; display:grid; place-items:center; border-right:1px solid var(--ink); }.simple-header nav a:last-child { border-right:0; }.simple-header nav a:hover,.simple-header nav a:focus-visible { background:var(--acid); outline:0; }
 .simple-brand .brand-mark { width:28px; height:28px; }
 .simple-hero { min-height:720px; padding:70px max(5vw,70px); display:grid; grid-template-columns:minmax(0,1.15fr) minmax(480px,.85fr); gap:7vw; align-items:center; overflow:hidden; }.simple-intro { min-width:0; }.simple-eyebrow { margin:0 0 34px; font-family:var(--font-geist-mono); font-size:11px; line-height:1; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
@@ -315,7 +315,7 @@ footer { min-height:160px; padding:50px max(5vw,56px); display:flex; justify-con
   .priority-hero-art { min-height:540px; }
   .portfolio-hero { grid-template-columns:1fr; }.portfolio-hero h1 { font-size:clamp(72px,11vw,115px); }.home-hero-board { min-height:520px; transform:none; }
   .cover-bottom { grid-template-columns:1fr 1.5fr; }.cover-bottom > a { grid-column:1 / 3; width:max-content; }.case-chapter { grid-template-columns:90px 1fr; }.chapter-art { grid-column:2; width:100%; }.chapter-index b { font-size:68px; }.assignment-ending { grid-template-columns:130px 1fr; }.assignment-ending > div { grid-column:2; }
-  .simple-home { grid-template-rows:72px auto 86px; }.simple-hero { padding:56px 5vw 70px; grid-template-columns:1fr; gap:46px; }.simple-intro h1 { font-size:clamp(80px,11vw,122px); }.response-board { width:min(720px,92%); margin:0 auto; }
+  .simple-home { grid-template-rows:72px auto auto; }.simple-hero { padding:56px 5vw 70px; grid-template-columns:1fr; gap:46px; }.simple-intro h1 { font-size:clamp(80px,11vw,122px); }.response-board { width:min(720px,92%); margin:0 auto; }
 }
 
 @media (max-width: 760px) {
