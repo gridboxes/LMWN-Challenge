@@ -380,9 +380,17 @@ export default function Home() {
       </header>
 
       <section className="portfolio-hero" id="about">
-        <div className="availability"><span>Product / UX·UI designer</span><p><i /> Open to 2026 roles · Bangkok, TH</p></div>
-        <h1>Design that gets<br /><em>out of the way.</em></h1>
-        <p>Hi, I’m Sivakorn — I turn messy flows into calm, obvious taps. This is a little exhibition of things I’ve made.</p>
+        <div className="home-intro">
+          <div className="availability"><span>Product / UX·UI designer</span><p><i /> Open to 2026 roles · Bangkok, TH</p></div>
+          <h1>Design that gets<br /><em>out of the way.</em></h1>
+          <p>Hi, I’m Sivakorn — I turn messy flows into calm, obvious taps. This is a little exhibition of things I’ve made.</p>
+        </div>
+        <div className="home-hero-board" aria-label="Two product design case studies">
+          <div className="home-board-head"><span>SELECTED WORK</span><b>01—02</b></div>
+          <div className="home-board-case locker-case"><span>01</span><div><small>SERVICE DESIGN</small><b>Certainty<br />at handoff.</b></div><i>↘</i></div>
+          <div className="home-board-case priority-case"><span>02</span><div><small>ETHICAL PERSUASION</small><b>Speed<br />without pressure.</b></div><i>→</i></div>
+          <p>Two messy delivery moments.<br />Two calmer ways through.</p>
+        </div>
       </section>
 
       <div className="ticker" aria-label="Design capabilities"><span>Prototyping</span><i>✦</i><span>Design systems</span><i>✦</i><span>Research</span><i>✦</i><span>A little mischief</span><i>✦</i><span>Product thinking</span><i>✦</i><span>Motion</span></div>
