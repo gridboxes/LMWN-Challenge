@@ -111,10 +111,16 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </article>
           <article className="challenge-card blue">
             <span className="card-index">B</span>
-            <h3>Value with purpose</h3>
-            <p>Priority becomes more meaningful when the premium funds both a faster match and a visible donation—without hiding cheaper choices.</p>
-            <div className="scribble">speed + generosity</div>
+            <h3>Operational uncertainty</h3>
+            <p>Capacity, opening hours, food safety, and compartment fit can change. The interface must set expectations without pretending the hardware is always available.</p>
+            <div className="scribble">capacity → fallback → recovery</div>
           </article>
+        </div>
+
+        <div className="scope-strip" aria-label="Assignment scope">
+          <article><span>GIVEN</span><b>Locker mechanics</b><p>Riders scan the locker; the system assigns a compartment; users retrieve by QR or passcode.</p></article>
+          <article><span>DESIGNED</span><b>User experience</b><p>Locker selection, order tracking, ready-to-collect guidance, access recovery, and compartment identification.</p></article>
+          <article><span>DEPENDENCIES</span><b>Operations + hardware</b><p>Capacity rules, food holding time, rider recovery, compartment fit, and physical accessibility need validation.</p></article>
         </div>
 
         <div className="north-star">
@@ -153,13 +159,11 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="wireframe-board" aria-label="End-to-end locker flow wireframes">
           <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 states / 2 recovery paths</b></div>
-          {["Delivery options", "Locker details", "Order tracking", "Ready to collect", "Door opened"].map((title, i) => (
-            <div className="wire" key={title}>
-              <div className="wire-top" /><div className="wire-map" />
-              <div className="wire-line long" /><div className="wire-line" /><div className="wire-line short" />
-              <div className="wire-button" /><p>{i + 1}. {title}</p>
-            </div>
-          ))}
+          <div className="wire wire-choose"><div className="wire-appbar"><i>←</i><b>Delivery method</b></div><div className="wire-tabs"><span>Door</span><b>Pick up</b></div><div className="wire-map"><i /><i /><i /></div><div className="wire-card"><b>Central Office · Lobby</b><span>3 min walk · Open until 10 PM</span></div><div className="wire-card muted"><b>Metro Tower · B1</b><span>6 min walk · Open 24 hours</span></div><div className="wire-button">View locker</div><p>1. Choose a locker</p></div>
+          <div className="wire wire-confirm"><div className="wire-appbar"><i>←</i><b>Locker details</b></div><div className="wire-map detail"><i /></div><div className="wire-detail-title"><b>Central Office · Lobby</b><span>Near the south entrance</span></div><div className="wire-facts"><span>3 min walk</span><span>Open until 10 PM</span><span>Available now</span></div><div className="wire-note">Capacity is confirmed with your order.</div><div className="wire-button">Use this locker</div><p>2. Confirm the place</p></div>
+          <div className="wire wire-track"><div className="wire-appbar"><i>←</i><b>Order #A38</b></div><div className="wire-status"><span>12–18 min</span><b>Heading to your locker</b></div><div className="wire-timeline"><i className="done" /><b>Restaurant confirmed</b><i className="done" /><b>Picked up by rider</b><i className="current" /><b>On the way to locker</b><i /><b>Ready to collect</b></div><div className="wire-button light">Locker directions</div><p>3. Track the handoff</p></div>
+          <div className="wire wire-ready"><div className="wire-appbar"><i>←</i><b>Pick up order</b></div><div className="wire-ready-label">READY</div><div className="wire-qr">▦</div><b className="wire-location">Central Office · Lobby</b><small>Pick up by 2:10 PM</small><div className="wire-code">7 3 8 1 4 2</div><div className="wire-help">QR fails? Enter the passcode.</div><p>4. Unlock with fallback</p></div>
+          <div className="wire wire-open"><div className="wire-appbar"><i>←</i><b>Compartment opened</b></div><div className="wire-door-number"><small>OPEN</small><b>07</b><span>Green light is pulsing</span></div><div className="wire-collect-check">✓ Did you get your order?</div><div className="wire-button">Yes, I have it</div><p>5. Collect + confirm</p></div>
           <div className="wire-arrow arrow-1">→</div><div className="wire-arrow arrow-2">→</div>
           <div className="wire-arrow arrow-3">→</div><div className="wire-arrow arrow-4">→</div>
         </div>
@@ -241,9 +245,13 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <div className="door-state">
-          <div className="door-copy"><p className="eyebrow">The physical finale</p><h3>Open compartment <em>08</em></h3><p>A pulsing light and oversized number connect the phone to the right door. The confirmation screen asks one thing: “Did you get your order?”</p></div>
-          <div className="big-locker" aria-label="Locker compartment 08 open">
-            <div>06</div><div>07</div><div className="open-door"><span>08</span><i>Order<br />inside</i></div><div>09</div><div>10</div><div>11</div>
+          <div className="door-copy"><p className="eyebrow">The physical finale</p><h3>Open compartment <em>07</em></h3><p>The layout reflects the reference hardware: mixed compartment sizes, thirteen numbered doors, a kiosk, and indicator lights. The phone repeats the exact door and asks one thing: “Did you get your order?”</p></div>
+          <div className="big-locker" aria-label="Thirteen-compartment locker with compartment 07 open">
+            <div className="locker-kiosk"><b>SCAN</b><span>QR / CODE</span><i /></div>
+            {Array.from({ length: 13 }, (_, i) => {
+              const number = i + 1;
+              return number === 7 ? <div className="open-door" key={number}><span>07</span><i>Order<br />inside</i></div> : <div className={number <= 2 ? "tall-door" : ""} key={number}>{String(number).padStart(2, "0")}<i className="door-light" /></div>;
+            })}
           </div>
         </div>
       </section>
@@ -288,14 +296,16 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="section-heading priority-heading">
           <p className="eyebrow">02 · The proposed model</p>
           <h2>Move faster.<br />Pass good forward.</h2>
-          <p><b>Priority with Purpose</b> combines the fastest delivery window with a charitable contribution. Users see one simple promise: up to 50% of the extra amount paid for Priority goes to charity.</p>
+          <p><b>Priority with Purpose</b> combines the fastest delivery window with a transparent charitable contribution. In this concept, the ฿20 premium over Normal includes an exact ฿10 donation.</p>
         </div>
+
+        <div className="concept-assumption"><span>CONCEPT ASSUMPTION</span><p>A verified charity partnership and fixed ฿10 per-order allocation must be operationally and legally feasible. If the exact amount cannot be guaranteed, the donation claim should not ship.</p></div>
 
         <div className="price-logic" aria-label="Delivery pricing and donation breakdown">
           <div><span>LOW-COST</span><b>฿20</b><p>Save money<br />Wait longer</p></div>
           <div><span>NORMAL</span><b>฿30</b><p>Standard match<br />Standard time</p></div>
           <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
-          <div className="logic-note"><b>UP TO 50%</b><p>of the Priority premium goes to charity.</p></div>
+          <div className="logic-note"><b>฿10</b><p>of the ฿20 Priority premium goes to charity.</p></div>
         </div>
 
         <div className="priority-layout">
@@ -305,18 +315,18 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <div className="speed-card recommended">
               <div className="recommended-label">FASTEST · GIVES BACK</div>
               <span className="speed-icon">♥</span><div><b>Priority with Purpose</b><p>Arrives 12:40–12:50</p><small>Next available rider · gives back</small></div><strong>฿50</strong><i>✓</i>
-              <div className="donation-breakdown"><span>Fastest Priority delivery <b>Included</b></span><span>Charity contribution <b>Up to 50% of premium</b></span></div>
+              <div className="donation-breakdown"><span>Fastest Priority delivery <b>Included</b></span><span>Charity contribution <b>฿10</b></span></div>
             </div>
             <div className="speed-card"><span className="speed-icon">●</span><div><b>Normal</b><p>Arrives 12:55–1:05</p></div><strong>฿30</strong><i /></div>
             <div className="speed-card"><span className="speed-icon">⌁</span><div><b>Low-cost</b><p>Arrives 1:05–1:20</p></div><strong>฿20</strong><i /></div>
             <button className="primary-btn">Continue · ฿50</button>
-            <p className="fine-print">We donate up to 50% of the Priority premium to charity. Terms apply. <u>How it works</u></p>
+            <p className="fine-print">฿10 from this Priority fee is donated to a verified charity after delivery. <u>How it works</u></p>
           </Phone>
 
           <div className="ethics-panel">
             <div className="ethics-title"><span>WHY IT CAN WORK</span><h3>Fast feels good.</h3></div>
             <article><span>01</span><div><h4>Two benefits, one choice</h4><p>The user gets the fastest delivery window and the feeling of giving back.</p></div></article>
-            <article><span>02</span><div><h4>Keep allocation flexible</h4><p>The interface promises up to 50% of the premium without specifying a fixed baht amount.</p></div></article>
+            <article><span>02</span><div><h4>Make the contribution exact</h4><p>The interface states ฿10 before payment so people know precisely what the purpose-led claim means.</p></div></article>
             <article><span>03</span><div><h4>Keep alternatives equal</h4><p>Normal and Low-cost stay visible and selectable in one tap—no guilt copy.</p></div></article>
             <article><span>04</span><div><h4>Close the impact loop</h4><p>The receipt confirms that a contribution was made after the delivery succeeds.</p></div></article>
           </div>
@@ -326,8 +336,8 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="impact-copy"><p className="eyebrow">The complete persuasion loop</p><h3>Promise → proof → good feeling</h3><p>The donation is not just a badge at selection. It is explained before payment and confirmed after the service succeeds.</p></div>
           <div className="impact-steps">
             <article><span>1</span><div><b>Choose</b><p>See the fastest window, total price, and charity promise together.</p></div></article>
-            <article><span>2</span><div><b>Understand</b><p>Learn that up to 50% of the premium goes to charity.</p></div></article>
-            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>Donation confirmed</b><p>Your Priority delivery supported a verified charity.</p></div></article>
+            <article><span>2</span><div><b>Understand</b><p>See that ฿10 of the ฿20 premium goes to a verified charity.</p></div></article>
+            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>฿10 donation confirmed</b><p>Your Priority delivery supported a verified charity.</p></div></article>
           </div>
         </div>
       </section>
@@ -381,13 +391,13 @@ export default function Home() {
 
       <section className="portfolio-hero" id="overview">
         <div className="home-intro">
-          <div className="availability"><span>Candidate submission · 2026</span><p><i /> Sivakorn S. · Product designer</p></div>
+          <div className="availability"><span>Confidential candidate submission · 2026</span><p><i /> Sivakorn S. · Product designer</p></div>
           <h1>Rethinking the<br /><em>delivery experience.</em></h1>
           <p>This assignment explores two connected moments in food delivery: making contactless locker pickup feel certain, and making faster delivery compelling without compromising user trust.</p>
           <div className="assignment-meta"><span>Format<br /><b>Two responses</b></span><span>Focus<br /><b>UX · UI · Strategy</b></span><span>Context<br /><b>Last-mile delivery</b></span></div>
         </div>
         <div className="home-hero-board" aria-label="Two product design case studies">
-          <div className="home-board-head"><span>THE ASSIGNMENT</span><b>02 QUESTIONS</b></div>
+          <div className="home-board-head"><span>THE ASSIGNMENT</span><b>02 PROBLEMS</b></div>
           <div className="home-board-case locker-case"><span>01</span><div><small>LOCKER PICKUP</small><b>Certainty<br />at handoff.</b></div><i>↘</i></div>
           <div className="home-board-case priority-case"><span>02</span><div><small>PRIORITY DELIVERY</small><b>Speed<br />without pressure.</b></div><i>→</i></div>
           <p>One delivery ecosystem.<br />Two focused design responses.</p>
@@ -400,12 +410,12 @@ export default function Home() {
         <div className="work-heading"><p><span>02</span> — Assignment responses</p><small>Choose a response to review →</small></div>
         <div className="project-grid">
           <a className="project-card project-locker" href="/work/delivering-certainty">
-            <div className="project-visual"><span className="project-index">QUESTION 01</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
+            <div className="project-visual"><span className="project-index">PROBLEM 01</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
             <h2>Delivering Certainty <span>→</span></h2><p>Contactless food lockers, minus the anxiety.</p><div className="project-tags"><span>App</span><span>Service design</span><span>0→1 flow</span></div>
           </a>
 
           <a className="project-card project-priority" href="/work/priority-honestly">
-            <div className="project-visual"><span className="project-index">QUESTION 02</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
+            <div className="project-visual"><span className="project-index">PROBLEM 02</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
             <h2>Priority, Honestly <span>→</span></h2><p>Faster delivery without dark patterns.</p><div className="project-tags"><span>App</span><span>Strategy</span><span>Persuasion</span></div>
           </a>
         </div>

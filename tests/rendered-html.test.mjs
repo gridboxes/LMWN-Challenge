@@ -26,8 +26,8 @@ test("renders the assignment homepage with two distinct responses", async () => 
   const html = await expectPage("/", [
     /Rethinking the/,
     /Product design assignment/,
-    /QUESTION 01/,
-    /QUESTION 02/,
+    /PROBLEM 01/,
+    /PROBLEM 02/,
     /Delivering Certainty/,
     /Priority, Honestly/,
     /href="\/work\/delivering-certainty"/,
@@ -41,9 +41,13 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
   const html = await expectPage("/work/delivering-certainty", [
     /Delivering Certainty — Sivakorn/,
     /The locker is only useful/,
+    /Operational uncertainty/,
+    /1\. Choose a locker/,
+    /compartment 07/,
     /Context first/,
     /Success is a pickup/,
   ]);
+  assert.doesNotMatch(html, /Value with purpose/);
   assert.doesNotMatch(html, /Move faster/);
 });
 
@@ -52,7 +56,9 @@ test("renders Priority, Honestly as a focused persuasion case study", async () =
     /Priority, Honestly — Sivakorn/,
     /Make speed desirable/,
     /Move faster/,
+    /฿10 donation/,
     /Conversion means little/,
   ]);
+  assert.doesNotMatch(html, /up to 50%/i);
   assert.doesNotMatch(html, /The locker is only useful/);
 });
