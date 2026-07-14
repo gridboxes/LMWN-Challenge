@@ -54,7 +54,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
     <main>
       <header className="site-header">
         <a className="wordmark" href="/" aria-label="Back to portfolio">
-          <span>S</span> / CASE {isPriority ? "02" : "01"}
+          <span className="brand-mark" aria-hidden="true" /> / CASE {isPriority ? "02" : "01"}
         </a>
         <a className="header-home" href="/">All work ↗</a>
       </header>
@@ -385,7 +385,7 @@ export default function Home() {
   return (
     <main className="simple-home">
       <header className="simple-header">
-        <a className="simple-brand" href="/" aria-label="Assignment overview"><span>S</span><b>Sivakorn.</b><i /></a>
+        <a className="simple-brand" href="/" aria-label="Assignment overview"><span className="brand-mark" aria-hidden="true" /><b>Sivakorn.</b><i /></a>
         <nav aria-label="Assignment navigation"><span>Product design assignment</span><a href="/work/delivering-certainty">01</a><a href="/work/priority-honestly">02</a></nav>
       </header>
 

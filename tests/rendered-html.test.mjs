@@ -37,6 +37,7 @@ test("renders the assignment homepage with two distinct responses", async () => 
   ]);
   assert.match(html, /class="response-tile response-locker"/);
   assert.match(html, /class="response-tile response-priority"/);
+  assert.match(html, /class="brand-mark"/);
   assert.doesNotMatch(html, /assignment-thesis|case-chapters|assignment-ending/);
   assert.doesNotMatch(html, /Question 2/);
   assert.doesNotMatch(html, /Open to 2026 roles|More brewing|The exhibition/);
@@ -52,6 +53,7 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Context first/,
     /Success is a pickup/,
   ]);
+  assert.match(html, /class="brand-mark"/);
   assert.doesNotMatch(html, /Value with purpose/);
   assert.doesNotMatch(html, /Move faster/);
 });
