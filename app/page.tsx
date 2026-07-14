@@ -375,44 +375,44 @@ export default function Home() {
   return (
     <main className="portfolio-home">
       <header className="portfolio-header">
-        <a className="portfolio-brand" href="/" aria-label="Sivakorn portfolio home"><span>S</span><b>Sivakorn.</b></a>
-        <nav aria-label="Portfolio navigation"><a className="active" href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+        <a className="portfolio-brand" href="/" aria-label="Assignment overview"><span>S</span><b>Product design assignment</b></a>
+        <nav aria-label="Assignment navigation"><a className="active" href="#overview">Overview</a><a href="#work">Responses</a><a href="#closing">Summary</a></nav>
       </header>
 
-      <section className="portfolio-hero" id="about">
+      <section className="portfolio-hero" id="overview">
         <div className="home-intro">
-          <div className="availability"><span>Product / UX·UI designer</span><p><i /> Open to 2026 roles · Bangkok, TH</p></div>
-          <h1>Design that gets<br /><em>out of the way.</em></h1>
-          <p>Hi, I’m Sivakorn — I turn messy flows into calm, obvious taps. This is a little exhibition of things I’ve made.</p>
+          <div className="availability"><span>Candidate submission · 2026</span><p><i /> Sivakorn S. · Product designer</p></div>
+          <h1>Rethinking the<br /><em>delivery experience.</em></h1>
+          <p>This assignment explores two connected moments in food delivery: making contactless locker pickup feel certain, and making faster delivery compelling without compromising user trust.</p>
+          <div className="assignment-meta"><span>Format<br /><b>Two responses</b></span><span>Focus<br /><b>UX · UI · Strategy</b></span><span>Context<br /><b>Last-mile delivery</b></span></div>
         </div>
         <div className="home-hero-board" aria-label="Two product design case studies">
-          <div className="home-board-head"><span>SELECTED WORK</span><b>01—02</b></div>
-          <div className="home-board-case locker-case"><span>01</span><div><small>SERVICE DESIGN</small><b>Certainty<br />at handoff.</b></div><i>↘</i></div>
-          <div className="home-board-case priority-case"><span>02</span><div><small>ETHICAL PERSUASION</small><b>Speed<br />without pressure.</b></div><i>→</i></div>
-          <p>Two messy delivery moments.<br />Two calmer ways through.</p>
+          <div className="home-board-head"><span>THE ASSIGNMENT</span><b>02 QUESTIONS</b></div>
+          <div className="home-board-case locker-case"><span>01</span><div><small>LOCKER PICKUP</small><b>Certainty<br />at handoff.</b></div><i>↘</i></div>
+          <div className="home-board-case priority-case"><span>02</span><div><small>PRIORITY DELIVERY</small><b>Speed<br />without pressure.</b></div><i>→</i></div>
+          <p>One delivery ecosystem.<br />Two focused design responses.</p>
         </div>
       </section>
 
-      <div className="ticker" aria-label="Design capabilities"><span>Prototyping</span><i>✦</i><span>Design systems</span><i>✦</i><span>Research</span><i>✦</i><span>A little mischief</span><i>✦</i><span>Product thinking</span><i>✦</i><span>Motion</span></div>
+      <div className="ticker" aria-label="Assignment themes"><span>Last-mile service</span><i>✦</i><span>Physical–digital handoff</span><i>✦</i><span>Accessible recovery</span><i>✦</i><span>Ethical persuasion</span><i>✦</i><span>User trust</span></div>
 
       <section className="portfolio-work" id="work">
-        <div className="work-heading"><p><span>01</span> — The exhibition</p><small>Two problems. Two focused stories. →</small></div>
+        <div className="work-heading"><p><span>02</span> — Assignment responses</p><small>Choose a response to review →</small></div>
         <div className="project-grid">
           <a className="project-card project-locker" href="/work/delivering-certainty">
-            <div className="project-visual"><span className="project-index">01</span><span className="reel-dot">● CASE</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
+            <div className="project-visual"><span className="project-index">QUESTION 01</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
             <h2>Delivering Certainty <span>→</span></h2><p>Contactless food lockers, minus the anxiety.</p><div className="project-tags"><span>App</span><span>Service design</span><span>0→1 flow</span></div>
           </a>
 
           <a className="project-card project-priority" href="/work/priority-honestly">
-            <div className="project-visual"><span className="project-index">02</span><span className="reel-dot">● CASE</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
+            <div className="project-visual"><span className="project-index">QUESTION 02</span><span className="reel-dot">VIEW RESPONSE →</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
             <h2>Priority, Honestly <span>→</span></h2><p>Faster delivery without dark patterns.</p><div className="project-tags"><span>App</span><span>Strategy</span><span>Persuasion</span></div>
           </a>
         </div>
-        <div className="more-brewing"><b>More brewing</b><span>Case studies · soon</span></div>
       </section>
 
-      <section className="portfolio-contact" id="contact"><small>Say hi</small><a href="mailto:sivakorn.sam@mtel.co.th">sivakorn.sam@mtel.co.th</a><div><a href="mailto:sivakorn.sam@mtel.co.th">Email ↗</a><span>Bangkok · TH</span></div></section>
-      <footer className="portfolio-footer"><span>© 2026 Sivakorn S. — made with too much coffee.</span><nav><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav></footer>
+      <section className="portfolio-contact" id="closing"><small>Submission summary</small><p>Two responses, one principle: make the next decision clear without taking control away from the user.</p><div><span>Prepared by</span><b>Sivakorn S.</b><span>Product designer · 2026</span></div></section>
+      <footer className="portfolio-footer"><span>Product design assignment · Sivakorn S. · 2026</span><nav><a href="#overview">Overview</a><a href="#work">Responses</a></nav></footer>
     </main>
   );
 }

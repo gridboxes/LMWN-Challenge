@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "Sivakorn — Product Designer";
-const description = "Product design work by Sivakorn: calm flows, clear choices, and thoughtful digital services.";
+const title = "Delivery Experience — Product Design Assignment";
+const description = "A two-part product design assignment exploring contactless locker pickup and ethical priority delivery.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const incoming = await headers();

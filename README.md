@@ -1,10 +1,10 @@
-# Sivakorn — Product Design Portfolio
+# Delivery Experience — Product Design Assignment
 
-A three-page product design portfolio built with vinext and deployed with OpenAI Sites.
+A three-page candidate submission built with vinext and deployed with OpenAI Sites.
 
 ## Pages
 
-- `/` — personal portfolio and selected work
+- `/` — assignment cover and response index
 - `/work/delivering-certainty` — contactless food-locker pickup case study
 - `/work/priority-honestly` — ethical priority-delivery case study
 

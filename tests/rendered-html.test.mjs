@@ -22,15 +22,19 @@ async function expectPage(pathname, patterns) {
   return html;
 }
 
-test("renders the portfolio homepage with two distinct projects", async () => {
+test("renders the assignment homepage with two distinct responses", async () => {
   const html = await expectPage("/", [
-    /Design that gets/,
+    /Rethinking the/,
+    /Product design assignment/,
+    /QUESTION 01/,
+    /QUESTION 02/,
     /Delivering Certainty/,
     /Priority, Honestly/,
     /href="\/work\/delivering-certainty"/,
     /href="\/work\/priority-honestly"/,
   ]);
   assert.doesNotMatch(html, /Question 2/);
+  assert.doesNotMatch(html, /Open to 2026 roles|More brewing|The exhibition/);
 });
 
 test("renders Delivering Certainty as a focused locker case study", async () => {
