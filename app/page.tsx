@@ -388,7 +388,7 @@ export default function Home() {
       <section className="simple-hero" aria-label="Product design assignment overview">
         <div className="simple-intro">
           <p className="simple-eyebrow">Two product design case studies</p>
-          <h1>A clear handoff.<br /><em>A fair choice.</em></h1>
+          <h1>Better delivery,<br /><em>by design.</em></h1>
           <p className="simple-summary">Two product design responses for a food-delivery assignment: a contactless locker experience that reduces uncertainty, and a Priority model that persuades without hiding cheaper options.</p>
           <div className="simple-meta">
             <span>Role<br /><b>Product designer</b></span>
