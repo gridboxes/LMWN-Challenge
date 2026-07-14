@@ -410,7 +410,7 @@ export default function Home() {
       </section>
 
       <section className="case-chapters" id="responses" aria-label="Assignment responses">
-        <a className="case-chapter chapter-locker" href="/work/delivering-certainty">
+        <a className="case-chapter chapter-case-locker" href="/work/delivering-certainty">
           <div className="chapter-index"><span>PROBLEM</span><b>01</b></div>
           <div className="chapter-copy"><p>Physical–digital handoff</p><h2>Delivering<br />Certainty</h2><strong>Contactless food lockers, minus the anxiety.</strong><div className="chapter-link">Read the response <i>↗</i></div></div>
           <div className="chapter-art locker-chapter-art" aria-hidden="true">

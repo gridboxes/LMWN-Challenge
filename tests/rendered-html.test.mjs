@@ -35,6 +35,8 @@ test("renders the assignment homepage with two distinct responses", async () => 
     /href="\/work\/delivering-certainty"/,
     /href="\/work\/priority-honestly"/,
   ]);
+  assert.match(html, /class="case-chapter chapter-case-locker"/);
+  assert.doesNotMatch(html, /class="case-chapter chapter-locker"/);
   assert.doesNotMatch(html, /Question 2/);
   assert.doesNotMatch(html, /Open to 2026 roles|More brewing|The exhibition/);
 });
