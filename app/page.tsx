@@ -262,7 +262,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <section className="priority-hero section-pad" id="overview">
         <div className="priority-hero-copy">
           <p className="eyebrow">A feature-led persuasion case study</p>
-          <h1>Priority,<br /><em>honestly.</em></h1>
+          <h1>Priority with<br /><em>Purpose.</em></h1>
           <p className="hero-intro">A purpose-led Priority feature that makes upgrading feel better: users get their food sooner, and up to 50% of the Priority fee supports charity.</p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
@@ -374,9 +374,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       </section>
 
       <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-honestly"}>
-        <span>NEXT CASE STUDY</span><b>{isPriority ? "Delivering Certainty" : "Priority, Honestly"} →</b>
+        <span>NEXT CASE STUDY</span><b>{isPriority ? "Delivering Certainty" : "Priority with Purpose"} →</b>
       </a>
-      <footer><span>{isPriority ? "PRIORITY, HONESTLY" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
+      <footer><span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
     </main>
   );
 }
@@ -401,8 +401,8 @@ export default function Home() {
           <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
             <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div><i>↘</i>
           </a>
-          <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority, Honestly">
-            <span>02</span><div><small>Feature concept</small><b>Priority,<br />Honestly</b></div><i>→</i>
+          <a className="response-tile response-priority" href="/work/priority-honestly" aria-label="Read Problem 2: Priority with Purpose">
+            <span>02</span><div><small>Feature concept</small><b>Priority with<br />Purpose</b></div><i>→</i>
           </a>
           <p>Two messy delivery moments.<br />Two calmer ways through.</p>
         </div>

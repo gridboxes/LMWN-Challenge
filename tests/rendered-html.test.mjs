@@ -29,9 +29,9 @@ test("renders the assignment homepage with two distinct responses", async () => 
     /without hiding cheaper options/,
     /Product design assignment/,
     /Delivering<br\/>Certainty/,
-    /Priority,<br\/>Honestly/,
+    /Priority with<br\/>Purpose/,
     /Delivering Certainty/,
-    /Priority, Honestly/,
+    /Priority with Purpose/,
     /href="\/work\/delivering-certainty"/,
     /href="\/work\/priority-honestly"/,
   ]);
@@ -58,9 +58,10 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
   assert.doesNotMatch(html, /Move faster/);
 });
 
-test("renders Priority, Honestly as a focused persuasion case study", async () => {
+test("renders Priority with Purpose as a focused feature case study", async () => {
   const html = await expectPage("/work/priority-honestly", [
-    /Priority, Honestly — Sivakorn/,
+    /Priority with Purpose — Sivakorn/,
+    /Priority with<br\/><em>Purpose\.<\/em>/,
     /Give Priority a reason/,
     /Get it faster/,
     /up to 50%/i,
