@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const flowSteps = [
   ["01", "Choose", "See nearby lockers before placing the order."],
   ["02", "Confirm", "Know the walk, opening hours, and pickup window."],
@@ -6,13 +8,18 @@ const flowSteps = [
   ["05", "Collect", "Get a compartment cue and close the loop."],
 ];
 
-const evaluationMetrics = [
+const lockerMetrics = [
   ["Adoption", "Locker selection rate", "Do people understand and trust the option?"],
   ["Retrieval", "First-attempt open rate", "Can users unlock without help?"],
   ["Efficiency", "Median time at locker", "Is pickup actually faster?"],
   ["Reliability", "Support contacts / 1k orders", "Where does the journey break?"],
+];
+
+const priorityMetrics = [
+  ["Choice", "Priority selection lift", "Does the clearer value proposition improve adoption?"],
   ["Purpose", "Donation comprehension", "Do users understand how much is donated, when, and why?"],
   ["Trust", "Priority regret rate", "Did the purpose-led nudge set a fair expectation?"],
+  ["Equity", "Alternative visibility", "Can people still find and choose the cheaper options easily?"],
 ];
 
 function StatusBar() {
@@ -39,30 +46,33 @@ function Pin({ active = false }: { active?: boolean }) {
   return <span className={`map-pin ${active ? "active" : ""}`}>M</span>;
 }
 
-export default function Home() {
+export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
+  const isPriority = variant === "priority";
+  const metrics = isPriority ? priorityMetrics : lockerMetrics;
+
   return (
     <main>
       <header className="site-header">
-        <a className="wordmark" href="#overview" aria-label="Back to overview">
-          <span>LM</span> / CASE 01
-        </a>
-        <p>Product design · 2026</p>
+        <Link className="wordmark" href="/" aria-label="Back to portfolio">
+          <span>S</span> / CASE {isPriority ? "02" : "01"}
+        </Link>
+        <Link className="header-home" href="/">All work ↗</Link>
       </header>
 
       <nav className="floating-nav" aria-label="Case study sections">
         <a href="#overview"><span>01</span>Overview</a>
         <a href="#approach"><span>02</span>Approach</a>
         <a href="#solution"><span>03</span>Solution</a>
-        <a href="#priority"><span>04</span>Priority</a>
-        <a href="#evaluation"><span>05</span>Measure</a>
+        <a href="#evaluation"><span>04</span>Measure</a>
       </nav>
 
+      {!isPriority && <>
       <section className="hero section-pad" id="overview">
         <div className="hero-copy">
           <p className="eyebrow">A last-mile service case study</p>
           <h1>Delivering<br /><em>certainty.</em></h1>
           <p className="hero-intro">
-            A contactless locker experience that helps people choose, track, and collect food with confidence—plus an honest way to make faster delivery more compelling.
+            A contactless locker experience that helps people choose, track, and collect food with confidence—from checkout to compartment.
           </p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
@@ -238,9 +248,45 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="priority section-pad" id="priority">
+      </>}
+
+      {isPriority && <>
+      <section className="priority-hero section-pad" id="overview">
+        <div className="priority-hero-copy">
+          <p className="eyebrow">An ethical persuasion case study</p>
+          <h1>Priority,<br /><em>honestly.</em></h1>
+          <p className="hero-intro">A clearer way to make faster delivery compelling—without hiding cheaper options, manufacturing urgency, or asking people to trade trust for speed.</p>
+          <div className="hero-meta">
+            <span>Role<br /><b>Product designer</b></span>
+            <span>Scope<br /><b>UX · Strategy · Persuasion</b></span>
+            <span>Format<br /><b>Design exercise</b></span>
+          </div>
+        </div>
+        <div className="priority-hero-art" aria-label="Delivery speed comparison illustration">
+          <span className="speed-sticker">FAST, FAIR,<br />EXPLAINED.</span>
+          <div className="speed-line speed-line-fast"><b>PRIORITY</b><strong>15–20 min</strong><i /></div>
+          <div className="speed-line"><b>NORMAL</b><strong>30–40 min</strong><i /></div>
+          <div className="speed-line"><b>LOW-COST</b><strong>45–60 min</strong><i /></div>
+        </div>
+      </section>
+
+      <section className="priority-problem section-pad" id="approach">
+        <div className="section-heading">
+          <p className="eyebrow">01 · Frame the tension</p>
+          <h2>Make speed desirable.<br />Keep the choice fair.</h2>
+        </div>
+        <div className="challenge-grid">
+          <article className="challenge-card orange"><span className="card-index">A</span><h3>Business pressure</h3><p>Priority needs a compelling reason to command a premium beyond simply placing the fastest option first.</p><div className="scribble">value, not pressure</div></article>
+          <article className="challenge-card acid"><span className="card-index">B</span><h3>User trust</h3><p>Normal and Low-cost must remain easy to compare and select, with no countdowns, guilt, or disguised defaults.</p><div className="scribble">clarity → agency → trust</div></article>
+        </div>
+        <div className="north-star"><p>North-star question</p><blockquote>How might we increase the appeal of Priority without reducing the user’s ability to choose freely?</blockquote></div>
+      </section>
+      </>}
+
+      {isPriority && <>
+      <section className="priority section-pad" id="solution">
         <div className="section-heading priority-heading">
-          <p className="eyebrow">04 · Question 2 · Proposed solution</p>
+          <p className="eyebrow">02 · The proposed model</p>
           <h2>Move faster.<br />Pass good forward.</h2>
           <p><b>Priority with Purpose</b> combines the fastest delivery window with a charitable contribution. Users see one simple promise: up to 50% of the extra amount paid for Priority goes to charity.</p>
         </div>
@@ -285,32 +331,80 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </>}
 
       <section className="evaluation section-pad" id="evaluation">
         <div className="section-heading">
-          <p className="eyebrow">05 · Evaluate in layers</p>
-          <h2>Success is a pickup<br />without a second thought.</h2>
+          <p className="eyebrow">{isPriority ? "03" : "04"} · Evaluate in layers</p>
+          <h2>{isPriority ? <>Conversion means little<br />without comprehension.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
         <div className="test-plan">
-          <article><span>BEFORE BUILD</span><h3>Prototype test</h3><p>5–7 participants in a simulated lobby. Test first-click locker choice, QR failure recovery, passcode entry, and compartment identification.</p><b>Signal: ≥ 80% complete unassisted</b></article>
-          <article><span>PILOT</span><h3>Shadow launch</h3><p>Instrument a small set of locations. Observe retrieval time, locker errors, and where users open help without changing operational rules.</p><b>Signal: &lt; 90 sec median pickup</b></article>
-          <article><span>SCALE</span><h3>Controlled experiment</h3><p>Compare standard Priority with Priority + donation. Measure choice lift alongside price comprehension, donation recall, and post-purchase regret.</p><b>Signal: lift with stable trust</b></article>
+          {isPriority ? <>
+            <article><span>BEFORE BUILD</span><h3>Comprehension test</h3><p>Ask people to compare all three options, explain the premium, and describe the donation promise in their own words.</p><b>Signal: ≥ 80% explain it accurately</b></article>
+            <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority + Purpose while keeping timing, placement, and all alternatives consistent.</p><b>Signal: choice lift with stable trust</b></article>
+            <article><span>AFTER DELIVERY</span><h3>Regret check</h3><p>Measure whether the faster arrival and contribution confirmation match what people believed they purchased.</p><b>Signal: no increase in regret</b></article>
+          </> : <>
+            <article><span>BEFORE BUILD</span><h3>Prototype test</h3><p>5–7 participants in a simulated lobby. Test first-click locker choice, QR failure recovery, passcode entry, and compartment identification.</p><b>Signal: ≥ 80% complete unassisted</b></article>
+            <article><span>PILOT</span><h3>Shadow launch</h3><p>Instrument a small set of locations. Observe retrieval time, locker errors, and where users open help without changing operational rules.</p><b>Signal: &lt; 90 sec median pickup</b></article>
+            <article><span>SCALE</span><h3>Operational rollout</h3><p>Compare locations and locker types to find where wayfinding, compartment fit, or access recovery still breaks.</p><b>Signal: fewer support contacts</b></article>
+          </>}
         </div>
 
         <div className="metrics-table">
           <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
-          {evaluationMetrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
+          {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
         </div>
 
         <div className="closing-card">
-          <p className="eyebrow">What I would explore next</p>
-          <h3>Capacity prediction, multi-order pickup, accessibility at the physical locker, and rider-side recovery when no compartment fits.</h3>
+          <p className="eyebrow">{isPriority ? "The principle I would protect" : "What I would explore next"}</p>
+          <h3>{isPriority ? "Grow the value of the premium—not the pressure around the choice." : "Capacity prediction, multi-order pickup, accessibility at the physical locker, and rider-side recovery when no compartment fits."}</h3>
           <a href="#overview">Back to the top ↑</a>
         </div>
       </section>
 
-      <footer><span>LOCKER / PRIORITY</span><p>Confidential product design exercise · 2026</p><b>END 05/05</b></footer>
+      <Link className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-honestly"}>
+        <span>NEXT CASE STUDY</span><b>{isPriority ? "Delivering Certainty" : "Priority, Honestly"} →</b>
+      </Link>
+      <footer><span>{isPriority ? "PRIORITY, HONESTLY" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
+    </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="portfolio-home">
+      <header className="portfolio-header">
+        <Link className="portfolio-brand" href="/" aria-label="Sivakorn portfolio home"><span>S</span><b>Sivakorn.</b></Link>
+        <nav aria-label="Portfolio navigation"><a className="active" href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      </header>
+
+      <section className="portfolio-hero" id="about">
+        <div className="availability"><span>Product / UX·UI designer</span><p><i /> Open to 2026 roles · Bangkok, TH</p></div>
+        <h1>Design that gets<br /><em>out of the way.</em></h1>
+        <p>Hi, I’m Sivakorn — I turn messy flows into calm, obvious taps. This is a little exhibition of things I’ve made.</p>
+      </section>
+
+      <div className="ticker" aria-label="Design capabilities"><span>Prototyping</span><i>✦</i><span>Design systems</span><i>✦</i><span>Research</span><i>✦</i><span>A little mischief</span><i>✦</i><span>Product thinking</span><i>✦</i><span>Motion</span></div>
+
+      <section className="portfolio-work" id="work">
+        <div className="work-heading"><p><span>01</span> — The exhibition</p><small>Two problems. Two focused stories. →</small></div>
+        <div className="project-grid">
+          <Link className="project-card project-locker" href="/work/delivering-certainty">
+            <div className="project-visual"><span className="project-index">01</span><span className="reel-dot">● CASE</span><div className="preview-phone"><small>IT’S IN THE LOCKER</small><div className="preview-panel"><i>▣</i><b>COMPARTMENT<br /><strong>07</strong></b></div><ol><li>Preparing</li><li>Rider picked up</li><li>Dropped in locker</li><li>You collected it</li></ol></div></div>
+            <h2>Delivering Certainty <span>→</span></h2><p>Contactless food lockers, minus the anxiety.</p><div className="project-tags"><span>App</span><span>Service design</span><span>0→1 flow</span></div>
+          </Link>
+
+          <Link className="project-card project-priority" href="/work/priority-honestly">
+            <div className="project-visual"><span className="project-index">02</span><span className="reel-dot">● CASE</span><div className="preview-phone"><small>CHOOSE DELIVERY</small><div className="preview-choice selected"><b>Priority</b><strong>15–20 min</strong><i>+฿20</i></div><div className="preview-choice"><b>Normal</b><strong>30–40 min</strong><i>฿15</i></div><div className="preview-choice"><b>Low-cost</b><strong>45–60 min</strong><i>฿0</i></div></div></div>
+            <h2>Priority, Honestly <span>→</span></h2><p>Faster delivery without dark patterns.</p><div className="project-tags"><span>App</span><span>Strategy</span><span>Persuasion</span></div>
+          </Link>
+        </div>
+        <div className="more-brewing"><b>More brewing</b><span>Case studies · soon</span></div>
+      </section>
+
+      <section className="portfolio-contact" id="contact"><small>Say hi</small><a href="mailto:sivakorn.sam@mtel.co.th">sivakorn.sam@mtel.co.th</a><div><a href="mailto:sivakorn.sam@mtel.co.th">Email ↗</a><span>Bangkok · TH</span></div></section>
+      <footer className="portfolio-footer"><span>© 2026 Sivakorn S. — made with too much coffee.</span><nav><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav></footer>
     </main>
   );
 }
