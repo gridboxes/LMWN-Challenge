@@ -267,7 +267,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </div>
         </div>
         <div className="priority-hero-art" aria-label="Delivery speed comparison illustration">
-          <span className="speed-sticker">FAST +<br />FEELS GOOD.</span>
+          <span className="speed-sticker">FAST<br />FEELS<br />GOOD</span>
           <div className="speed-line speed-line-fast"><b>PRIORITY</b><strong>15–20 min</strong><i /></div>
           <div className="speed-line"><b>NORMAL</b><strong>30–40 min</strong><i /></div>
           <div className="speed-line"><b>LOW-COST</b><strong>45–60 min</strong><i /></div>
