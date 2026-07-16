@@ -5,17 +5,22 @@ import { FooterPixelScene } from "./pixel-art";
 
 const flowSteps = [
   ["01", "Discover", "Find Pickup Box inside the familiar delivery-instruction flow."],
-  ["02", "Choose", "Compare locations by availability, floor, zone, and a real-world photo."],
-  ["03", "Confirm", "See the selected box in the order summary before placing the order."],
-  ["04", "Retrieve", "Use the QR or 4-digit code, then follow the highlighted compartment."],
-  ["05", "Reflect", "Confirm collection and rate the Pickup Box separately from the rider."],
+  ["02", "Select", "Compare viable locations by availability, floor, landmark, and photo."],
+  ["03", "Confirm", "Review the reserved Pickup Box before placing the order."],
+  ["04", "Track", "Follow the rider until the order is secured in a compartment."],
+  ["05", "Notify", "Enter the collection journey from a clear ready-to-pick-up alert."],
+  ["06", "Authenticate", "Scan the QR on the locker or use the displayed fallback code."],
+  ["07", "Collect", "Open the highlighted compartment and take the order."],
+  ["08", "Complete", "Let the locker confirm collection and capture service feedback."],
 ];
 
 const lockerMetrics = [
   ["Adoption", "Locker selection rate", "Do people understand and trust the option?"],
-  ["Retrieval", "First-attempt open rate", "Can users unlock without help?"],
-  ["Efficiency", "Median time at locker", "Is pickup actually faster?"],
-  ["Reliability", "Support contacts / 1k orders", "Where does the journey break?"],
+  ["Access", "First-attempt access rate", "Can users unlock without help?"],
+  ["Efficiency", "Median scan-to-door-open time", "Is the physical handoff quick?"],
+  ["Reliability", "Fallback and help rate by cause", "Where does access break?"],
+  ["Safety", "Uncollected or expired orders", "Does the holding policy protect food quality?"],
+  ["Operations", "Rider dwell and no-fit rate", "Does the service work for riders and hardware?"],
 ];
 
 const priorityMetrics = [
@@ -67,6 +72,123 @@ function ProductScreen({
         <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 760px) 72vw, 360px" unoptimized />
       </div>
     </figure>
+  );
+}
+
+function WireframeStep({ num, title, body }: { num: string; title: string; body: string }) {
+  return (
+    <article className="lofi-screen">
+      <div className="lofi-appbar"><i /><b>LINE MAN</b><span>{num}</span></div>
+      <div className="lofi-canvas" aria-hidden="true">
+        <span className="lofi-line long" /><span className="lofi-line" />
+        <div className="lofi-card"><i /><span /><span /></div>
+        <div className="lofi-card compact"><i /><span /><span /></div>
+        <div className="lofi-action" />
+      </div>
+      <p className="lofi-number">{num}</p>
+      <h3>{title}</h3>
+      <p>{body}</p>
+    </article>
+  );
+}
+
+function UiProductScreen({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <figure className="product-screen ui-product-screen">
+      <figcaption>{label}</figcaption>
+      <div className="product-screen-frame"><div className="ui-screen">{children}</div></div>
+    </figure>
+  );
+}
+
+function MobileStatus() {
+  return <div className="ui-status" aria-hidden="true"><b>10:15</b><span>● ● ▰</span></div>;
+}
+
+function HandoffScreen() {
+  return (
+    <UiProductScreen label="SECURE HANDOFF">
+      <MobileStatus />
+      <div className="ui-map"><span>Hospital Bangna</span><i /><b /></div>
+      <div className="tracking-sheet">
+        <small>RIDER AT THE PICKUP BOX</small>
+        <h4>Securing your order</h4>
+        <p>The rider is placing your food in an assigned compartment.</p>
+        <ol>
+          <li className="done"><i>✓</i><span>Rider arrived</span></li>
+          <li className="current"><i /><span>Placing order in the Pickup Box</span></li>
+          <li><i /><span>Ready for collection</span></li>
+        </ol>
+        <div className="ui-location"><b>Hospital Bangna · Floor 1</b><span>Near entrance 2</span></div>
+      </div>
+    </UiProductScreen>
+  );
+}
+
+function NotificationScreen() {
+  return (
+    <UiProductScreen label="READY NOTIFICATION">
+      <MobileStatus />
+      <div className="notification-wallpaper">
+        <div className="push-card">
+          <div><span className="push-mark">M</span><b>LINE MAN</b><small>now</small></div>
+          <h4>Your order is ready to collect</h4>
+          <p>Hospital Bangna, Floor 1 · Near entrance 2</p>
+          <span>Tap to open pickup instructions →</span>
+        </div>
+        <div className="notification-context"><b>One clear next step</b><p>The alert opens the access screen—not the generic order page.</p></div>
+      </div>
+    </UiProductScreen>
+  );
+}
+
+function AccessScreen() {
+  return (
+    <UiProductScreen label="SCAN THE LOCKER">
+      <MobileStatus />
+      <div className="ui-toolbar"><span>⌄</span><b>Ready to collect</b><span>?</span></div>
+      <div className="access-copy"><small>STEP 1 OF 2</small><h4>Scan the QR on the locker</h4><p>This verifies that you are standing at the correct Pickup Box.</p></div>
+      <div className="locker-photo-mini"><span>Hospital Bangna · Floor 1</span><b>Near entrance 2</b></div>
+      <button className="scan-cta" type="button"><span className="scan-corners" />Scan locker QR</button>
+      <div className="passcode-panel"><span>Can’t scan?</span><p>Enter this code on the locker screen</p><b>7 2 4 8</b></div>
+      <div className="holding-note"><b>Collect within 30 minutes</b><span>Pilot policy · reminder at 10 minutes remaining</span></div>
+    </UiProductScreen>
+  );
+}
+
+function CompartmentScreen() {
+  const left = [1, 2, 3, 4, 5, 6];
+  const right = [7, 8, 9, 10, 11, 12, 13];
+  return (
+    <UiProductScreen label="DOOR OPENED">
+      <MobileStatus />
+      <div className="ui-toolbar"><span>⌄</span><b>Collect your order</b><span>?</span></div>
+      <div className="access-copy success"><small>STEP 2 OF 2</small><h4>Compartment 07 is open</h4><p>Look for the door lit in green.</p></div>
+      <div className="hardware-map" aria-label="Pickup Box compartments 1 through 13">
+        <div>{left.map((n) => <span key={n}>{String(n).padStart(2, "0")}</span>)}</div>
+        <div>{right.map((n) => <span className={n === 7 ? "active" : ""} key={n}>{String(n).padStart(2, "0")}</span>)}</div>
+      </div>
+      <div className="auto-complete"><i>✓</i><div><b>Collection confirms automatically</b><p>The order completes when the locker detects the door has closed.</p></div></div>
+      <button className="secondary-help" type="button">Door did not open</button>
+    </UiProductScreen>
+  );
+}
+
+function FeedbackScreen() {
+  return (
+    <UiProductScreen label="SERVICE-SPECIFIC FEEDBACK">
+      <MobileStatus />
+      <div className="ui-toolbar"><span>×</span><b>Order completed</b><span /></div>
+      <div className="feedback-ui">
+        <span className="feedback-icon">▥</span>
+        <small>PICKUP BOX EXPERIENCE</small>
+        <h4>How was your pickup?</h4>
+        <p>Rate the box separately from your rider.</p>
+        <div className="feedback-stars">★ ★ ★ ★ ★</div>
+        <div className="feedback-tags"><span>Easy to find</span><span>Opened quickly</span><span>Felt secure</span><span>Food was fresh</span></div>
+        <button type="button">Submit feedback</button>
+      </div>
+    </UiProductScreen>
   );
 }
 
@@ -164,6 +286,20 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, remaining time, and compartment number exactly when they matter.</p></li>
           </ol>
         </div>
+
+        <div className="decision-record">
+          <div className="decision-record-heading">
+            <p className="eyebrow">Decision record</p>
+            <h3>Turn assumptions into testable service rules.</h3>
+            <p>These are product decisions for the prototype—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
+          </div>
+          <div className="decision-record-list">
+            <article><span>ACCESS</span><b>Phone scans the QR fixed to the locker.</b><p>The app verifies the physical location. A 4-digit code displayed in the app can be entered on the locker as the fallback.</p><small>Validate: scan reliability and passcode comprehension</small></article>
+            <article><span>CAPACITY</span><b>Reserve capacity after the restaurant accepts.</b><p>The exact compartment is still assigned when the rider arrives, based on order size and live hardware status.</p><small>Validate: reservation window and no-fit rate</small></article>
+            <article><span>WAYFINDING</span><b>Repeat recognition cues at collection.</b><p>Floor, landmark, and the locker photo appear when choosing and again when the order becomes ready.</p><small>Validate: first-attempt locker identification</small></article>
+            <article><span>COMPLETION</span><b>Use the locker event as the source of truth.</b><p>Door open and close signals complete the order automatically. The app provides recovery rather than asking users to confirm manually.</p><small>Validate: sensor accuracy and false-complete rate</small></article>
+          </div>
+        </div>
       </section>
 
       <section className="journey section-pad">
@@ -181,13 +317,10 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           ))}
         </div>
 
-        <div className="real-flow-board" aria-label="End-to-end Pickup Box product flow">
-          <div className="board-title"><span>FINAL UI FLOW</span><b>5 decisive moments</b></div>
-          <ProductScreen compact label="01 · Discover" src="/case-01/delivery-instruction.png" alt="Pickup Box shown among delivery instruction choices in checkout" />
-          <ProductScreen compact label="02 · Choose" src="/case-01/locker-photo-selected.png" alt="Available Pickup Box location selected with a photo and landmark" />
-          <ProductScreen compact label="03 · Confirm" src="/case-01/checkout-confirmed.png" alt="Order page confirming Place in a Pickup Box and its location" width={852} height={1934} />
-          <ProductScreen compact label="04 · Retrieve" src="/case-01/ready-to-collect.png" alt="Ready-to-collect screen with QR code, pickup code, location, and remaining time" />
-          <ProductScreen compact label="05 · Collect" src="/case-01/compartment-07.png" alt="Collection screen highlighting Pickup Box compartment 07" />
+        <p className="scroll-hint">Eight low-fidelity screens · swipe to follow the complete journey →</p>
+        <div className="lofi-board" aria-label="End-to-end low-fidelity Pickup Box wireframes">
+          <div className="board-title"><span>LOW-FIDELITY WIREFRAMES</span><b>Start → successful collection</b></div>
+          {flowSteps.map(([num, title, body]) => <WireframeStep num={num} title={title} body={body} key={num} />)}
         </div>
       </section>
 
@@ -205,7 +338,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p>The new service lives alongside existing delivery instructions. A lightweight explainer appears at first discovery, then gets out of the way.</p>
             <ul className="check-list"><li>Existing checkout structure stays intact</li><li>Three steps explain the service model</li><li>“New” creates a clear discovery cue</li></ul>
           </div>
-          <div className="product-screen-group two-up offset-pair">
+          <div className="product-screen-group two-up">
             <ProductScreen label="DELIVERY INSTRUCTIONS" src="/case-01/delivery-instruction.png" alt="Pickup Box presented as a new delivery instruction during checkout" />
             <ProductScreen label="FIRST-USE EXPLAINER" src="/case-01/onboarding.png" alt="Bottom sheet explaining how the LINE MAN Pickup Box service works" />
           </div>
@@ -217,12 +350,19 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p className="eyebrow">Choose a real place</p>
             <h3>Availability and recognition do different jobs.</h3>
             <p>Status helps users decide whether a location is viable. Floor, landmark, and a real-world image help them recognize it when they arrive.</p>
-            <div className="callout"><b>Design decision</b><p>Available, Limited, and Full make operational capacity visible before an order is placed.</p></div>
+            <div className="callout"><b>Design decision</b><p>Available, Limited, and Full support comparison. Capacity is reserved only after the restaurant accepts the order.</p></div>
           </div>
           <div className="product-screen-group two-up">
+            <ProductScreen label="PHOTO + AVAILABILITY" src="/case-01/locker-photo-selected.png" alt="Selected Pickup Box location with floor, landmark, availability, and a photo" />
             <ProductScreen label="CAPACITY AT A GLANCE" src="/case-01/locker-options.png" alt="Pickup Box location list showing Available, Limited, and Full capacity" />
-            <ProductScreen label="PHYSICAL RECOGNITION" src="/case-01/locker-photo-selected.png" alt="Selected Pickup Box location with floor, landmark, availability, and a photo" />
           </div>
+        </div>
+
+        <div className="capacity-contract" aria-label="Pickup Box capacity contract">
+          <div><span>01 · CHECKOUT</span><b>Show live capacity</b><p>Availability helps users compare viable locations without promising a specific door.</p></div>
+          <div><span>02 · ACCEPTED</span><b>Reserve suitable space</b><p>Hold capacity for the order size once the restaurant confirms the order.</p></div>
+          <div><span>03 · RIDER ARRIVAL</span><b>Assign the compartment</b><p>The locker chooses an available fitting door and releases the hold after drop-off.</p></div>
+          <div className="capacity-fallback"><span>IF THE HOLD FAILS</span><b>Keep the user informed</b><p>Offer a nearby box or a clearly named handoff fallback before the rider leaves.</p></div>
         </div>
 
         <div className="phone-stage real-ui-stage stage-black">
@@ -230,12 +370,12 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <span className="stage-number">03</span>
             <p className="eyebrow">Track the handoff</p>
             <h3>The destination changes from a person to a box.</h3>
-            <p>The tracking experience names the Pickup Box location throughout, then switches from “Heading your way” to “Placing off your food” as the rider completes the physical handoff.</p>
-            <ul className="check-list"><li>Locker remains visible as the destination</li><li>Rider arrival has its own state</li><li>Collection starts only after the food is secured</li></ul>
+            <p>The tracking experience names the Pickup Box throughout, then shows “Securing your order” while the rider completes the physical handoff. A ready notification opens directly into collection instructions.</p>
+            <ul className="check-list"><li>Locker remains visible as the destination</li><li>Rider arrival has its own state</li><li>Notification has one clear next action</li></ul>
           </div>
           <div className="product-screen-group two-up">
-            <ProductScreen label="RIDER EN ROUTE" src="/case-01/rider-en-route.png" alt="Delivery tracking screen showing the rider heading toward the Pickup Box destination" />
-            <ProductScreen label="RIDER AT THE BOX" src="/case-01/rider-at-locker.png" alt="Delivery tracking screen showing the rider placing the food in the Pickup Box" />
+            <HandoffScreen />
+            <NotificationScreen />
           </div>
         </div>
 
@@ -243,13 +383,26 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="stage-copy">
             <span className="stage-number">04</span>
             <p className="eyebrow">Retrieve without guessing</p>
-            <h3>Code, time, place, then compartment.</h3>
-            <p>The ready state puts both access methods together with the exact location and a 30-minute collection window. After access, the interface reduces the task to one unmistakable cue: compartment 07, lit in green.</p>
-            <ul className="check-list"><li>QR and 4-digit code share one surface</li><li>Remaining time is explicit</li><li>The compartment map mirrors the hardware</li></ul>
+            <h3>Place, scan, then compartment.</h3>
+            <p>The ready state repeats the exact location and real-world landmark. The phone scans the QR fixed to the locker; the displayed 4-digit code is entered on the locker when scanning fails. The 30-minute window is a pilot assumption to validate with operations.</p>
+            <ul className="check-list"><li>QR direction is explicit</li><li>Passcode is a visible fallback</li><li>The 13-door map mirrors the reference locker</li></ul>
           </div>
           <div className="product-screen-group two-up">
-            <ProductScreen label="READY TO COLLECT" src="/case-01/ready-to-collect.png" alt="Ready-to-collect screen with QR code, 4-digit pickup code, location, and 30-minute window" />
-            <ProductScreen label="COMPARTMENT 07" src="/case-01/compartment-07.png" alt="Pickup Box map highlighting compartment 07 in green with an Order collected action" />
+            <AccessScreen />
+            <CompartmentScreen />
+          </div>
+        </div>
+
+        <div className="recovery-section">
+          <div className="section-heading compact">
+            <p className="eyebrow">Recovery is part of the core flow</p>
+            <h2>Keep the order safe when the happy path breaks.</h2>
+            <p>Each recovery state preserves the order, explains what happened, and gives one recommended next step before exposing support.</p>
+          </div>
+          <div className="recovery-grid">
+            <article><span>CAPACITY CHANGED</span><i>!</i><h3>This Pickup Box is full</h3><p>Your order is still with the rider. Choose the nearby Floor 1 box or switch to an attended handoff.</p><b>Recommended: nearby box · 2 min walk</b><button type="button">Choose fallback</button></article>
+            <article><span>SCAN FAILED</span><i>⌁</i><h3>QR not recognised</h3><p>Make sure this is the Hospital Bangna locker, then retry or enter the code shown in your app.</p><b>Fallback code · 7 2 4 8</b><button type="button">Try scanning again</button></article>
+            <article><span>DOOR ERROR</span><i>×</i><h3>Compartment did not open</h3><p>The order stays active. Retry once, then connect to Pickup Box support with the locker and order details attached.</p><b>Order remains protected</b><button type="button">Get help</button></article>
           </div>
         </div>
       </section>
@@ -351,12 +504,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="feedback-copy">
             <p className="eyebrow">Close the learning loop</p>
             <h3>Rate the box separately from the rider.</h3>
-            <p>Pickup Box feedback sits inside the familiar completed-order experience, but isolates the service signals that matter: convenience, location placement, peace of mind, and ease of pickup.</p>
+            <p>Pickup Box feedback sits inside the familiar completed-order experience, but isolates the service signals that matter: finding the box, opening it, feeling secure, and receiving food in good condition.</p>
           </div>
-          <div className="product-screen-group two-up">
-            <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="Completed-order page asking the user to rate the Pickup Box separately" />
-            <ProductScreen label="ACTIONABLE SIGNALS" src="/case-01/pickup-feedback-selected.png" alt="Pickup Box feedback with five stars and service-specific feedback tags" />
-          </div>
+          <div className="feedback-screen-wrap"><FeedbackScreen /></div>
         </div>}
 
         <div className="test-plan">
@@ -365,11 +515,25 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
             <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
           </> : <>
-            <article><span>BEFORE BUILD</span><h3>Prototype test</h3><p>5–7 participants in a simulated lobby. Test first-click locker choice, QR failure recovery, passcode entry, and compartment identification.</p><b>Signal: ≥ 80% complete unassisted</b></article>
-            <article><span>PILOT</span><h3>Shadow launch</h3><p>Instrument a small set of locations. Observe retrieval time, locker errors, and where users open help without changing operational rules.</p><b>Signal: &lt; 90 sec median pickup</b></article>
-            <article><span>SCALE</span><h3>Operational rollout</h3><p>Compare locations and locker types to find where wayfinding, compartment fit, or access recovery still breaks.</p><b>Signal: fewer support contacts</b></article>
+            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 participants in a simulated lobby across selection, wayfinding, QR failure, passcode fallback, and compartment identification. Record assistance and error severity—not a fragile percentage.</p><b>Gate: zero unresolved critical failures</b></article>
+            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Launch at 2–3 locations with instrumented hardware. Compare first-attempt access, scan-to-door-open time, expired pickups, and rider no-fit events against agreed baselines.</p><b>Initial target: ≥95% first-attempt access</b></article>
+            <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while protecting guardrails: food quality, support contacts, fallback rate, accessibility issues, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
           </>}
         </div>
+
+        {!isPriority && <div className="instrumentation-map">
+          <div><p className="eyebrow">Measurement contract</p><h3>Instrument the handoff, not only the final rating.</h3></div>
+          <ol>
+            <li><span>01</span><b>locker_selected</b></li>
+            <li><span>02</span><b>capacity_reserved</b></li>
+            <li><span>03</span><b>ready_notified</b></li>
+            <li><span>04</span><b>scan_started</b></li>
+            <li><span>05</span><b>access_granted</b></li>
+            <li><span>06</span><b>door_opened</b></li>
+            <li><span>07</span><b>order_collected</b></li>
+            <li><span>08</span><b>fallback_or_help</b></li>
+          </ol>
+        </div>}
 
         <div className="metrics-table">
           <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
@@ -378,7 +542,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="closing-card">
           <p className="eyebrow">{isPriority ? "The principle I would protect" : "What I would explore next"}</p>
-          <h3>{isPriority ? "Make Priority worth choosing: faster for the user, positive beyond the order." : "Capacity prediction, multi-order pickup, accessibility at the physical locker, and rider-side recovery when no compartment fits."}</h3>
+          <h3>{isPriority ? "Make Priority worth choosing: faster for the user, positive beyond the order." : "Validate the reservation window, accessibility at the physical locker, multi-order pickup, and rider recovery when no compartment fits."}</h3>
           <a href="#overview">Back to the top ↑</a>
         </div>
       </section>

@@ -50,11 +50,14 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Delivering Certainty — Product Design Case Study/,
     /The locker is only useful/,
     /Operational uncertainty/,
-    /FINAL UI FLOW/,
+    /LOW-FIDELITY WIREFRAMES/,
+    /Turn assumptions into testable service rules/,
     /Pickup Box enters through a familiar delivery choice/,
-    /4-digit pickup code/,
-    /COMPARTMENT 07/,
+    /Phone scans the QR fixed to the locker/,
+    /Compartment 07 is open/,
+    /This Pickup Box is full/,
     /Rate the box separately from the rider/,
+    /Measurement contract/,
     /Success is a pickup/,
   ]);
   assert.match(html, /class="brand-mark"/);
