@@ -5,11 +5,11 @@ import { FooterPixelScene } from "./pixel-art";
 import { CaseStudyNav } from "./case-study-nav";
 
 const flowSteps = [
-  ["01", "Choose", "See nearby lockers before placing the order."],
-  ["02", "Confirm", "Know the walk, opening hours, and pickup window."],
-  ["03", "Track", "Follow one clear timeline from kitchen to locker."],
+  ["01", "Choose", "Compare Pickup Box locations by availability, floor, and landmark."],
+  ["02", "Confirm", "Review the selected Pickup Box inside Delivery Info before ordering."],
+  ["03", "Track", "Follow the familiar map, ETA, and rider handoff to the box."],
   ["04", "Unlock", "Present the QR to the locker scanner or enter a 4-digit fallback code."],
-  ["05", "Collect", "Get a compartment cue and close the loop."],
+  ["05", "Collect", "Find the highlighted compartment and confirm collection."],
 ];
 
 const lockerMetrics = [
@@ -184,11 +184,44 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="wireframe-board" aria-label="End-to-end Pickup Box wireframes with recovery paths">
           <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 states / 2 recovery paths</b></div>
-          <div className="wire wire-choose"><div className="wire-appbar"><i>←</i><b>Delivery method</b></div><div className="wire-tabs"><span>Door</span><b>Pick up</b></div><div className="wire-map"><i /><i /><i /></div><div className="wire-card"><b>Central Office · Lobby</b><span>3 min walk · Open until 10 PM</span></div><div className="wire-card muted"><b>Metro Tower · B1</b><span>6 min walk · Open 24 hours</span></div><div className="wire-button">View locker</div><p>1. Choose a locker</p></div>
-          <div className="wire wire-confirm"><div className="wire-appbar"><i>←</i><b>Locker details</b></div><div className="wire-map detail"><i /></div><div className="wire-detail-title"><b>Central Office · Lobby</b><span>Near the south entrance</span></div><div className="wire-facts"><span>3 min walk</span><span>Open until 10 PM</span><span>Available now</span></div><div className="wire-note">Capacity is reserved after the restaurant accepts.</div><div className="wire-button">Use this locker</div><p>2. Confirm the place</p></div>
-          <div className="wire wire-track"><div className="wire-appbar"><i>←</i><b>Order #A38</b></div><div className="wire-status"><span>12–18 min</span><b>Heading to your locker</b></div><div className="wire-timeline"><i className="done" /><b>Restaurant confirmed</b><i className="done" /><b>Picked up by rider</b><i className="current" /><b>On the way to locker</b><i /><b>Ready to collect</b></div><div className="wire-button light">Locker directions</div><p>3. Track the handoff</p></div>
-          <div className="wire wire-ready"><div className="wire-appbar"><i>←</i><b>Pick up order</b></div><div className="wire-ready-label">READY</div><div className="wire-qr">▦</div><b className="wire-location">Central Office · Lobby</b><small>Pick up by 2:10 PM</small><div className="wire-code">7 2 4 8</div><div className="wire-help">QR fails? Enter the 4-digit code.</div><p>4. Unlock with fallback</p></div>
-          <div className="wire wire-open"><div className="wire-appbar"><i>←</i><b>Compartment opened</b></div><div className="wire-door-number"><small>OPEN</small><b>07</b><span>Green light is pulsing</span></div><div className="wire-collect-check">✓ Did you get your order?</div><div className="wire-button">Yes, I have it</div><p>5. Collect + confirm</p></div>
+          <div className="wire wire-choose">
+            <div className="wire-appbar"><i>×</i><b>Edit delivery instructions</b></div>
+            <div className="wire-address"><span>Address:</span><b>Hospital Bangna</b></div>
+            <h4>Delivery instructions</h4>
+            <div className="wire-instruction-row"><b className="selected"><i>▦</i><small>Pickup Box</small></b><b><i>⌖</i><small>Given spot</small></b><b><i>⌄</i><small>Hand to me</small></b></div>
+            <p className="wire-caption">Rider will place your order in a secure Pickup Box.</p>
+            <h4>Pickup Box location</h4>
+            <div className="wire-location-list"><b>Hospital Bangna, Floor 1<small>Near entrance 2</small><em>Available</em></b><b>Hospital Bangna, Floor 1<small>Information zone</small><em>Limited</em></b><b className="disabled">Hospital Bangna, Floor 2<small>Information zone</small><em>Full</em></b></div>
+            <div className="wire-button">Confirm</div><p className="wire-step-label">1. Choose a Pickup Box</p>
+          </div>
+          <div className="wire wire-confirm">
+            <div className="wire-appbar"><i>←</i><b>Tropical Summer Bowl</b></div>
+            <div className="wire-order-tabs"><b>Delivery</b><span>Pickup</span></div>
+            <h4>Delivery Info</h4>
+            <div className="wire-info-row"><i>⌖</i><b>Dcondo Ladkrabang</b></div>
+            <div className="wire-info-row"><i>▦</i><b>Place in a Pickup Box<small>Hospital Bangna, Floor 1 · Near entrance 2</small></b></div>
+            <h4>Delivery options</h4>
+            <div className="wire-speed-list"><span>Priority · &lt; 48 min <b>฿125</b></span><span className="selected">Normal · 65 min <b>฿109</b></span><span>Low-cost · &gt; 74 min <b>฿107</b></span></div>
+            <div className="wire-button">Order now · ฿160</div><p className="wire-step-label">2. Confirm before ordering</p>
+          </div>
+          <div className="wire wire-track">
+            <div className="wire-track-map"><span>DESTINATION<br /><b>Hospital Bangna</b></span><i className="wire-route" /><i className="wire-rider-dot" /></div>
+            <div className="wire-track-card"><small>Low-cost delivery</small><b>Heading your way</b><p>Arrives around <strong>5 min</strong></p><div className="wire-progress"><i className="done" /><i className="done" /><i className="active" /><i /></div></div>
+            <div className="wire-track-details"><b>Rider + contact</b><span>Tropical Summer Bowl</span><span>Hospital Bangna · LINE MAN Pickup Box<small>Floor 1 · Near entrance 2</small></span></div>
+            <p className="wire-step-label">3. Track the handoff</p>
+          </div>
+          <div className="wire wire-ready">
+            <h4 className="wire-state-title">Your food has arrived</h4><b className="wire-state-subtitle">Pick it up from the pickup box</b>
+            <div className="wire-progress state-progress"><i className="done" /><i /><i /></div>
+            <div className="wire-ready-panel"><b>Scan QR or enter code</b><div className="wire-code-cells"><i>7</i><i>2</i><i>4</i><i>8</i></div><div className="wire-qr">▦</div><small>How to use a pickup box</small><p><b>Pickup Box Location</b>Hospital Bangna, Floor 1 · Near entrance 2</p><p><b>Remaining Time</b>Please collect within 30 minutes</p></div>
+            <p className="wire-step-label">4. Unlock with QR or code</p>
+          </div>
+          <div className="wire wire-open">
+            <h4 className="wire-state-title">Look for the box lit in green.</h4><b className="wire-state-subtitle">Open it and collect your food</b>
+            <div className="wire-progress state-progress"><i className="done" /><i className="active" /><i /></div>
+            <div className="wire-compartment-panel"><b>Compartment Unit <strong>07</strong></b><div className="wire-compartment-grid"><i>01</i><i>05</i><i>02</i><i>06</i><i>03</i><i className="active">07</i><i>04</i><i>08</i><i className="empty" /><i>09</i></div><small>How to use a pickup box</small></div>
+            <div className="wire-button">Order collected</div><p className="wire-step-label">5. Collect + confirm</p>
+          </div>
           <div className="wire-arrow arrow-1">→</div><div className="wire-arrow arrow-2">→</div>
           <div className="wire-arrow arrow-3">→</div><div className="wire-arrow arrow-4">→</div>
           <div className="wire-recovery-rail" aria-label="Two recovery paths">
