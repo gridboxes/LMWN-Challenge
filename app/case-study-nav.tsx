@@ -1,7 +1,5 @@
 "use client";
 
-/* eslint-disable @next/next/no-html-link-for-pages */
-
 import { useEffect, useState } from "react";
 
 const links = [
@@ -40,7 +38,6 @@ export function CaseStudyNav() {
       className={`floating-nav${isCompact ? " is-compact" : ""}`}
       aria-label="Case study navigation"
     >
-      <a className="nav-home" href="/"><span>←</span>Home</a>
       {links.map(([number, label, href]) => (
         <a href={href} key={href}><span>{number}</span>{label}</a>
       ))}

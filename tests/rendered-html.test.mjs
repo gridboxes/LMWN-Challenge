@@ -61,7 +61,7 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Measurement contract/,
     /Success is a pickup/,
   ]);
-  assert.match(html, /class="brand-mark"/);
+  assert.match(html, /class="header-home"[^>]*aria-label="Home"/);
   assert.doesNotMatch(html, /Value with purpose/);
   assert.doesNotMatch(html, /Move faster/);
 });

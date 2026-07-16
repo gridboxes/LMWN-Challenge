@@ -111,7 +111,8 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
               <path d="M3.5 10.5 12 3l8.5 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.5v-6h-5v6H5a1.5 1.5 0 0 1-1.5-1.5Z" />
             </svg>
           </a>
-          / CASE {isPriority ? "02" : "01"}
+          <span className="wordmark-divider" aria-hidden="true">/</span>
+          <span className="wordmark-label">CASE {isPriority ? "02" : "01"}</span>
         </div>
       </header>
 
