@@ -83,7 +83,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <p className="eyebrow">A last-mile service case study</p>
           <h1>Delivering<br /><em>certainty.</em></h1>
           <p className="hero-intro">
-            A Pickup Box experience embedded in the existing delivery flow, helping people choose, track, and collect food with confidence—from checkout to compartment.
+            A Pickup Box experience that helps people choose, track, and collect food with confidence—from checkout to compartment.
           </p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
@@ -145,24 +145,24 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <h3>Design for the edge cases first.</h3>
           </div>
           <ol className="assumption-list">
-            <li><span>01</span><p><b>Availability can change.</b> Show Available, Limited, and Full before the user commits to a Pickup Box location.</p></li>
-            <li><span>02</span><p><b>The model is unfamiliar.</b> Introduce the three-step service at the moment a user first considers the delivery instruction.</p></li>
-            <li><span>03</span><p><b>QR is not universal.</b> Pair scanning with a visible 4-digit pickup code and clear help guidance.</p></li>
-            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, remaining time, and compartment number exactly when they matter.</p></li>
+            <li><span>01</span><p><b>Availability can change.</b> Show live status before commitment; reserve suitable capacity after the restaurant accepts.</p></li>
+            <li><span>02</span><p><b>QR is not universal.</b> Pair scanning with a visible 4-digit code and one clear fallback.</p></li>
+            <li><span>03</span><p><b>Food has a clock.</b> Show the 30-minute collection window without creating anxiety.</p></li>
+            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, and compartment number when they matter.</p></li>
           </ol>
         </div>
 
         <div className="decision-record">
           <div className="decision-record-heading">
             <p className="eyebrow">Decision record</p>
-            <h3>Turn assumptions into testable service rules.</h3>
-            <p>These are product decisions for the prototype—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
+            <h3>Make the service rules explicit.</h3>
+            <p>Prototype decisions—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
           </div>
           <div className="decision-record-list">
-            <article><span>ACCESS</span><b>The locker scans the QR displayed in the app.</b><p>The same ready screen exposes a 4-digit code that can be entered on the locker when scanning is unavailable.</p><small>Validate: scan reliability and passcode comprehension</small></article>
-            <article><span>CAPACITY</span><b>Reserve capacity after the restaurant accepts.</b><p>The exact compartment is still assigned when the rider arrives, based on order size and live hardware status.</p><small>Validate: reservation window and no-fit rate</small></article>
-            <article><span>WAYFINDING</span><b>Repeat recognition cues at collection.</b><p>The locker photo anchors selection; floor and landmark are repeated when the order becomes ready.</p><small>Validate: first-attempt locker identification</small></article>
-            <article><span>COMPLETION</span><b>Give users a clear confirmation moment.</b><p>Users can mark the order collected after closing the door; the order auto-completes after three minutes as a safety net.</p><small>Validate: confirmation comprehension and false-complete rate</small></article>
+            <article><span>ACCESS</span><b>Show QR and code on one screen.</b><p>The locker scans the QR; the 4-digit code remains visible when scanning fails.</p><small>Validate: scan reliability and code comprehension</small></article>
+            <article><span>CAPACITY</span><b>Reserve space after acceptance.</b><p>Assign the exact compartment at rider arrival, using order size and live status.</p><small>Validate: reservation window and no-fit rate</small></article>
+            <article><span>WAYFINDING</span><b>Repeat the place when it matters.</b><p>Use the photo at selection; repeat the floor and landmark at collection.</p><small>Validate: first-attempt identification</small></article>
+            <article><span>COMPLETION</span><b>Let users close the loop.</b><p>Keep “Order collected” manual, with auto-complete after three minutes as a safety net.</p><small>Validate: confirmation and false-complete rate</small></article>
           </div>
         </div>
       </section>
@@ -241,9 +241,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="stage-copy">
             <span className="stage-number">01</span>
             <p className="eyebrow">Introduce without interrupting</p>
-            <h3>Pickup Box enters through a familiar delivery choice.</h3>
-            <p>The new service lives alongside existing delivery instructions. A lightweight explainer appears at first discovery, then gets out of the way.</p>
-            <ul className="check-list"><li>Existing checkout structure stays intact</li><li>Three steps explain the service model</li><li>“New” creates a clear discovery cue</li></ul>
+            <h3>Introduce the box where delivery choices already live.</h3>
+            <p>A first-use explainer appears only while the service is new, then gets out of the way.</p>
+            <ul className="check-list"><li>Checkout structure stays familiar</li><li>Three steps explain the service</li><li>“New” signals discovery</li></ul>
           </div>
           <div className="product-screen-group two-up">
             <ProductScreen label="DELIVERY INSTRUCTIONS" src="/case-01/delivery-instruction.png" alt="Pickup Box presented as a new delivery instruction during checkout" />
@@ -255,9 +255,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="stage-copy">
             <span className="stage-number">02</span>
             <p className="eyebrow">Choose a real place</p>
-            <h3>Availability and recognition do different jobs.</h3>
-            <p>Status helps users decide whether a location is viable. Floor, landmark, and a real-world image help them recognize it when they arrive.</p>
-            <div className="callout"><b>Design decision</b><p>Available, Limited, and Full support comparison. Capacity is reserved only after the restaurant accepts the order.</p></div>
+            <h3>A locker is presented like a place—not a shipping setting.</h3>
+            <p>Availability answers “Can I use it?” A photo, floor, and landmark answer “Will I find it?”</p>
+            <div className="callout"><b>Design decision</b><p>Show status before ordering. Reserve suitable capacity after the restaurant accepts.</p></div>
           </div>
           <div className="product-screen-group two-up">
             <ProductScreen label="PHOTO + AVAILABILITY" src="/case-01/locker-photo-selected.png" alt="Selected Pickup Box location with floor, landmark, availability, and a photo" />
@@ -276,9 +276,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="stage-copy">
             <span className="stage-number">03</span>
             <p className="eyebrow">Track the handoff</p>
-            <h3>The destination changes from a person to a box.</h3>
-            <p>The tracking experience keeps the Pickup Box visible as the destination and preserves the familiar LINE MAN map, rider card, and delivery timeline. The ready notification opens directly into the collection screen.</p>
-            <ul className="check-list"><li>Original LINE MAN tracking pattern stays intact</li><li>Rider arrival has its own handoff state</li><li>Notification has one clear next action</li></ul>
+            <h3>The timeline changes language when the rider reaches the locker.</h3>
+            <p>The familiar map and rider card stay intact. Only the language changes to name the box handoff and the moment collection can begin.</p>
+            <ul className="check-list"><li>Pickup Box stays visible as the destination</li><li>Rider arrival gets its own state</li><li>The ready alert has one action</li></ul>
           </div>
           <div className="product-screen-group two-up">
             <ProductScreen label="EN ROUTE CONTEXT" src="/case-01/rider-en-route.png" alt="LINE MAN tracking screen showing the rider heading to the Hospital Bangna Pickup Box" />
@@ -293,9 +293,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="stage-copy">
             <span className="stage-number">04</span>
             <p className="eyebrow">Retrieve without guessing</p>
-            <h3>Code, time, place, then compartment.</h3>
-            <p>The ready state follows the supplied design: users present the QR to the locker scanner or enter the 4-digit code. The next state highlights the assigned compartment, with a manual confirmation and three-minute auto-complete safety net.</p>
-            <ul className="check-list"><li>QR and passcode share one familiar surface</li><li>Location and 30-minute window stay visible</li><li>The compartment map reflects the selected locker configuration</li></ul>
+            <h3>Two access methods. One obvious fallback.</h3>
+            <p>The QR is primary, the 4-digit code is always visible, and the next screen points to one compartment.</p>
+            <ul className="check-list"><li>Time and place stay visible</li><li>Compartment 07 is lit in green</li><li>Manual confirmation has a three-minute safety net</li></ul>
           </div>
           <div className="product-screen-group two-up">
             <ProductScreen label="READY TO COLLECT" src="/case-01/ready-to-collect.png" alt="LINE MAN ready-to-collect screen with QR code, pickup code, location, and remaining time" />
@@ -306,8 +306,8 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="recovery-section">
           <div className="section-heading compact">
             <p className="eyebrow">Recovery is part of the core flow</p>
-            <h2>Keep the order safe when the happy path breaks.</h2>
-            <p>Each recovery state preserves the order, explains what happened, and gives one recommended next step before exposing support.</p>
+            <h2>When the happy path breaks, keep the order safe.</h2>
+            <p>Explain what happened, preserve the order, and recommend one next step.</p>
           </div>
           <div className="recovery-grid">
             <article><span>CAPACITY CHANGED</span><i>!</i><h3>This Pickup Box is full</h3><p>Your order is still with the rider. Choose the nearby Floor 1 box or switch to an attended handoff.</p><b>Recommended: nearby box · 2 min walk</b><button type="button">Choose fallback</button></article>
@@ -402,7 +402,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="feedback-copy">
             <p className="eyebrow">Close the learning loop</p>
             <h3>Rate the box separately from the rider.</h3>
-            <p>Pickup Box feedback sits inside the familiar completed-order experience, but isolates the supplied service signals: convenience, location placement, peace of mind, and ease of pickup.</p>
+            <p>A separate prompt turns broad satisfaction into signals about convenience, placement, peace of mind, and ease of pickup.</p>
           </div>
           <div className="product-screen-group two-up">
             <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="LINE MAN completed-order page asking users to rate the Pickup Box separately" correction="feedback" />
@@ -416,14 +416,14 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
             <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
           </> : <>
-            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 participants in a simulated lobby across selection, wayfinding, QR failure, passcode fallback, and compartment identification. Record assistance and error severity—not a fragile percentage.</p><b>Gate: zero unresolved critical failures</b></article>
-            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Launch at 2–3 locations with instrumented hardware. Compare first-attempt access, scan-to-door-open time, expired pickups, and rider no-fit events against agreed baselines.</p><b>Initial target: ≥95% first-attempt access</b></article>
-            <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while protecting guardrails: food quality, support contacts, fallback rate, accessibility issues, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
+            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 people in a simulated lobby across selection, wayfinding, QR failure, code fallback, and compartment identification. Record assistance and error severity.</p><b>Gate: zero unresolved critical failures</b></article>
+            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Pilot at 2–3 locations. Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p><b>Initial target: ≥95% first-attempt access</b></article>
+            <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
           </>}
         </div>
 
         {!isPriority && <div className="instrumentation-map">
-          <div><p className="eyebrow">Measurement contract</p><h3>Instrument the handoff, not only the final rating.</h3></div>
+          <div><p className="eyebrow">Measurement contract</p><h3>Measure the handoff, not just the rating.</h3></div>
           <ol>
             <li><span>01</span><b>locker_selected</b></li>
             <li><span>02</span><b>capacity_reserved</b></li>
