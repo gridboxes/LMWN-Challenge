@@ -106,7 +106,12 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
     <main>
       <header className="site-header">
         <div className="wordmark">
-          <span className="brand-mark" aria-hidden="true" /> / CASE {isPriority ? "02" : "01"}
+          <a className="header-home" href="/" aria-label="Home">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3.5 10.5 12 3l8.5 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.5v-6h-5v6H5a1.5 1.5 0 0 1-1.5-1.5Z" />
+            </svg>
+          </a>
+          / CASE {isPriority ? "02" : "01"}
         </div>
       </header>
 
@@ -290,10 +295,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p>The ready state follows the supplied design: users present the QR to the locker scanner or enter the 4-digit code. The next state highlights the assigned compartment, with a manual confirmation and three-minute auto-complete safety net.</p>
             <ul className="check-list"><li>QR and passcode share one familiar surface</li><li>Location and 30-minute window stay visible</li><li>The compartment map reflects the selected locker configuration</li></ul>
           </div>
-          <div className="product-screen-group three-up">
+          <div className="product-screen-group two-up">
             <ProductScreen label="READY TO COLLECT" src="/case-01/ready-to-collect.png" alt="LINE MAN ready-to-collect screen with QR code, pickup code, location, and remaining time" />
             <ProductScreen label="COMPARTMENT 07" src="/case-01/compartment-07.png" alt="LINE MAN collection screen highlighting Pickup Box compartment 07" correction="compartment" />
-            <ProductScreen label="ORDER COLLECTED" src="/case-01/order-collected.png" alt="LINE MAN order-collected screen confirming successful Pickup Box collection" />
           </div>
         </div>
 
@@ -410,10 +414,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <h3>Rate the box separately from the rider.</h3>
             <p>Pickup Box feedback sits inside the familiar completed-order experience, but isolates the supplied service signals: convenience, location placement, peace of mind, and ease of pickup.</p>
           </div>
-          <div className="product-screen-group three-up">
+          <div className="product-screen-group two-up">
             <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="LINE MAN completed-order page asking users to rate the Pickup Box separately" correction="feedback" />
             <ProductScreen label="ACTIONABLE SIGNALS" src="/case-01/pickup-feedback-selected.png" alt="LINE MAN Pickup Box feedback screen with five stars and service-specific tags" correction="feedback" />
-            <ProductScreen label="FEEDBACK COMPLETE" src="/case-01/pickup-feedback-thanks.png" alt="LINE MAN confirmation sheet thanking the user for Pickup Box feedback" />
           </div>
         </div>}
 
