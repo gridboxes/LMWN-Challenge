@@ -5,14 +5,11 @@ import { FooterPixelScene } from "./pixel-art";
 import { CaseStudyNav } from "./case-study-nav";
 
 const flowSteps = [
-  ["01", "Discover", "Find Pickup Box inside the familiar delivery-instruction flow."],
-  ["02", "Select", "Compare viable locations by availability, floor, landmark, and photo."],
-  ["03", "Confirm", "Review the reserved Pickup Box before placing the order."],
-  ["04", "Track", "Follow the rider until the order is secured in a compartment."],
-  ["05", "Notify", "Enter the collection journey from a clear ready-to-pick-up alert."],
-  ["06", "Authenticate", "Present the QR to the locker scanner or enter the fallback code."],
-  ["07", "Collect", "Open the highlighted compartment and take the order."],
-  ["08", "Complete", "Let the locker confirm collection and capture service feedback."],
+  ["01", "Choose", "See nearby lockers before placing the order."],
+  ["02", "Confirm", "Know the walk, opening hours, and pickup window."],
+  ["03", "Track", "Follow one clear timeline from kitchen to locker."],
+  ["04", "Unlock", "Present the QR to the locker scanner or enter a 4-digit fallback code."],
+  ["05", "Collect", "Get a compartment cue and close the loop."],
 ];
 
 const lockerMetrics = [
@@ -30,26 +27,6 @@ const priorityMetrics = [
   ["Emotion", "Post-delivery satisfaction", "Does the feature leave users feeling positive about their choice?"],
   ["Clarity", "Contribution comprehension", "Do users understand that up to 50% applies to the Priority fee?"],
 ];
-
-function StatusBar() {
-  return (
-    <div className="status-bar" aria-hidden="true">
-      <span>9:41</span><span>● ● ▰</span>
-    </div>
-  );
-}
-
-function Phone({ label, children, dark = false }: { label: string; children: React.ReactNode; dark?: boolean }) {
-  return (
-    <article className="phone-wrap">
-      <p className="phone-label">{label}</p>
-      <div className={`phone ${dark ? "phone-dark" : ""}`}>
-        <StatusBar />
-        <div className="phone-screen">{children}</div>
-      </div>
-    </article>
-  );
-}
 
 function ProductScreen({
   src,
@@ -81,23 +58,6 @@ function ProductScreen({
   );
 }
 
-function WireframeStep({ num, title, body }: { num: string; title: string; body: string }) {
-  return (
-    <article className="lofi-screen">
-      <div className="lofi-appbar"><i /><b>LINE MAN</b><span>{num}</span></div>
-      <div className="lofi-canvas" aria-hidden="true">
-        <span className="lofi-line long" /><span className="lofi-line" />
-        <div className="lofi-card"><i /><span /><span /></div>
-        <div className="lofi-card compact"><i /><span /><span /></div>
-        <div className="lofi-action" />
-      </div>
-      <p className="lofi-number">{num}</p>
-      <h3>{title}</h3>
-      <p>{body}</p>
-    </article>
-  );
-}
-
 export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
   const isPriority = variant === "priority";
   const metrics = isPriority ? priorityMetrics : lockerMetrics;
@@ -111,8 +71,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
               <path d="M3.5 10.5 12 3l8.5 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.5v-6h-5v6H5a1.5 1.5 0 0 1-1.5-1.5Z" />
             </svg>
           </a>
-          <span className="wordmark-divider" aria-hidden="true">/</span>
-          <span className="wordmark-label">CASE {isPriority ? "02" : "01"}</span>
+          <span className="wordmark-label">/ CASE {isPriority ? "02" : "01"}</span>
         </div>
       </header>
 
@@ -212,7 +171,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="section-heading compact">
           <p className="eyebrow">02 · Map the journey</p>
           <h2>One job per moment.</h2>
-          <p>The feature stays inside the familiar ordering journey, revealing only the information needed to discover, choose, retrieve, and evaluate the box.</p>
+          <p>Progressive disclosure keeps the experience calm: make the next action unmistakable, then reveal the next layer of detail.</p>
         </div>
         <div className="flow-grid">
           {flowSteps.map(([num, title, body]) => (
@@ -223,10 +182,19 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           ))}
         </div>
 
-        <p className="scroll-hint">Eight low-fidelity screens · swipe to follow the complete journey →</p>
-        <div className="lofi-board" aria-label="End-to-end low-fidelity Pickup Box wireframes">
-          <div className="board-title"><span>LOW-FIDELITY WIREFRAMES</span><b>Start → successful collection</b></div>
-          {flowSteps.map(([num, title, body]) => <WireframeStep num={num} title={title} body={body} key={num} />)}
+        <div className="wireframe-board" aria-label="End-to-end Pickup Box wireframes with recovery paths">
+          <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 states / 2 recovery paths</b></div>
+          <div className="wire wire-choose"><div className="wire-appbar"><i>←</i><b>Delivery method</b></div><div className="wire-tabs"><span>Door</span><b>Pick up</b></div><div className="wire-map"><i /><i /><i /></div><div className="wire-card"><b>Central Office · Lobby</b><span>3 min walk · Open until 10 PM</span></div><div className="wire-card muted"><b>Metro Tower · B1</b><span>6 min walk · Open 24 hours</span></div><div className="wire-button">View locker</div><p>1. Choose a locker</p></div>
+          <div className="wire wire-confirm"><div className="wire-appbar"><i>←</i><b>Locker details</b></div><div className="wire-map detail"><i /></div><div className="wire-detail-title"><b>Central Office · Lobby</b><span>Near the south entrance</span></div><div className="wire-facts"><span>3 min walk</span><span>Open until 10 PM</span><span>Available now</span></div><div className="wire-note">Capacity is reserved after the restaurant accepts.</div><div className="wire-button">Use this locker</div><p>2. Confirm the place</p></div>
+          <div className="wire wire-track"><div className="wire-appbar"><i>←</i><b>Order #A38</b></div><div className="wire-status"><span>12–18 min</span><b>Heading to your locker</b></div><div className="wire-timeline"><i className="done" /><b>Restaurant confirmed</b><i className="done" /><b>Picked up by rider</b><i className="current" /><b>On the way to locker</b><i /><b>Ready to collect</b></div><div className="wire-button light">Locker directions</div><p>3. Track the handoff</p></div>
+          <div className="wire wire-ready"><div className="wire-appbar"><i>←</i><b>Pick up order</b></div><div className="wire-ready-label">READY</div><div className="wire-qr">▦</div><b className="wire-location">Central Office · Lobby</b><small>Pick up by 2:10 PM</small><div className="wire-code">7 2 4 8</div><div className="wire-help">QR fails? Enter the 4-digit code.</div><p>4. Unlock with fallback</p></div>
+          <div className="wire wire-open"><div className="wire-appbar"><i>←</i><b>Compartment opened</b></div><div className="wire-door-number"><small>OPEN</small><b>07</b><span>Green light is pulsing</span></div><div className="wire-collect-check">✓ Did you get your order?</div><div className="wire-button">Yes, I have it</div><p>5. Collect + confirm</p></div>
+          <div className="wire-arrow arrow-1">→</div><div className="wire-arrow arrow-2">→</div>
+          <div className="wire-arrow arrow-3">→</div><div className="wire-arrow arrow-4">→</div>
+          <div className="wire-recovery-rail" aria-label="Two recovery paths">
+            <article><span>RECOVERY 01 · QR FAILURE</span><b>Use the visible 4-digit code</b><p>The order stays active while the user switches access method.</p></article>
+            <article><span>RECOVERY 02 · DOOR ERROR</span><b>Retry once, then get help</b><p>Locker and order details travel with the support request.</p></article>
+          </div>
         </div>
       </section>
 
@@ -369,19 +337,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <div className="priority-layout">
-          <Phone label="CHOOSE DELIVERY">
-            <div className="app-header"><button aria-label="Back">←</button><b>Choose delivery</b><span /></div>
-            <div className="basket-summary"><span>Arrives to</span><b>Central Office</b></div>
-            <div className="speed-card recommended">
-              <div className="recommended-label">FASTEST · GIVES BACK</div>
-              <span className="speed-icon">♥</span><div><b>Priority with Purpose</b><p>Arrives 12:40–12:50</p><small>Next available rider · gives back</small></div><strong>฿50</strong><i>✓</i>
-              <div className="donation-breakdown"><span>Fastest Priority delivery <b>Included</b></span><span>Gives back <b>Up to 50% of fee</b></span></div>
-            </div>
-            <div className="speed-card"><span className="speed-icon">●</span><div><b>Normal</b><p>Arrives 12:55–1:05</p></div><strong>฿30</strong><i /></div>
-            <div className="speed-card"><span className="speed-icon">⌁</span><div><b>Low-cost</b><p>Arrives 1:05–1:20</p></div><strong>฿20</strong><i /></div>
-            <button className="primary-btn">Continue · ฿50</button>
-            <p className="fine-print">Up to 50% of this Priority delivery fee supports a verified charity after delivery. <u>How it works</u></p>
-          </Phone>
+          <div className="priority-product-screen">
+            <ProductScreen label="REAL UI · PRIORITY SELECTION" src="/case-02/priority-order.png" alt="Food delivery checkout showing Priority gives back, the faster delivery window, up to 50% charity contribution, selected causes, and visible Normal and Low-cost alternatives" width={1206} height={2622} />
+          </div>
 
           <div className="ethics-panel">
             <div className="ethics-title"><span>WHY USERS MAY CHOOSE IT</span><h3>Fast feels good.</h3></div>
@@ -393,11 +351,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <div className="impact-flow">
-          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose → receive → feel good</h3><p>The purpose benefit makes the upgrade appealing at selection, then a lightweight confirmation closes the emotional loop after delivery.</p></div>
-          <div className="impact-steps">
-            <article><span>1</span><div><b>Choose</b><p>See the fastest window and the gives-back benefit as one clear feature.</p></div></article>
-            <article><span>2</span><div><b>Receive</b><p>Get the functional payoff first: the food arrives sooner.</p></div></article>
-            <article className="impact-receipt"><span>✓</span><div><small>DELIVERY COMPLETE</small><b>You moved good forward</b><p>Your Priority delivery supported a verified charity.</p></div></article>
+          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose → receive → feel good</h3><p>The selection screen makes the faster arrival and gives-back benefit concrete. After delivery, the impact screen closes the loop with time saved, lives impacted, and the causes supported.</p></div>
+          <div className="priority-impact-screen">
+            <ProductScreen label="REAL UI · POST-DELIVERY IMPACT" src="/case-02/priority-impact.png" alt="Priority gives back thank-you screen showing total time saved, lives impacted, supported charities, and a share-my-impact action" width={1206} height={2622} />
           </div>
         </div>
       </section>
