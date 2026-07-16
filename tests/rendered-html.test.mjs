@@ -26,7 +26,7 @@ test("renders the assignment homepage with two distinct responses", async () => 
   const html = await expectPage("/", [
     /Better delivery/,
     /by design/,
-    /a clearer locker handoff/,
+    /turning uncertain handoffs/,
     /Product design assignment/,
     /Delivering<br\/>Certainty/,
     /Priority with<br\/>Purpose/,
@@ -50,9 +50,11 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Delivering Certainty — Product Design Case Study/,
     /The locker is only useful/,
     /Operational uncertainty/,
-    /1\. Choose a locker/,
-    /compartment 07/,
-    /Context first/,
+    /FINAL UI FLOW/,
+    /Pickup Box enters through a familiar delivery choice/,
+    /4-digit pickup code/,
+    /COMPARTMENT 07/,
+    /Rate the box separately from the rider/,
     /Success is a pickup/,
   ]);
   assert.match(html, /class="brand-mark"/);

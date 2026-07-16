@@ -125,11 +125,19 @@ main { overflow: clip; }
 .wire > p { position: absolute; left: 12px; bottom: 2px; font-family: var(--font-geist-mono); font-size: 8px; text-transform: uppercase; }
 .wire-arrow { position: absolute; top: 48%; font-size: 32px; z-index: 3; }.arrow-1 { left: 19%; }.arrow-2 { left: 39.5%; }.arrow-3 { left: 60%; }.arrow-4 { left: 80.5%; }
 
+.real-flow-board { position:relative; margin-top:110px; padding:84px 30px 40px; display:grid; grid-template-columns:repeat(5,minmax(190px,1fr)); gap:26px; align-items:start; overflow-x:auto; background:#d6d5cf; border:1px solid var(--ink); }
+.product-screen { min-width:0; margin:0; color:inherit; }
+.product-screen figcaption { margin-bottom:11px; font-family:var(--font-geist-mono); font-size:9px; line-height:1.35; letter-spacing:.1em; font-weight:700; text-align:center; }
+.product-screen-frame { padding:7px; overflow:hidden; background:#111; border:1px solid rgba(17,17,15,.38); border-radius:34px; box-shadow:0 24px 45px rgba(17,17,15,.22); }
+.product-screen-frame img { width:100%; height:auto; display:block; border-radius:26px; background:white; }
+.product-screen.compact .product-screen-frame { padding:5px; border-radius:24px; box-shadow:8px 10px 0 rgba(17,17,15,.15); }
+.product-screen.compact .product-screen-frame img { border-radius:19px; }
+
 .solution { background: var(--white); }
 .phone-stage { min-height: 880px; margin: 0 0 38px; padding: 70px 8%; display: grid; grid-template-columns: 1fr 450px; gap: 8vw; align-items: center; border-radius: 10px; overflow: hidden; }
 .phone-stage.reverse { grid-template-columns: 450px 1fr; }
 .phone-stage.reverse .stage-copy { order: 2; }.phone-stage.reverse .phone-wrap { order: 1; }
-.stage-green { background: var(--green); }.stage-cream { background: #e6e2d8; }.stage-black { background: var(--ink); color: var(--white); }
+.stage-green { background: var(--green); }.stage-cream { background: #e6e2d8; }.stage-black { background: var(--ink); color: var(--white); }.stage-blue { background:var(--blue); }
 .stage-copy { position: relative; max-width: 650px; }
 .stage-copy h3 { margin-bottom: 26px; font-size: clamp(44px, 5vw, 76px); line-height: .95; letter-spacing: -.06em; }
 .stage-copy > p:not(.eyebrow) { max-width: 540px; font-size: 18px; line-height: 1.55; opacity: .75; }
@@ -138,6 +146,15 @@ main { overflow: clip; }
 .check-list li { display: flex; gap: 12px; align-items: center; margin: 12px 0; font-size: 14px; }.check-list li:before { content:"✓"; display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid currentColor; border-radius: 50%; }
 .callout { max-width: 500px; margin-top: 36px; padding: 22px; border: 1px solid var(--ink); background: rgba(255,255,255,.35); }
 .callout b { font-family: var(--font-geist-mono); font-size: 10px; text-transform: uppercase; }.callout p { margin: 8px 0 0; font-size: 17px; line-height: 1.4; }
+.phone-stage.real-ui-stage { min-height:940px; padding:76px 5%; grid-template-columns:minmax(310px,.72fr) minmax(540px,1.28fr); gap:6vw; }
+.phone-stage.real-ui-stage.reverse { grid-template-columns:minmax(540px,1.28fr) minmax(310px,.72fr); }
+.real-ui-stage.reverse .stage-copy { order:2; }
+.real-ui-stage.reverse .product-screen-group { order:1; }
+.product-screen-group { min-width:0; display:grid; gap:24px; align-items:start; }
+.product-screen-group.two-up { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.product-screen-group.offset-pair .product-screen:nth-child(2) { transform:translateY(48px); }
+.stage-black .product-screen-frame { border-color:#484844; box-shadow:0 24px 55px rgba(0,0,0,.5); }
+.stage-black .product-screen figcaption { color:#bdbdb6; }
 .phone-wrap { width: 100%; max-width: 390px; margin: auto; }
 .phone-label { margin-bottom: 12px; font-family: var(--font-geist-mono); font-size: 10px; letter-spacing: .1em; text-align: center; }
 .phone { height: 760px; padding: 10px; background: #111; border: 3px solid #111; border-radius: 48px; box-shadow: 0 28px 70px rgba(17,17,15,.28); overflow: hidden; }
@@ -200,6 +217,9 @@ main { overflow: clip; }
 .impact-receipt p { color: #174324; }
 
 .evaluation { background: var(--paper); }
+.feedback-evidence { margin-bottom:90px; padding:70px 6%; display:grid; grid-template-columns:minmax(300px,.72fr) minmax(500px,1.28fr); gap:7vw; align-items:center; background:var(--acid); border:1px solid var(--ink); box-shadow:14px 14px 0 var(--blue); }
+.feedback-copy h3 { max-width:530px; margin-bottom:24px; font-size:clamp(44px,5vw,72px); line-height:.95; letter-spacing:-.06em; }
+.feedback-copy > p:last-child { max-width:520px; margin:0; font-size:17px; line-height:1.55; color:#4e4e49; }
 .test-plan { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--ink); }
 .test-plan article { min-height:360px; padding:35px; border-right:1px solid var(--ink); display:flex; flex-direction:column; }.test-plan article:last-child { border:0; }.test-plan span { font-family:var(--font-geist-mono); font-size:10px; color:#666; }.test-plan h3 { margin:70px 0 16px; font-size:34px; letter-spacing:-.04em; }.test-plan p { font-size:15px; line-height:1.55; color:#555; }.test-plan b { margin-top:auto; padding-top:20px; border-top:1px solid var(--line); font-size:13px; }
 .metrics-table { margin-top:90px; border-top:2px solid var(--ink); }
@@ -301,13 +321,142 @@ footer { min-height:160px; padding:50px max(5vw,56px); display:flex; justify-con
 .mini-priority { position:relative; width:126px; height:104px; justify-self:end; padding:14px 9px 8px; display:flex; flex-direction:column; gap:5px; justify-content:center; background:#f5c9bd; border-radius:48px 48px 8px 8px; box-shadow:7px 7px 0 rgba(17,17,15,.15); transform:rotate(2deg); }.mini-speed { position:relative; min-height:21px; padding:4px 7px; display:flex; align-items:center; background:var(--white); border:1px solid var(--ink); border-radius:5px; font-family:var(--font-geist-mono); font-size:6px; font-weight:700; transition:transform .2s ease; }.mini-speed:after { content:""; position:absolute; left:7px; right:7px; bottom:3px; height:2px; background:#b4b4af; }.mini-speed.fast { border:2px solid var(--orange); }.mini-speed.fast:after { right:26px; background:var(--orange); }.mini-give { position:absolute; right:-9px; top:-7px; width:44px; height:38px; padding-bottom:2px; display:grid; place-items:center; -webkit-mask:url("/heart.svg") center/contain no-repeat; mask:url("/heart.svg") center/contain no-repeat; background:var(--ink); color:var(--acid); font-family:var(--font-geist-mono); font-size:7px; font-weight:800; transform:rotate(9deg); transition:transform .2s ease; }
 .response-locker:hover .mini-locker { transform:rotate(1deg) translateY(-3px); }.response-locker:hover .mini-locker > span.active { background:var(--orange); transform:scale(.9); }.response-priority:hover .mini-priority { transform:rotate(-1deg) translateY(-3px); }.response-priority:hover .mini-speed.fast { transform:translateX(-5px); }.response-priority:hover .mini-give { transform:rotate(-8deg) scale(1.08); }
 .simple-footer { min-height:170px; padding:28px max(3vw,42px); display:grid; grid-template-columns:auto 1fr; gap:7vw; align-items:center; background:var(--ink); color:var(--white); font-family:var(--font-geist-mono); text-transform:uppercase; letter-spacing:.1em; }.footer-note { min-width:190px; padding:18px 22px; display:flex; flex-direction:column; gap:7px; background:var(--acid); color:var(--ink); box-shadow:8px 8px 0 var(--blue); transform:rotate(-2deg); text-transform:none; transition:transform .2s ease; }.footer-note:hover { transform:rotate(1deg) translateY(-3px); }.footer-note small { font-size:8px; text-transform:uppercase; letter-spacing:.12em; }.footer-note b { font-family:var(--font-geist-sans); font-size:22px; line-height:1; letter-spacing:-.04em; }.simple-footer nav { justify-self:end; display:flex; gap:8px; }.simple-footer nav a { min-height:42px; padding:0 15px; display:grid; place-items:center; border:1px solid #555; font-size:8px; transition:transform .2s ease,background .2s ease,color .2s ease; }.simple-footer nav a:first-child:hover,.simple-footer nav a:first-child:focus-visible { background:var(--green); color:var(--ink); border-color:var(--green); outline:0; }.simple-footer nav a:last-child:hover,.simple-footer nav a:last-child:focus-visible { background:var(--white); color:var(--ink); transform:translateY(-3px); outline:0; }
+.footer-pixel-scene { display:none; }
+
+@media (min-width:1051px) and (min-height:850px) and (hover:hover) and (pointer:fine) {
+  .simple-home { height:100dvh; min-height:0; grid-template-rows:72px minmax(0,1fr); overflow:hidden; }
+  .simple-hero { height:100%; min-height:0; padding-top:clamp(36px,5vh,70px); padding-bottom:clamp(36px,5vh,70px); }
+  .simple-footer { position:fixed; z-index:60; left:0; right:0; bottom:0; min-height:170px; padding-top:44px; grid-template-columns:auto minmax(280px,1fr) auto; gap:clamp(40px,6vw,110px); transform:translateY(calc(100% - 22px)); box-shadow:0 -10px 26px rgba(17,17,15,.1); transition:transform .35s cubic-bezier(.2,.75,.2,1); cursor:n-resize; }
+  .simple-footer::before { content:"↑"; position:absolute; top:-2px; left:50%; width:44px; height:22px; display:grid; place-items:center; overflow:hidden; white-space:nowrap; border:1px solid #333; background:var(--ink); color:#aaa; box-shadow:2px -2px 0 rgba(89,130,255,.6); transform:translateX(-50%); font-size:8px; font-weight:700; letter-spacing:.12em; transition:width .25s ease,color .2s ease,transform .2s ease,box-shadow .2s ease; }
+  .simple-footer::after { content:"👋"; position:absolute; z-index:3; top:-44px; left:50%; opacity:0; pointer-events:none; font-size:32px; line-height:1; transform:translate(-50%,28px) rotate(0deg); transform-origin:50% 100%; animation:footer-hand-greet 1.45s ease-out .7s both; }
+  .simple-footer:hover,.simple-footer:focus-within { transform:translateY(0); cursor:default; }
+  .simple-footer:hover::before,.simple-footer:focus-within::before { content:"BEHIND THE WORK"; width:184px; color:var(--acid); box-shadow:2px -2px 0 rgba(89,130,255,.8); transform:translateX(-50%) translateY(1px); }
+  /* --pixel-trip is derived from the scene box, not the viewport, so the rider
+     always lands exactly at the locker door: scene − start − courier − locker. */
+  /* overflow:hidden is what makes the exit an exit — he rides past the edge
+     and is clipped away, rather than parking on top of the footer nav. */
+  .footer-pixel-scene { --px:3px; --scene-w:min(32vw,400px); --pixel-trip:calc(var(--scene-w) - 4px - 39 * var(--px)); position:relative; width:var(--scene-w); height:82px; display:block; justify-self:center; overflow:hidden; }
+
+  /* One char of a sprite map = one --px cell. */
+  .pixel-sprite { display:grid; grid-template-columns:repeat(var(--sprite-w),var(--px)); grid-template-rows:repeat(var(--sprite-h),var(--px)); }
+  .pixel-sprite i { display:block; width:var(--px); height:var(--px); font-style:normal; }
+  .px-helmet { background:var(--acid); } .px-visor { background:var(--blue); }
+  .px-body { background:var(--green); } .px-limb { background:#2f8f4f; }
+  .px-frame { background:#c9c9c4; } .px-wheel { background:#c9c9c4; } .px-hub { background:#6b6b66; }
+  .px-box { background:var(--blue); } .px-heart { background:var(--orange); }
+  .px-shell { background:#555; } .px-cell { background:#d8d8d3; } .px-cell-lit { background:var(--acid); }
+
+  .pixel-route { position:absolute; left:16px; right:calc(13 * var(--px)); bottom:18px; border-top:2px dashed #4a4a47; }
+  .pixel-route::after { content:""; position:absolute; right:-3px; top:-4px; width:6px; height:6px; background:var(--acid); }
+  .pixel-speed { position:absolute; z-index:1; left:6px; bottom:34px; display:grid; gap:5px; opacity:0; }
+  .pixel-speed i { display:block; width:14px; height:2px; background:#4a4a47; }
+  .pixel-speed i:nth-child(2) { width:22px; } .pixel-speed i:nth-child(3) { width:10px; }
+
+  /* Courier: two pedal frames stacked + a detachable parcel. Frame A and a
+     shut locker are the resting state, so reduced-motion still reads. */
+  .pixel-courier { position:absolute; z-index:2; left:4px; bottom:8px; width:calc(24 * var(--px)); height:calc(16 * var(--px)); cursor:pointer; pointer-events:none; }
+  .pixel-courier .pixel-sprite { position:absolute; left:0; bottom:0; }
+  .pixel-pedal-b,.pixel-look { opacity:0; }
+  .pixel-parcel { z-index:3; left:0 !important; bottom:calc(8 * var(--px)) !important; }
+
+  /* He notices you: swap to the head-turned frame while the cursor is on him.
+     Only reachable once pixel-arm switches pointer-events on at 2.4s. */
+  .pixel-courier:hover .pixel-pedal-a,.pixel-courier:hover .pixel-pedal-b { opacity:0; }
+  .pixel-courier:hover .pixel-look { opacity:1; }
+
+  /* Locker sits above the courier so his exit passes behind it. */
+  .pixel-dock { position:absolute; z-index:4; right:0; bottom:6px; width:calc(13 * var(--px)); height:calc(13 * var(--px)); }
+  .pixel-dock .pixel-sprite { position:absolute; right:0; bottom:0; }
+  .pixel-locker-open { opacity:0; }
+
+  .pixel-hearts { position:absolute; z-index:5; inset:0; opacity:0; pointer-events:none; transition:opacity .25s ease .28s; }
+  .pixel-hearts .pixel-sprite { position:absolute; left:14px; bottom:24px; }
+
+  .pixel-hearts .pixel-sprite:nth-child(1) { bottom:20px; }
+  .pixel-hearts .pixel-sprite:nth-child(2) { bottom:33px; }
+  .pixel-hearts .pixel-sprite:nth-child(3) { bottom:25px; }
+  .pixel-hearts .pixel-sprite:nth-child(4) { bottom:38px; }
+  .pixel-hearts .pixel-sprite:nth-child(5) { bottom:17px; }
+  .pixel-hearts .pixel-sprite:nth-child(6) { bottom:30px; }
+  .pixel-hearts .pixel-sprite:nth-child(7) { bottom:22px; }
+  .pixel-hearts .pixel-sprite:nth-child(8) { bottom:36px; }
+  .pixel-hearts .pixel-sprite:nth-child(9) { bottom:27px; }
+
+  .simple-footer:hover .pixel-courier,.simple-footer:focus-within .pixel-courier { animation:pixel-ride 2.4s steps(9,end) both,pixel-arm 2.4s linear both; }
+  .simple-footer:hover .pixel-pedal-b,.simple-footer:focus-within .pixel-pedal-b { animation:pixel-pedal .2s linear 0s 5; }
+  .simple-footer:hover .pixel-speed,.simple-footer:focus-within .pixel-speed { animation:pixel-whoosh 2.4s steps(3,end) both; }
+  .simple-footer:hover .pixel-parcel,.simple-footer:focus-within .pixel-parcel { animation:pixel-handoff 2.4s ease-in both; }
+  .simple-footer:hover .pixel-locker-open,.simple-footer:focus-within .pixel-locker-open { animation:pixel-door 2.4s linear both; }
+  .simple-footer:hover .pixel-locker-shut .px-cell-lit,.simple-footer:focus-within .pixel-locker-shut .px-cell-lit { animation:pixel-signal .5s steps(2,end) 1.9s 2; }
+
+  /* Clicked: he rides on past the locker, it bows out, and the lane he just
+     rode fills with hearts. Must follow the :hover rules to win the cascade. */
+  .footer-pixel-scene.is-flown .pixel-courier { animation:pixel-exit .75s steps(7,end) both; pointer-events:none; }
+  .footer-pixel-scene.is-flown .pixel-dock { animation:pixel-dock-out .45s ease-out .3s both; }
+  .footer-pixel-scene.is-flown .pixel-hearts { opacity:1; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite { animation:pixel-heart-run 3s linear infinite; }
+  /* These MUST out-specify the shorthand above (0,4,0) — it resets
+     animation-delay, which silently stacked every heart into one. */
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(1) { animation-delay:0s; animation-duration:3s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(2) { animation-delay:-.33s; animation-duration:3.4s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(3) { animation-delay:-.66s; animation-duration:2.7s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(4) { animation-delay:-1s; animation-duration:3.2s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(5) { animation-delay:-1.33s; animation-duration:2.9s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(6) { animation-delay:-1.66s; animation-duration:3.5s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(7) { animation-delay:-2s; animation-duration:2.8s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(8) { animation-delay:-2.33s; animation-duration:3.3s; }
+  .footer-pixel-scene.is-flown .pixel-hearts .pixel-sprite:nth-child(9) { animation-delay:-2.66s; animation-duration:3.1s; }
+}
+
+/* The gag is motion; opt reduced-motion users out rather than hand them a
+   half-dead scene they can still break by clicking. */
+@media (prefers-reduced-motion: reduce) {
+  .pixel-courier { pointer-events:none !important; cursor:default !important; }
+}
+
+/* 0–1.0s ride · 1.1–1.4s hand off · 1.2–1.85s door open · 1.9s+ cell blinks */
+@keyframes pixel-ride { 0% { transform:translateX(0); } 42% { transform:translateX(var(--pixel-trip)); } 100% { transform:translateX(var(--pixel-trip)); } }
+@keyframes pixel-pedal { 0%,49.9% { opacity:0; } 50%,100% { opacity:1; } }
+@keyframes pixel-whoosh { 0% { opacity:0; } 8%,34% { opacity:1; } 42%,100% { opacity:0; } }
+@keyframes pixel-handoff {
+  0%,45% { opacity:1; transform:translate(0,0); }
+  54% { opacity:1; transform:translate(calc(14 * var(--px)),calc(-3 * var(--px))); }
+  62%,100% { opacity:0; transform:translate(calc(22 * var(--px)),0); }
+}
+@keyframes pixel-door { 0%,48% { opacity:0; } 52%,75% { opacity:1; } 80%,100% { opacity:0; } }
+/* pointer-events is discrete-animatable — this arms the poke only once the
+   delivery has finished, so he can't be turned mid-ride. */
+@keyframes pixel-arm { 0%,99% { pointer-events:none; } 100% { pointer-events:auto; } }
+@keyframes pixel-exit { 0% { transform:translateX(var(--pixel-trip)); } 100% { transform:translateX(calc(var(--scene-w) + 12px)); } }
+@keyframes pixel-dock-out { 0% { opacity:1; transform:translateY(0); } 100% { opacity:0; transform:translateY(3px); } }
+@keyframes pixel-heart-run {
+  0% { transform:translate(0,0); opacity:0; }
+  12% { opacity:1; }
+  50% { transform:translate(calc(var(--pixel-trip) * .5),-5px); }
+  88% { opacity:1; }
+  100% { transform:translate(var(--pixel-trip),0); opacity:0; }
+}
+@keyframes pixel-signal { 0%,100% { background:var(--acid); } 50% { background:var(--orange); } }
+@keyframes footer-hand-greet {
+  0% { opacity:0; transform:translate(-50%,28px) rotate(0deg); }
+  16% { opacity:1; transform:translate(-50%,-4px) rotate(-14deg); }
+  32% { opacity:1; transform:translate(-50%,0) rotate(14deg); }
+  48% { opacity:1; transform:translate(-50%,0) rotate(-10deg); }
+  64% { opacity:1; transform:translate(-50%,0) rotate(10deg); }
+  82% { opacity:1; transform:translate(-50%,0) rotate(6deg); }
+  100% { opacity:0; transform:translate(-50%,-8px) rotate(6deg); }
+}
 
 @media (max-width: 1050px) {
   .floating-nav { top:auto; right:16px; left:16px; bottom:12px; width:auto; display:grid; grid-template-columns:repeat(5,1fr); padding:6px; }
   .floating-nav a { justify-content:center; border:0; min-height:40px; }.floating-nav a:not(.nav-home) span { display:none; }
+  .section-heading h2 { font-size:clamp(52px,6vw,78px); }
   .hero { grid-template-columns:1fr; }.hero-art { min-height:620px; }
   .section-pad { padding:90px 5vw; }
   .phone-stage, .phone-stage.reverse { grid-template-columns:1fr 400px; padding:60px 5%; gap:5vw; }.phone-stage.reverse .stage-copy { order:initial; }.phone-stage.reverse .phone-wrap { order:initial; }
+  .phone-stage.real-ui-stage,.phone-stage.real-ui-stage.reverse { min-height:0; grid-template-columns:1fr; padding:64px 6%; gap:56px; }
+  .real-ui-stage.reverse .stage-copy,.real-ui-stage.reverse .product-screen-group { order:initial; }
+  .feedback-evidence { grid-template-columns:1fr; padding:60px 6%; gap:56px; }
   .price-logic { grid-template-columns:1fr 1fr; }.price-logic > div:nth-child(2) { border-right:0; }.price-logic > div { border-bottom:1px solid var(--ink); }.price-logic > div:nth-last-child(-n+2) { border-bottom:0; }
   .priority-layout { grid-template-columns:400px 1fr; gap:5vw; }
   .priority-hero { grid-template-columns:1fr; }
@@ -329,12 +478,19 @@ footer { min-height:160px; padding:50px max(5vw,56px); display:flex; justify-con
   .approach-grid { grid-template-columns:1fr; gap:35px; }
   .flow-grid { grid-template-columns:1fr; }.flow-step { min-height:180px; border-right:0; border-bottom:1px solid var(--line); }.flow-step h3 { margin-top:38px; }.flow-icon { top:45px; }
   .wireframe-board { padding-left:20px; grid-template-columns:repeat(5,190px); gap:25px; }.wire-arrow { display:none; }
+  .real-flow-board { margin-top:70px; padding:76px 20px 32px; grid-template-columns:repeat(5,220px); gap:22px; }
   .phone-stage, .phone-stage.reverse { grid-template-columns:1fr; padding:55px 20px 70px; gap:55px; }.phone-stage.reverse .stage-copy { order:initial; }.phone-stage.reverse .phone-wrap { order:initial; }.stage-copy h3 { font-size:48px; }.phone { height:720px; }
+  .phone-stage.real-ui-stage,.phone-stage.real-ui-stage.reverse { min-height:0; grid-template-columns:1fr; padding:58px 20px 72px; gap:48px; }
+  .real-ui-stage.reverse .stage-copy,.real-ui-stage.reverse .product-screen-group { order:initial; }
+  .product-screen-group.two-up { width:100%; grid-template-columns:repeat(2,minmax(245px,1fr)); gap:18px; overflow-x:auto; padding:0 2px 30px; }
+  .product-screen-group.offset-pair .product-screen:nth-child(2) { transform:none; }
+  .product-screen-frame { border-radius:28px; }.product-screen-frame img { border-radius:21px; }
   .door-state { padding:60px 20px; grid-template-columns:1fr; }.big-locker > div { height:110px; }
   .concept-assumption { grid-template-columns:1fr; gap:10px; }.price-logic { margin-bottom:65px; grid-template-columns:1fr; box-shadow:9px 9px 0 var(--blue); }.price-logic > div { min-height:150px; border-right:0; border-bottom:1px solid var(--ink) !important; }.price-logic > div:last-child { border-bottom:0 !important; }.price-logic b { font-size:50px; }
   .priority-layout { grid-template-columns:1fr; }.ethics-panel { padding:28px; box-shadow:10px 10px 0 var(--blue); }.ethics-title { display:block; }.ethics-title h3 { margin-top:10px; }
   .impact-flow { margin-top:70px; padding:38px 22px; grid-template-columns:1fr; }.impact-copy h3 { font-size:45px; }
   .test-plan { grid-template-columns:1fr; }.test-plan article { min-height:300px; border-right:0; border-bottom:1px solid var(--ink); }.test-plan h3 { margin-top:45px; }
+  .feedback-evidence { margin-bottom:70px; padding:48px 20px 28px; grid-template-columns:1fr; gap:44px; box-shadow:9px 9px 0 var(--blue); }.feedback-copy h3 { font-size:44px; }
   .metric-row { grid-template-columns:.55fr 1fr; padding:16px 0; }.metric-row p { grid-column:2; }.table-head span:last-child { display:none; }
   .closing-card { padding:45px 25px; }.closing-card h3 { font-size:39px; }
   footer { padding:45px 20px 95px; align-items:flex-start; flex-direction:column; gap:18px; }

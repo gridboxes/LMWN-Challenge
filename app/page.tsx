@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 
+import Image from "next/image";
+import { FooterPixelScene } from "./pixel-art";
+
 const flowSteps = [
-  ["01", "Choose", "See nearby lockers before placing the order."],
-  ["02", "Confirm", "Know the walk, opening hours, and pickup window."],
-  ["03", "Track", "Follow one clear timeline from kitchen to locker."],
-  ["04", "Unlock", "Scan the locker QR or enter a 6-digit fallback code."],
-  ["05", "Collect", "Get a compartment cue and close the loop."],
+  ["01", "Discover", "Find Pickup Box inside the familiar delivery-instruction flow."],
+  ["02", "Choose", "Compare locations by availability, floor, zone, and a real-world photo."],
+  ["03", "Confirm", "See the selected box in the order summary before placing the order."],
+  ["04", "Retrieve", "Use the QR or 4-digit code, then follow the highlighted compartment."],
+  ["05", "Reflect", "Confirm collection and rate the Pickup Box separately from the rider."],
 ];
 
 const lockerMetrics = [
@@ -42,8 +45,29 @@ function Phone({ label, children, dark = false }: { label: string; children: Rea
   );
 }
 
-function Pin({ active = false }: { active?: boolean }) {
-  return <span className={`map-pin ${active ? "active" : ""}`}>M</span>;
+function ProductScreen({
+  src,
+  alt,
+  label,
+  width = 804,
+  height = 1748,
+  compact = false,
+}: {
+  src: string;
+  alt: string;
+  label: string;
+  width?: number;
+  height?: number;
+  compact?: boolean;
+}) {
+  return (
+    <figure className={`product-screen ${compact ? "compact" : ""}`}>
+      <figcaption>{label}</figcaption>
+      <div className="product-screen-frame">
+        <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 760px) 72vw, 360px" unoptimized />
+      </div>
+    </figure>
+  );
 }
 
 export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
@@ -72,7 +96,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <p className="eyebrow">A last-mile service case study</p>
           <h1>Delivering<br /><em>certainty.</em></h1>
           <p className="hero-intro">
-            A contactless locker experience that helps people choose, track, and collect food with confidence—from checkout to compartment.
+            A Pickup Box experience embedded in the existing delivery flow, helping people choose, track, and collect food with confidence—from checkout to compartment.
           </p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
@@ -119,7 +143,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="scope-strip" aria-label="Assignment scope">
           <article><span>GIVEN</span><b>Locker mechanics</b><p>Riders scan the locker; the system assigns a compartment; users retrieve by QR or passcode.</p></article>
-          <article><span>DESIGNED</span><b>User experience</b><p>Locker selection, order tracking, ready-to-collect guidance, access recovery, and compartment identification.</p></article>
+          <article><span>DESIGNED</span><b>User experience</b><p>Feature discovery, location selection, order confirmation, handoff tracking, secure retrieval, and Pickup Box feedback.</p></article>
           <article><span>DEPENDENCIES</span><b>Operations + hardware</b><p>Capacity rules, food holding time, rider recovery, compartment fit, and physical accessibility need validation.</p></article>
         </div>
 
@@ -134,10 +158,10 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <h3>Design for the edge cases first.</h3>
           </div>
           <ol className="assumption-list">
-            <li><span>01</span><p><b>Availability can change.</b> Confirm the locker only when the order is placed; offer a graceful fallback if capacity disappears.</p></li>
-            <li><span>02</span><p><b>QR is not universal.</b> Pair scanning with a visible, copyable passcode and clear error recovery.</p></li>
-            <li><span>03</span><p><b>Food has a clock.</b> Surface pickup-by time, opening hours, and reminders without creating anxiety.</p></li>
-            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the locker name, floor, landmark, and compartment number at the moment they matter.</p></li>
+            <li><span>01</span><p><b>Availability can change.</b> Show Available, Limited, and Full before the user commits to a Pickup Box location.</p></li>
+            <li><span>02</span><p><b>The model is unfamiliar.</b> Introduce the three-step service at the moment a user first considers the delivery instruction.</p></li>
+            <li><span>03</span><p><b>QR is not universal.</b> Pair scanning with a visible 4-digit pickup code and clear help guidance.</p></li>
+            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, remaining time, and compartment number exactly when they matter.</p></li>
           </ol>
         </div>
       </section>
@@ -146,7 +170,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="section-heading compact">
           <p className="eyebrow">02 · Map the journey</p>
           <h2>One job per moment.</h2>
-          <p>Progressive disclosure keeps the experience calm: make the next action unmistakable, then reveal the next layer of detail.</p>
+          <p>The feature stays inside the familiar ordering journey, revealing only the information needed to discover, choose, retrieve, and evaluate the box.</p>
         </div>
         <div className="flow-grid">
           {flowSteps.map(([num, title, body]) => (
@@ -157,15 +181,13 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           ))}
         </div>
 
-        <div className="wireframe-board" aria-label="End-to-end locker flow wireframes">
-          <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 states / 2 recovery paths</b></div>
-          <div className="wire wire-choose"><div className="wire-appbar"><i>←</i><b>Delivery method</b></div><div className="wire-tabs"><span>Door</span><b>Pick up</b></div><div className="wire-map"><i /><i /><i /></div><div className="wire-card"><b>Central Office · Lobby</b><span>3 min walk · Open until 10 PM</span></div><div className="wire-card muted"><b>Metro Tower · B1</b><span>6 min walk · Open 24 hours</span></div><div className="wire-button">View locker</div><p>1. Choose a locker</p></div>
-          <div className="wire wire-confirm"><div className="wire-appbar"><i>←</i><b>Locker details</b></div><div className="wire-map detail"><i /></div><div className="wire-detail-title"><b>Central Office · Lobby</b><span>Near the south entrance</span></div><div className="wire-facts"><span>3 min walk</span><span>Open until 10 PM</span><span>Available now</span></div><div className="wire-note">Capacity is confirmed with your order.</div><div className="wire-button">Use this locker</div><p>2. Confirm the place</p></div>
-          <div className="wire wire-track"><div className="wire-appbar"><i>←</i><b>Order #A38</b></div><div className="wire-status"><span>12–18 min</span><b>Heading to your locker</b></div><div className="wire-timeline"><i className="done" /><b>Restaurant confirmed</b><i className="done" /><b>Picked up by rider</b><i className="current" /><b>On the way to locker</b><i /><b>Ready to collect</b></div><div className="wire-button light">Locker directions</div><p>3. Track the handoff</p></div>
-          <div className="wire wire-ready"><div className="wire-appbar"><i>←</i><b>Pick up order</b></div><div className="wire-ready-label">READY</div><div className="wire-qr">▦</div><b className="wire-location">Central Office · Lobby</b><small>Pick up by 2:10 PM</small><div className="wire-code">7 3 8 1 4 2</div><div className="wire-help">QR fails? Enter the passcode.</div><p>4. Unlock with fallback</p></div>
-          <div className="wire wire-open"><div className="wire-appbar"><i>←</i><b>Compartment opened</b></div><div className="wire-door-number"><small>OPEN</small><b>07</b><span>Green light is pulsing</span></div><div className="wire-collect-check">✓ Did you get your order?</div><div className="wire-button">Yes, I have it</div><p>5. Collect + confirm</p></div>
-          <div className="wire-arrow arrow-1">→</div><div className="wire-arrow arrow-2">→</div>
-          <div className="wire-arrow arrow-3">→</div><div className="wire-arrow arrow-4">→</div>
+        <div className="real-flow-board" aria-label="End-to-end Pickup Box product flow">
+          <div className="board-title"><span>FINAL UI FLOW</span><b>5 decisive moments</b></div>
+          <ProductScreen compact label="01 · Discover" src="/case-01/delivery-instruction.png" alt="Pickup Box shown among delivery instruction choices in checkout" />
+          <ProductScreen compact label="02 · Choose" src="/case-01/locker-photo-selected.png" alt="Available Pickup Box location selected with a photo and landmark" />
+          <ProductScreen compact label="03 · Confirm" src="/case-01/checkout-confirmed.png" alt="Order page confirming Place in a Pickup Box and its location" width={852} height={1934} />
+          <ProductScreen compact label="04 · Retrieve" src="/case-01/ready-to-collect.png" alt="Ready-to-collect screen with QR code, pickup code, location, and remaining time" />
+          <ProductScreen compact label="05 · Collect" src="/case-01/compartment-07.png" alt="Collection screen highlighting Pickup Box compartment 07" />
         </div>
       </section>
 
@@ -175,79 +197,59 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>Context first.<br />Code when it counts.</h2>
         </div>
 
-        <div className="phone-stage stage-green">
+        <div className="phone-stage real-ui-stage stage-green">
           <div className="stage-copy">
             <span className="stage-number">01</span>
-            <p className="eyebrow">Choose with confidence</p>
-            <h3>A locker is presented like a place—not a shipping setting.</h3>
-            <p>Distance, walk time, opening hours, and a clear landmark answer the questions people have before they commit.</p>
-            <ul className="check-list"><li>Map and list stay in sync</li><li>Availability is visible</li><li>Home delivery remains one tap away</li></ul>
+            <p className="eyebrow">Introduce without interrupting</p>
+            <h3>Pickup Box enters through a familiar delivery choice.</h3>
+            <p>The new service lives alongside existing delivery instructions. A lightweight explainer appears at first discovery, then gets out of the way.</p>
+            <ul className="check-list"><li>Existing checkout structure stays intact</li><li>Three steps explain the service model</li><li>“New” creates a clear discovery cue</li></ul>
           </div>
-          <Phone label="SELECT A LOCKER">
-            <div className="app-header"><button aria-label="Back">←</button><b>Delivery method</b><span /></div>
-            <div className="segmented"><span>To your door</span><b>Pick up</b></div>
-            <div className="mini-map">
-              <div className="street s1" /><div className="street s2" /><div className="street s3" />
-              <Pin /><Pin active /><Pin /><div className="you-dot" />
-            </div>
-            <div className="sheet">
-              <div className="sheet-handle" /><p className="sheet-title">Nearby lockers <small>3 available</small></p>
-              <div className="place-card selected"><span className="place-icon">M</span><div><b>Central Office · Lobby</b><p>3 min walk · Open until 10 PM</p><small>Near the south entrance</small></div><i>✓</i></div>
-              <div className="place-card"><span className="place-icon">M</span><div><b>Metro Tower · B1</b><p>6 min walk · Open 24 hours</p></div></div>
-              <button className="primary-btn">Use this locker</button>
-            </div>
-          </Phone>
+          <div className="product-screen-group two-up offset-pair">
+            <ProductScreen label="DELIVERY INSTRUCTIONS" src="/case-01/delivery-instruction.png" alt="Pickup Box presented as a new delivery instruction during checkout" />
+            <ProductScreen label="FIRST-USE EXPLAINER" src="/case-01/onboarding.png" alt="Bottom sheet explaining how the LINE MAN Pickup Box service works" />
+          </div>
         </div>
 
-        <div className="phone-stage stage-cream reverse">
+        <div className="phone-stage real-ui-stage stage-cream reverse">
           <div className="stage-copy">
             <span className="stage-number">02</span>
-            <p className="eyebrow">Track the handoff</p>
-            <h3>The timeline changes language when the rider reaches the locker.</h3>
-            <p>Instead of generic “delivered” copy, the state names the physical handoff and sets a clear expectation for pickup.</p>
-            <div className="callout"><b>Design decision</b><p>“In locker” is more specific—and more reassuring—than “Delivered.”</p></div>
+            <p className="eyebrow">Choose a real place</p>
+            <h3>Availability and recognition do different jobs.</h3>
+            <p>Status helps users decide whether a location is viable. Floor, landmark, and a real-world image help them recognize it when they arrive.</p>
+            <div className="callout"><b>Design decision</b><p>Available, Limited, and Full make operational capacity visible before an order is placed.</p></div>
           </div>
-          <Phone label="TRACK YOUR ORDER">
-            <div className="app-header"><button aria-label="Back">←</button><b>Order #A38</b><button aria-label="Help">?</button></div>
-            <div className="tracking-map"><div className="route-line" /><span className="rider">●</span><span className="locker-pin">M</span></div>
-            <div className="tracking-panel">
-              <span className="eta-chip">12–18 min</span><h4>Heading to your locker</h4>
-              <p>Your food stays with the rider until it is secured.</p>
-              <div className="timeline">
-                <div className="done"><i>✓</i><p><b>Restaurant confirmed</b><small>12:04 PM</small></p></div>
-                <div className="done"><i>✓</i><p><b>Picked up by rider</b><small>12:19 PM</small></p></div>
-                <div className="current"><i /><p><b>On the way to locker</b><small>We’ll alert you when it’s ready</small></p></div>
-                <div><i /><p><b>Ready to collect</b></p></div>
-              </div>
-              <button className="ghost-btn">View locker directions</button>
-            </div>
-          </Phone>
+          <div className="product-screen-group two-up">
+            <ProductScreen label="CAPACITY AT A GLANCE" src="/case-01/locker-options.png" alt="Pickup Box location list showing Available, Limited, and Full capacity" />
+            <ProductScreen label="PHYSICAL RECOGNITION" src="/case-01/locker-photo-selected.png" alt="Selected Pickup Box location with floor, landmark, availability, and a photo" />
+          </div>
         </div>
 
-        <div className="phone-stage stage-black">
+        <div className="phone-stage real-ui-stage stage-black">
           <div className="stage-copy">
             <span className="stage-number">03</span>
-            <p className="eyebrow">Unlock without guessing</p>
-            <h3>Two access methods. One obvious fallback.</h3>
-            <p>The primary QR action is paired with a large passcode that remains useful in low signal, low light, or camera-permission failure.</p>
-            <ul className="check-list"><li>Pickup-by time is visible</li><li>Code can be copied</li><li>Compartment appears only after unlock</li></ul>
+            <p className="eyebrow">Track the handoff</p>
+            <h3>The destination changes from a person to a box.</h3>
+            <p>The tracking experience names the Pickup Box location throughout, then switches from “Heading your way” to “Placing off your food” as the rider completes the physical handoff.</p>
+            <ul className="check-list"><li>Locker remains visible as the destination</li><li>Rider arrival has its own state</li><li>Collection starts only after the food is secured</li></ul>
           </div>
-          <Phone label="READY TO COLLECT" dark>
-            <div className="app-header"><button aria-label="Back">←</button><b>Pick up order</b><button aria-label="Help">?</button></div>
-            <div className="ready-badge">READY</div>
-            <h4 className="ready-title">Your food is<br />in the locker.</h4>
-            <p className="pickup-location">Central Office · Lobby<br /><small>Pick up by 2:10 PM</small></p>
-            <div className="qr-box"><div className="qr-pattern">▦</div><p>Scan at locker</p></div>
-            <div className="or"><span />or enter passcode<span /></div>
-            <button className="code-btn"><b>7 3 8 1 4 2</b><span>Copy</span></button>
-            <p className="helper-link">Can’t open the locker? <u>Get help</u></p>
-          </Phone>
+          <div className="product-screen-group two-up">
+            <ProductScreen label="RIDER EN ROUTE" src="/case-01/rider-en-route.png" alt="Delivery tracking screen showing the rider heading toward the Pickup Box destination" />
+            <ProductScreen label="RIDER AT THE BOX" src="/case-01/rider-at-locker.png" alt="Delivery tracking screen showing the rider placing the food in the Pickup Box" />
+          </div>
         </div>
 
-        <div className="door-state">
-          <div className="door-copy"><p className="eyebrow">The physical finale</p><h3>Open compartment <em>07</em></h3><p>A pulsing light and oversized number connect the phone to the right door. The confirmation screen asks one thing: “Did you get your order?”</p></div>
-          <div className="big-locker" aria-label="Locker compartment 07 open">
-            <div>06</div><div className="open-door"><span>07</span><i>Order<br />inside</i></div><div>08</div><div>09</div><div>10</div><div>11</div>
+        <div className="phone-stage real-ui-stage stage-blue reverse">
+          <div className="stage-copy">
+            <span className="stage-number">04</span>
+            <p className="eyebrow">Retrieve without guessing</p>
+            <h3>Code, time, place, then compartment.</h3>
+            <p>The ready state puts both access methods together with the exact location and a 30-minute collection window. After access, the interface reduces the task to one unmistakable cue: compartment 07, lit in green.</p>
+            <ul className="check-list"><li>QR and 4-digit code share one surface</li><li>Remaining time is explicit</li><li>The compartment map mirrors the hardware</li></ul>
+          </div>
+          <div className="product-screen-group two-up">
+            <ProductScreen label="READY TO COLLECT" src="/case-01/ready-to-collect.png" alt="Ready-to-collect screen with QR code, 4-digit pickup code, location, and 30-minute window" />
+            <ProductScreen label="COMPARTMENT 07" src="/case-01/compartment-07.png" alt="Pickup Box map highlighting compartment 07 in green with an Order collected action" />
           </div>
         </div>
       </section>
@@ -345,6 +347,18 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>{isPriority ? <>The feature works when<br />the upgrade feels worth it.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
+        {!isPriority && <div className="feedback-evidence">
+          <div className="feedback-copy">
+            <p className="eyebrow">Close the learning loop</p>
+            <h3>Rate the box separately from the rider.</h3>
+            <p>Pickup Box feedback sits inside the familiar completed-order experience, but isolates the service signals that matter: convenience, location placement, peace of mind, and ease of pickup.</p>
+          </div>
+          <div className="product-screen-group two-up">
+            <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="Completed-order page asking the user to rate the Pickup Box separately" />
+            <ProductScreen label="ACTIONABLE SIGNALS" src="/case-01/pickup-feedback-selected.png" alt="Pickup Box feedback with five stars and service-specific feedback tags" />
+          </div>
+        </div>}
+
         <div className="test-plan">
           {isPriority ? <>
             <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
@@ -389,19 +403,19 @@ export default function Home() {
         <div className="simple-intro">
           <p className="simple-eyebrow">Product design assignment · 2026</p>
           <h1>Better delivery,<br /><em>by design.</em></h1>
-          <p className="simple-summary">Two product design responses that improve food delivery: a clearer locker handoff and a more transparent Priority experience.</p>
+          <p className="simple-summary">Two case studies in turning uncertain handoffs and ordinary upgrades into experiences worth choosing.</p>
         </div>
 
         <div className="response-board" aria-label="Choose an assignment response">
           <div className="response-board-head"><span>Choose a case study</span><b>01—02</b></div>
           <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
-            <span>01</span><div><small>Service design</small><b>Delivering<br />Certainty</b></div>
+            <span>01</span><div><small>Last-mile experience</small><b>Delivering<br />Certainty</b></div>
             <div className="tile-preview mini-locker" aria-hidden="true">
               <span className="mini-locker-head">M / PICK-UP</span><span /><span /><span className="active" /><span /><span /><span />
             </div><i>→</i>
           </a>
           <a className="response-tile response-priority" href="/work/priority-with-purpose" aria-label="Read Problem 2: Priority with Purpose">
-            <span>02</span><div><small>Feature concept</small><b>Priority with<br />Purpose</b></div>
+            <span>02</span><div><small>Feature strategy</small><b>Priority with<br />Purpose</b></div>
             <div className="tile-preview mini-priority" aria-hidden="true">
               <span className="mini-speed fast">15–20</span><span className="mini-speed">30–40</span><span className="mini-speed">45–60</span><span className="mini-give">50%</span>
             </div><i>→</i>
@@ -411,6 +425,7 @@ export default function Home() {
 
       <footer className="simple-footer">
         <div className="footer-note"><small>Made with care</small><b>by Sivakorn S.</b></div>
+        <FooterPixelScene />
         <nav aria-label="Footer links">
           <a href="mailto:sivakorn.sam@mtel.co.th">Say hello ↗</a>
           <a href="#top">Back to top ↑</a>
