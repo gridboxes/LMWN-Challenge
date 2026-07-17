@@ -350,7 +350,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="priority-hero-copy">
           <p className="eyebrow">A feature-led persuasion case study</p>
           <h1>Priority with<br /><em>Purpose.</em></h1>
-          <p className="hero-intro">A purpose-led Priority model that adds a visible premium to faster delivery: users get their food sooner, and up to 50% of the added amount supports charity.</p>
+          <p className="hero-intro">A purpose-led Priority feature that makes upgrading feel better: users get their food sooner, and up to 50% of the Priority fee supports charity.</p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
             <span>Scope<br /><b>UX · Strategy · Persuasion</b></span>
@@ -383,17 +383,28 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="section-heading priority-heading">
           <p className="eyebrow">02 · The proposed model</p>
           <h2>Move faster.<br />Pass good forward.</h2>
-          <p>A higher Priority price delivers faster food and gives part of the added premium a purpose.</p>
+          <p>Faster delivery, with up to 50% of the Priority fee supporting charity.</p>
         </div>
 
-        <div className="concept-assumption"><span>PRICING MECHANISM</span><p>Priority with Purpose deliberately costs more than Priority today. The increase funds the added benefit: up to 50% of that purpose uplift supports charity, while the user still receives the fastest available delivery.</p></div>
+        <div className="concept-assumption"><span>FEATURE PROMISE</span><p>One upgrade delivers two benefits: the fastest available arrival and the feeling that part of the fee gives back. The percentage can vary by campaign, up to 50% of the Priority fee.</p></div>
 
-        <div className="price-logic" aria-label="Priority with Purpose price increase and contribution model">
-          <div><span>PRIORITY TODAY</span><b>BASE FEE</b><p>Fastest delivery<br />Speed-only premium</p></div>
-          <div><span>PURPOSE UPLIFT</span><b>ADDED</b><p>A clear increase<br />shown before selection</p></div>
-          <div className="logic-priority"><span>PRIORITY WITH PURPOSE</span><b>NEW PRICE</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
-          <div className="logic-note"><b>UP TO<br />50%</b><p>of the added uplift supports charity.</p></div>
+        <div className="price-logic" aria-label="Delivery pricing and donation breakdown">
+          <div><span>LOW-COST</span><b>฿20</b><p>Save money<br />Wait longer</p></div>
+          <div><span>NORMAL</span><b>฿30</b><p>Standard match<br />Standard time</p></div>
+          <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
+          <div className="logic-note"><b>UP TO<br />50%</b><p>of the Priority fee supports charity.</p></div>
         </div>
+
+        <aside className="price-increase-story" aria-labelledby="price-increase-title">
+          <p className="eyebrow">The business move</p>
+          <div>
+            <h3 id="price-increase-title">A new benefit requires<br />a higher Priority price.</h3>
+            <p>Priority with Purpose would cost more than Priority today. The uplift is shown clearly before selection, and up to 50% of that added amount supports charity.</p>
+          </div>
+          <div className="price-increase-formula" aria-label="Current Priority price plus purpose uplift equals the new Priority with Purpose price">
+            <span><small>01</small>Priority today</span><i>+</i><span><small>02</small>Purpose uplift</span><i>=</i><strong>Priority<br />with Purpose</strong>
+          </div>
+        </aside>
 
         <div className="priority-layout">
           <div className="priority-product-screen">
