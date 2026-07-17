@@ -142,30 +142,43 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <blockquote>How might we make the user feel in control at every handoff—from checkout to compartment?</blockquote>
         </div>
 
-        <div className="approach-grid">
-          <div>
-            <p className="eyebrow">Working assumptions</p>
-            <h3>Design for the edge cases first.</h3>
+        <div className="decision-stories">
+          <div className="decision-stories-heading">
+            <p className="eyebrow">Three moments that can break confidence</p>
+            <h3>Design the recovery before the happy path.</h3>
+            <p>Each decision starts with a real service risk, changes what the interface communicates, and ends with something observable to validate.</p>
           </div>
-          <ol className="assumption-list">
-            <li><span>01</span><p><b>Availability can change.</b> Show live status before commitment; reserve suitable capacity after the restaurant accepts.</p></li>
-            <li><span>02</span><p><b>QR is not universal.</b> Pair scanning with a visible 4-digit code and one clear fallback.</p></li>
-            <li><span>03</span><p><b>Food has a clock.</b> Show the 30-minute collection window without creating anxiety.</p></li>
-            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, and compartment number when they matter.</p></li>
-          </ol>
-        </div>
 
-        <div className="decision-record">
-          <div className="decision-record-heading">
-            <p className="eyebrow">Decision record</p>
-            <h3>Make the service rules explicit.</h3>
-            <p>Prototype decisions—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
-          </div>
-          <div className="decision-record-list">
-            <article><span>ACCESS</span><b>Show QR and code on one screen.</b><p>The ready screen supports QR access and a visible 4-digit fallback. The exact scanning direction depends on the installed hardware.</p><small>Validate: hardware flow, scan reliability, and code comprehension</small></article>
-            <article><span>CAPACITY</span><b>Reserve space after acceptance.</b><p>Assign the exact compartment at rider arrival, using order size and live status.</p><small>Validate: reservation window and no-fit rate</small></article>
-            <article><span>WAYFINDING</span><b>Repeat the place when it matters.</b><p>Use the photo at selection; repeat the floor and landmark at collection.</p><small>Validate: first-attempt identification</small></article>
-            <article><span>COMPLETION</span><b>Let users close the loop.</b><p>Keep “Order collected” manual, with auto-complete after three minutes as a safety net.</p><small>Validate: confirmation and false-complete rate</small></article>
+          <div className="decision-story-list">
+            <article className="decision-story story-capacity">
+              <div className="story-index"><span>01</span><b>CAPACITY SHIFTS</b></div>
+              <div className="story-arc">
+                <div className="story-risk"><span>WHAT CAN GO WRONG</span><h4>The available box disappears after checkout.</h4></div>
+                <i aria-hidden="true">↓</i>
+                <div className="story-response"><span>DESIGN RESPONSE</span><h4>Show live status early. Reserve after acceptance.</h4><p>Users see availability before committing; operations assign suitable capacity only after the restaurant accepts.</p><small>Validate · reservation window and rider no-fit rate</small></div>
+              </div>
+              <div className="story-screen"><ProductScreen compact label="UI EVIDENCE · LIVE LOCATION STATUS" src="/case-01/locker-options.png" alt="Pickup Box location choices showing availability before checkout" /></div>
+            </article>
+
+            <article className="decision-story story-access">
+              <div className="story-index"><span>02</span><b>ACCESS STALLS</b></div>
+              <div className="story-arc">
+                <div className="story-risk"><span>WHAT CAN GO WRONG</span><h4>The QR fails while food has a clock.</h4></div>
+                <i aria-hidden="true">↓</i>
+                <div className="story-response"><span>DESIGN RESPONSE</span><h4>Keep the fallback visible on the ready screen.</h4><p>Pair QR access with a 4-digit code and a calm 30-minute collection window. The exact scanning direction depends on the installed hardware.</p><small>Validate · scan reliability, code comprehension, and expired pickups</small></div>
+              </div>
+              <div className="story-screen"><ProductScreen compact label="UI EVIDENCE · QR + CODE" src="/case-01/ready-to-collect.png" alt="Ready-to-collect screen showing QR access, a four-digit fallback code, location, and collection window" /></div>
+            </article>
+
+            <article className="decision-story story-place">
+              <div className="story-index"><span>03</span><b>THE LOBBY IS NOISY</b></div>
+              <div className="story-arc">
+                <div className="story-risk"><span>WHAT CAN GO WRONG</span><h4>The user reaches the locker but loses the place.</h4></div>
+                <i aria-hidden="true">↓</i>
+                <div className="story-response"><span>DESIGN RESPONSE</span><h4>Repeat the cue at the moment it matters.</h4><p>Carry the floor and landmark into collection, then highlight the exact compartment instead of asking users to remember it.</p><small>Validate · first-attempt locker and compartment identification</small></div>
+              </div>
+              <div className="story-screen"><ProductScreen compact label="UI EVIDENCE · COMPARTMENT CUE" src="/case-01/compartment-07.png" alt="Pickup Box compartment map highlighting compartment 07" correction="compartment" /></div>
+            </article>
           </div>
         </div>
       </section>
@@ -411,24 +424,51 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>{isPriority ? <>The feature works when<br />the upgrade feels worth it.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
+        {isPriority ? <>
         <div className="test-plan">
-          {isPriority ? <>
+          <>
             <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
             <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
             <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
-          </> : <>
-            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 people in a simulated lobby across selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p><b>Gate: zero unresolved critical failures</b></article>
-            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Pilot at 2–3 locations. Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p><b>Pilot output: baseline first, then an operations-agreed launch threshold</b></article>
-            <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
-          </>}
+          </>
         </div>
-
         <div className="metrics-table">
           <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
           {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
         </div>
+        </> : <>
+        <div className="success-signals" aria-label="Three signals of a successful Pickup Box experience">
+          <article className="signal-find">
+            <span className="signal-index">01</span><small>BEFORE BUILD</small>
+            <h3>Find it.</h3>
+            <strong>First-attempt locker identification</strong>
+            <p>Test 6–8 people in a simulated lobby, including focused sessions for mobility, vision, and dexterity constraints.</p>
+            <b>Gate · zero unresolved critical failures</b>
+          </article>
+          <article className="signal-open">
+            <span className="signal-index">02</span><small>CONTROLLED PILOT</small>
+            <h3>Open it.</h3>
+            <strong>Unassisted first-attempt access</strong>
+            <p>Pilot at 2–3 locations and measure access time, QR reliability, code fallback, and support use.</p>
+            <b>Output · baseline first, then an operations-agreed launch threshold</b>
+          </article>
+          <article className="signal-recover">
+            <span className="signal-index">03</span><small>AT SCALE</small>
+            <h3>Recover.</h3>
+            <strong>Fallback completion by cause</strong>
+            <p>Compare locations and locker models to see where capacity, hardware, accessibility, or rider handoff breaks.</p>
+            <b>Gate · no guardrail regression</b>
+          </article>
+        </div>
 
-        {!isPriority && <div className="instrumentation-map">
+        <details className="measurement-details">
+          <summary><span>Full measurement framework</span><b>7 metrics · 8 service events</b><i>Open detail +</i></summary>
+          <div className="metrics-table">
+            <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
+            {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
+          </div>
+
+          <div className="instrumentation-map">
           <div><p className="eyebrow">Measurement contract</p><h3>Measure the handoff, not just the rating.</h3></div>
           <ol>
             <li><span>01</span><b>locker_selected</b></li>
@@ -440,7 +480,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <li><span>07</span><b>order_collected</b></li>
             <li><span>08</span><b>fallback_or_help</b></li>
           </ol>
-        </div>}
+          </div>
+        </details>
+        </>}
 
         {!isPriority && <div className="feedback-evidence">
           <div className="feedback-copy">

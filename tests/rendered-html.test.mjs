@@ -57,7 +57,11 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Edit delivery instructions/,
     /Please collect within 30 minutes/,
     /Compartment Unit/,
-    /Make the service rules explicit/,
+    /Three moments that can break confidence/,
+    /Design the recovery before the happy path/,
+    /The available box disappears after checkout/,
+    /The QR fails while food has a clock/,
+    /The user reaches the locker but loses the place/,
     /Introduce the box where delivery choices already live/,
     /A locker is presented like a place—not a shipping setting/,
     /The timeline changes language when the rider reaches the locker/,
@@ -73,10 +77,15 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /This Pickup Box is full/,
     /Rate the box separately from the rider/,
     /Measurement contract/,
+    /Find it/,
+    /Open it/,
+    /Recover/,
+    /Full measurement framework/,
     /Success is a pickup/,
   ]);
   assert.match(html, /class="header-home"[^>]*aria-label="Home"/);
   assert.doesNotMatch(html, /The locker scans the QR/);
+  assert.doesNotMatch(html, /Working assumptions|Decision record/);
   assert.doesNotMatch(html, /≥95% first-attempt access/);
   assert.doesNotMatch(html, /Value with purpose/);
   assert.doesNotMatch(html, /Move faster/);
