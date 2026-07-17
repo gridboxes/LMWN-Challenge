@@ -446,27 +446,43 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
         </div>
         </> : <>
-        <div className="success-signals" aria-label="Three signals of a successful Pickup Box experience">
-          <article className="signal-find">
-            <span className="signal-index">01</span><small>BEFORE BUILD</small>
-            <h3>Find it.</h3>
-            <strong>First-attempt locker identification</strong>
-            <p>Test 6–8 people in a simulated lobby, including focused sessions for mobility, vision, and dexterity constraints.</p>
-            <b>Gate · zero unresolved critical failures</b>
+        <div className="evidence-rule">
+          <span>Confidence grows through evidence</span>
+          <p>Test comprehension first, prove service reliability next, then monitor where performance drifts.</p>
+        </div>
+
+        <div className="validation-roadmap" aria-label="Pickup Box validation from prototype to scale">
+          <article className="roadmap-prototype">
+            <span className="roadmap-index">01</span>
+            <div className="roadmap-copy">
+              <div className="roadmap-kicker"><small>PROTOTYPE</small><em>Find it</em></div>
+              <h3>Can people complete the handoff?</h3>
+              <p>Test the complete lobby journey—selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p>
+              <b>Gate · zero unresolved critical failures</b>
+            </div>
+            <div className="roadmap-stat"><strong>6–8</strong><span>PARTICIPANTS</span></div>
           </article>
-          <article className="signal-open">
-            <span className="signal-index">02</span><small>CONTROLLED PILOT</small>
-            <h3>Open it.</h3>
-            <strong>Unassisted first-attempt access</strong>
-            <p>Pilot at 2–3 locations and measure access time, QR reliability, code fallback, and support use.</p>
-            <b>Output · baseline first, then an operations-agreed launch threshold</b>
+
+          <article className="roadmap-pilot">
+            <span className="roadmap-index">02</span>
+            <div className="roadmap-copy">
+              <div className="roadmap-kicker"><small>CONTROLLED PILOT</small><em>Open it</em></div>
+              <h3>Does the service hold up?</h3>
+              <p>Track first-attempt access, scan-to-open time, expired pickups, code fallback, support use, and rider no-fit events.</p>
+              <b>Output · baseline first, then an operations-agreed launch threshold</b>
+            </div>
+            <div className="roadmap-stat"><strong>2–3</strong><span>LOCATIONS</span></div>
           </article>
-          <article className="signal-recover">
-            <span className="signal-index">03</span><small>AT SCALE</small>
-            <h3>Recover.</h3>
-            <strong>Fallback completion by cause</strong>
-            <p>Compare locations and locker models to see where capacity, hardware, accessibility, or rider handoff breaks.</p>
-            <b>Gate · no guardrail regression</b>
+
+          <article className="roadmap-scale">
+            <span className="roadmap-index">03</span>
+            <div className="roadmap-copy">
+              <div className="roadmap-kicker"><small>AT SCALE</small><em>Recover</em></div>
+              <h3>Where does performance drift?</h3>
+              <p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p>
+              <b>Gate · no guardrail regression</b>
+            </div>
+            <div className="roadmap-stat"><strong>EVERY</strong><span>LOCATION</span></div>
           </article>
         </div>
 

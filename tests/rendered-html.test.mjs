@@ -81,6 +81,13 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Find it/,
     /Open it/,
     /Recover/,
+    /Confidence grows through evidence/,
+    /Can people complete the handoff/,
+    /Does the service hold up/,
+    /Where does performance drift/,
+    /6–8/,
+    /2–3/,
+    /EVERY/,
     /Full measurement framework/,
     /Success is a pickup/,
   ]);
