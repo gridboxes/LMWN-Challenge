@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FooterPixelScene } from "./pixel-art";
 import { CaseStudyNav } from "./case-study-nav";
 import { HomeGreeting } from "./home-greeting";
+import { SayHelloLink } from "./say-hello-link";
 
 const flowSteps = [
   ["01", "Choose", "Compare Pickup Box locations by availability, floor, and landmark."],
@@ -115,30 +116,18 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>The locker is only useful<br />if the handoff feels obvious.</h2>
         </div>
 
-        <div className="handoff-story" aria-label="Physical and operational uncertainty can break the pickup handoff">
-          <article className="uncertainty-note physical-note">
-            <span>01 · PHYSICAL UNCERTAINTY</span>
-            <h3>Can I find it<br />and open it?</h3>
-            <p>Location, arrival status, and the right door must stay unmistakable in a busy shared space.</p>
+        <div className="challenge-grid locker-challenge-grid">
+          <article className="challenge-card locker-challenge-card acid">
+            <span className="card-index">A</span>
+            <h3>Physical uncertainty</h3>
+            <p>People need to know which locker to choose, when food arrives, and exactly how to open the right door in a busy shared space.</p>
+            <div className="scribble">location → status → access</div>
           </article>
-
-          <div className="handoff-core">
-            <p>THE HANDOFF</p>
-            <h3>Certainty<br />is a chain.</h3>
-            <div className="handoff-chain">
-              <span><b>LOCATE</b><small>Where?</small></span>
-              <i>→</i>
-              <span><b>TRACK</b><small>When?</small></span>
-              <i>→</i>
-              <span><b>ACCESS</b><small>How?</small></span>
-            </div>
-            <strong>Break any link → confidence drops.</strong>
-          </div>
-
-          <article className="uncertainty-note operational-note">
-            <span>02 · OPERATIONAL UNCERTAINTY</span>
-            <h3>Will the service<br />hold up?</h3>
-            <p>Capacity, opening hours, food safety, and compartment fit can change behind the interface.</p>
+          <article className="challenge-card locker-challenge-card blue">
+            <span className="card-index">B</span>
+            <h3>Operational uncertainty</h3>
+            <p>Capacity, opening hours, food safety, and compartment fit can change. The interface must set expectations without pretending the hardware is always available.</p>
+            <div className="scribble">capacity → fallback → recovery</div>
           </article>
         </div>
 
@@ -153,30 +142,41 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <blockquote>How might we make the user feel in control at every handoff—from checkout to compartment?</blockquote>
         </div>
 
-        <div className="approach-grid">
-          <div>
-            <p className="eyebrow">Working assumptions</p>
-            <h3>Design for the edge cases first.</h3>
+        <div className="decision-map">
+          <div className="decision-map-heading">
+            <p className="eyebrow">Uncertainty in · decision out</p>
+            <h3>Turn real-world friction into an explicit response.</h3>
+            <p>Prototype choices—not facts from the brief. Each response still needs validation with users, operations, and installed hardware.</p>
           </div>
-          <ol className="assumption-list">
-            <li><span>01</span><p><b>Availability can change.</b> Show live status before commitment; reserve suitable capacity after the restaurant accepts.</p></li>
-            <li><span>02</span><p><b>QR is not universal.</b> Pair scanning with a visible 4-digit code and one clear fallback.</p></li>
-            <li><span>03</span><p><b>Food has a clock.</b> Show the 30-minute collection window without creating anxiety.</p></li>
-            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, and compartment number when they matter.</p></li>
-          </ol>
-        </div>
 
-        <div className="decision-record">
-          <div className="decision-record-heading">
-            <p className="eyebrow">Decision record</p>
-            <h3>Make the service rules explicit.</h3>
-            <p>Prototype decisions—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
-          </div>
-          <div className="decision-record-list">
-            <article><span>ACCESS</span><b>Show QR and code on one screen.</b><p>The ready screen supports QR access and a visible 4-digit fallback. The exact scanning direction depends on the installed hardware.</p><small>Validate: hardware flow, scan reliability, and code comprehension</small></article>
-            <article><span>CAPACITY</span><b>Reserve space after acceptance.</b><p>Assign the exact compartment at rider arrival, using order size and live status.</p><small>Validate: reservation window and no-fit rate</small></article>
-            <article><span>WAYFINDING</span><b>Repeat the place when it matters.</b><p>Use the photo at selection; repeat the floor and landmark at collection.</p><small>Validate: first-attempt identification</small></article>
-            <article><span>COMPLETION</span><b>Let users close the loop.</b><p>Keep “Order collected” manual, with auto-complete after three minutes as a safety net.</p><small>Validate: confirmation and false-complete rate</small></article>
+          <div className="decision-paths">
+            <article className="decision-path path-availability">
+              <div className="path-trigger"><span>IF · 01</span><h4>Availability changes.</h4><p>Live capacity can shift after checkout.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Reserve after acceptance.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>No-fit rate</b></div>
+            </article>
+
+            <article className="decision-path path-access">
+              <div className="path-trigger"><span>IF · 02</span><h4>QR access fails.</h4><p>The exact scanning direction depends on the installed hardware.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Keep the 4-digit code visible.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>Access completion</b></div>
+            </article>
+
+            <article className="decision-path path-time">
+              <div className="path-trigger"><span>IF · 03</span><h4>Food has a clock.</h4><p>Collection timing matters without needing to feel alarming.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Show the window. Keep collection explicit.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>Expired + false-complete rate</b></div>
+            </article>
+
+            <article className="decision-path path-place">
+              <div className="path-trigger"><span>IF · 04</span><h4>Shared spaces are noisy.</h4><p>People can lose the place between checkout and collection.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Repeat floor, landmark, and compartment.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>First-attempt identification</b></div>
+            </article>
           </div>
         </div>
       </section>
@@ -553,7 +553,7 @@ export default function Home() {
         <div className="footer-note"><small>Made with care</small><b>by Sivakorn S.</b></div>
         <FooterPixelScene />
         <nav aria-label="Footer links">
-          <a href="mailto:sivakorn.sam@mtel.co.th">Say hello ↗</a>
+          <SayHelloLink />
           <a href="#top">Back to top ↑</a>
         </nav>
       </footer>
