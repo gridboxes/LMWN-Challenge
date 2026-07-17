@@ -351,7 +351,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <p className="hero-intro">A purpose-led Priority feature that makes upgrading feel better: users get their food sooner, and up to 50% of the Priority fee supports charity.</p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
-            <span>Scope<br /><b>UX · Strategy · Persuasion</b></span>
+            <span>Scope<br /><b>Priority selection</b></span>
             <span>Format<br /><b>Design exercise</b></span>
           </div>
         </div>
