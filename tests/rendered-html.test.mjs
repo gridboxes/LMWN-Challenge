@@ -63,7 +63,7 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Food has a clock/,
     /Shared spaces are noisy/,
     /Introduce the box where delivery choices already live/,
-    /A locker is presented like a place—not a shipping setting/,
+    /A locker is presented like a place — not a shipping setting/,
     /The timeline changes language when the rider reaches the locker/,
     /Two access methods. One obvious fallback/,
     /Camera issues, damaged screens, or unfamiliar hardware can interrupt access/,

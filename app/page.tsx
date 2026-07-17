@@ -67,7 +67,7 @@ function ProductScreen({
   width?: number;
   height?: number;
   compact?: boolean;
-  correction?: "compartment" | "feedback";
+  correction?: "compartment";
 }) {
   return (
     <figure className={`product-screen ${compact ? "compact" : ""}`}>
@@ -75,7 +75,6 @@ function ProductScreen({
       <div className="product-screen-frame">
         <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 760px) 72vw, 360px" unoptimized />
         {correction === "compartment" && <span className="screen-copy-fix fix-compartment">Compartment 07</span>}
-        {correction === "feedback" && <span className="screen-copy-fix fix-feedback">How was your Pickup Box experience?</span>}
       </div>
     </figure>
   );
@@ -308,7 +307,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="stage-copy">
             <span className="stage-number">02</span>
             <p className="eyebrow">Choose a real place</p>
-            <h3>A locker is presented like a place—not a shipping setting.</h3>
+            <h3>A locker is presented like a place — not a shipping setting.</h3>
             <p>Availability answers “Can I use it?” A photo, floor, and landmark answer “Will I find it?”</p>
             <div className="callout"><b>Design decision</b><p>Show status before ordering. Reserve suitable capacity after the restaurant accepts.</p></div>
           </div>
@@ -447,7 +446,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="priority-layout">
           <div className="priority-product-screen">
-            <ProductScreen label="REAL UI · PRIORITY SELECTION" src="/case-02/priority-order.png" alt="Food delivery checkout showing Priority gives back, the faster delivery window, up to 50% charity contribution, selected causes, and visible Normal and Low-cost alternatives" width={1206} height={2622} />
+            <ProductScreen label="PRIORITY SELECTION" src="/case-02/priority-order.png" alt="Food delivery checkout showing Priority gives back, the faster delivery window, up to 50% charity contribution, selected causes, and visible Normal and Low-cost alternatives" width={1206} height={2622} />
           </div>
 
           <div className="ethics-panel">
@@ -460,9 +459,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <div className="impact-flow">
-          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose. Receive.<br />Feel good.</h3><p>Choose Priority for faster delivery. After the order arrives, a simple impact receipt shows what the upgrade helped support.</p></div>
+          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose.<br />Receive.<br />Feel good.</h3><p>Choose Priority for faster delivery. From time to time, a simple impact receipt shows what your upgrades have helped support.</p></div>
           <div className="priority-impact-screen">
-            <ProductScreen label="REAL UI · POST-DELIVERY IMPACT" src="/case-02/priority-impact.png" alt="Priority gives back thank-you screen showing total time saved, lives impacted, supported charities, and a share-my-impact action" width={1206} height={2622} />
+            <ProductScreen label="POST-DELIVERY IMPACT" src="/case-02/priority-impact.png" alt="Priority gives back thank-you screen showing total time saved, lives impacted, supported charities, and a share-my-impact action" width={1206} height={2622} />
           </div>
         </div>
       </section>
@@ -539,8 +538,8 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p>A separate prompt turns broad satisfaction into signals about convenience, placement, peace of mind, and ease of pickup.</p>
           </div>
           <div className="product-screen-group two-up">
-            <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="LINE MAN completed-order page asking users to rate the Pickup Box separately" correction="feedback" />
-            <ProductScreen label="ACTIONABLE SIGNALS" src="/case-01/pickup-feedback-selected.png" alt="LINE MAN Pickup Box feedback screen with five stars and service-specific tags" correction="feedback" />
+            <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="LINE MAN completed-order page with a five-star Pickup Box rating and service-specific feedback tags" />
+            <ProductScreen label="FEEDBACK CONFIRMATION" src="/case-01/pickup-feedback-selected.png" alt="LINE MAN confirmation thanking the user for their Pickup Box feedback" />
           </div>
         </div>}
 
@@ -566,7 +565,11 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <b>View Figma ↗</b>
         </a>
       </div>
-      <footer><span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
+      <footer>
+        <span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span>
+        <p>Product design challenge · 2026</p>
+        <b>{isPriority ? "CASE 02 END" : "CASE 01 END"}</b>
+      </footer>
     </main>
   );
 }
