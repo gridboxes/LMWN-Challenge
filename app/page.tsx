@@ -372,7 +372,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <article className="challenge-card orange"><span className="card-index">A</span><h3>Beyond speed</h3><p>Priority competes on arrival time alone. Raising its price needs an additional benefit that makes the higher premium feel worthwhile.</p><div className="scribble">functional + emotional value</div></article>
           <article className="challenge-card acid"><span className="card-index">B</span><h3>A positive payoff</h3><p>Users knowingly pay more for the fastest delivery, while part of that added premium supports something beyond the order.</p><div className="scribble">pay more → move faster → give back</div></article>
         </div>
-        <div className="north-star"><p>North-star question</p><blockquote>How might we raise the price of Priority while making the upgrade feel more rewarding—not simply more urgent?</blockquote></div>
+        <div className="north-star"><p>North-star question</p><blockquote>How might we make Priority feel more rewarding—not simply more urgent?</blockquote></div>
       </section>
       </>}
 
