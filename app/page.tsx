@@ -116,14 +116,14 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>The locker is only useful<br />if the handoff feels obvious.</h2>
         </div>
 
-        <div className="challenge-grid locker-challenge-grid">
-          <article className="challenge-card locker-challenge-card acid">
+        <div className="challenge-grid">
+          <article className="challenge-card acid">
             <span className="card-index">A</span>
             <h3>Physical uncertainty</h3>
             <p>People need to know which locker to choose, when food arrives, and exactly how to open the right door in a busy shared space.</p>
             <div className="scribble">location → status → access</div>
           </article>
-          <article className="challenge-card locker-challenge-card blue">
+          <article className="challenge-card blue">
             <span className="card-index">B</span>
             <h3>Operational uncertainty</h3>
             <p>Capacity, opening hours, food safety, and compartment fit can change. The interface must set expectations without pretending the hardware is always available.</p>
@@ -142,41 +142,30 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <blockquote>How might we make the user feel in control at every handoff—from checkout to compartment?</blockquote>
         </div>
 
-        <div className="decision-map">
-          <div className="decision-map-heading">
-            <p className="eyebrow">Uncertainty in · decision out</p>
-            <h3>Turn real-world friction into an explicit response.</h3>
-            <p>Prototype choices—not facts from the brief. Each response still needs validation with users, operations, and installed hardware.</p>
+        <div className="approach-grid">
+          <div>
+            <p className="eyebrow">Working assumptions</p>
+            <h3>Design for the edge cases first.</h3>
           </div>
+          <ol className="assumption-list">
+            <li><span>01</span><p><b>Availability can change.</b> Show live status before commitment; reserve suitable capacity after the restaurant accepts.</p></li>
+            <li><span>02</span><p><b>QR is not universal.</b> Pair scanning with a visible 4-digit code and one clear fallback.</p></li>
+            <li><span>03</span><p><b>Food has a clock.</b> Show the 30-minute collection window without creating anxiety.</p></li>
+            <li><span>04</span><p><b>Shared spaces are noisy.</b> Repeat the floor, landmark, and compartment number when they matter.</p></li>
+          </ol>
+        </div>
 
-          <div className="decision-paths">
-            <article className="decision-path path-availability">
-              <div className="path-trigger"><span>IF · 01</span><h4>Availability changes.</h4><p>Live capacity can shift after checkout.</p></div>
-              <i aria-hidden="true">→</i>
-              <div className="path-response"><span>DESIGN RESPONSE</span><b>Reserve after acceptance.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>No-fit rate</b></div>
-            </article>
-
-            <article className="decision-path path-access">
-              <div className="path-trigger"><span>IF · 02</span><h4>QR access fails.</h4><p>The exact scanning direction depends on the installed hardware.</p></div>
-              <i aria-hidden="true">→</i>
-              <div className="path-response"><span>DESIGN RESPONSE</span><b>Keep the 4-digit code visible.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>Access completion</b></div>
-            </article>
-
-            <article className="decision-path path-time">
-              <div className="path-trigger"><span>IF · 03</span><h4>Food has a clock.</h4><p>Collection timing matters without needing to feel alarming.</p></div>
-              <i aria-hidden="true">→</i>
-              <div className="path-response"><span>DESIGN RESPONSE</span><b>Show the window. Keep collection explicit.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>Expired + false-complete rate</b></div>
-            </article>
-
-            <article className="decision-path path-place">
-              <div className="path-trigger"><span>IF · 04</span><h4>Shared spaces are noisy.</h4><p>People can lose the place between checkout and collection.</p></div>
-              <i aria-hidden="true">→</i>
-              <div className="path-response"><span>DESIGN RESPONSE</span><b>Repeat floor, landmark, and compartment.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>First-attempt identification</b></div>
-            </article>
+        <div className="decision-record">
+          <div className="decision-record-heading">
+            <p className="eyebrow">Decision record</p>
+            <h3>Make the service rules explicit.</h3>
+            <p>Prototype decisions—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
+          </div>
+          <div className="decision-record-list">
+            <article><span>ACCESS</span><b>Show QR and code on one screen.</b><p>The ready screen supports QR access and a visible 4-digit fallback. The exact scanning direction depends on the installed hardware.</p><small>Validate: hardware flow, scan reliability, and code comprehension</small></article>
+            <article><span>CAPACITY</span><b>Reserve space after acceptance.</b><p>Assign the exact compartment at rider arrival, using order size and live status.</p><small>Validate: reservation window and no-fit rate</small></article>
+            <article><span>WAYFINDING</span><b>Repeat the place when it matters.</b><p>Use the photo at selection; repeat the floor and landmark at collection.</p><small>Validate: first-attempt identification</small></article>
+            <article><span>COMPLETION</span><b>Let users close the loop.</b><p>Keep “Order collected” manual, with auto-complete after three minutes as a safety net.</p><small>Validate: confirmation and false-complete rate</small></article>
           </div>
         </div>
       </section>
@@ -422,53 +411,17 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>{isPriority ? <>The feature works when<br />the upgrade feels worth it.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
-        {isPriority ? <div className="test-plan">
-          <>
+        <div className="test-plan">
+          {isPriority ? <>
             <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
             <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
             <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
-          </>
-        </div> : <>
-          <div className="evaluation-thesis">
-            <span>CONFIDENCE GROWS THROUGH EVIDENCE</span>
-            <p>Test comprehension first, prove service reliability next, then monitor where performance drifts.</p>
-          </div>
-
-          <div className="evidence-roadmap" aria-label="Evaluation progression from prototype to pilot to scale">
-            <article className="evidence-phase phase-prototype">
-              <span className="phase-index">01</span>
-              <div className="phase-copy">
-                <span>PROTOTYPE</span>
-                <h3>Can people complete the handoff?</h3>
-                <p>Test the complete lobby journey: selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p>
-                <b>Gate · zero unresolved critical failures</b>
-              </div>
-              <div className="phase-signal"><strong>6–8</strong><span>participants</span></div>
-            </article>
-
-            <article className="evidence-phase phase-pilot">
-              <span className="phase-index">02</span>
-              <div className="phase-copy">
-                <span>CONTROLLED PILOT</span>
-                <h3>Does the service hold up?</h3>
-                <p>Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p>
-                <b>Pilot output · baseline first, then an operations-agreed launch threshold</b>
-              </div>
-              <div className="phase-signal"><strong>2–3</strong><span>locations</span></div>
-            </article>
-
-            <article className="evidence-phase phase-scale">
-              <span className="phase-index">03</span>
-              <div className="phase-copy">
-                <span>SCALE</span>
-                <h3>Where does performance drift?</h3>
-                <p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p>
-                <b>Gate · no guardrail regression</b>
-              </div>
-              <div className="phase-signal"><strong>EVERY</strong><span>location</span></div>
-            </article>
-          </div>
-        </>}
+          </> : <>
+            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 people in a simulated lobby across selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p><b>Gate: zero unresolved critical failures</b></article>
+            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Pilot at 2–3 locations. Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p><b>Pilot output: baseline first, then an operations-agreed launch threshold</b></article>
+            <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
+          </>}
+        </div>
 
         <div className="metrics-table">
           <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
