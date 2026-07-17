@@ -62,6 +62,12 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /A locker is presented like a place—not a shipping setting/,
     /The timeline changes language when the rider reaches the locker/,
     /Two access methods. One obvious fallback/,
+    /exact scanning direction depends on the installed hardware/,
+    /The selected Pickup Box stays visible before the order is placed/,
+    /Prototype shown: compartments 01–09/,
+    /mobility, vision, and dexterity constraints/,
+    /baseline first, then an operations-agreed launch threshold/,
+    /Unassisted access by accommodation need/,
     /READY TO COLLECT/,
     /COMPARTMENT 07/,
     /This Pickup Box is full/,
@@ -70,6 +76,8 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /Success is a pickup/,
   ]);
   assert.match(html, /class="header-home"[^>]*aria-label="Home"/);
+  assert.doesNotMatch(html, /The locker scans the QR/);
+  assert.doesNotMatch(html, /≥95% first-attempt access/);
   assert.doesNotMatch(html, /Value with purpose/);
   assert.doesNotMatch(html, /Move faster/);
 });

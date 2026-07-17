@@ -8,7 +8,7 @@ const flowSteps = [
   ["01", "Choose", "Compare Pickup Box locations by availability, floor, and landmark."],
   ["02", "Confirm", "Review the selected Pickup Box inside Delivery Info before ordering."],
   ["03", "Track", "Follow the familiar map, ETA, and rider handoff to the box."],
-  ["04", "Unlock", "Present the QR to the locker scanner or enter a 4-digit fallback code."],
+  ["04", "Unlock", "Use QR access or enter the 4-digit fallback code at the locker."],
   ["05", "Collect", "Find the highlighted compartment and confirm collection."],
 ];
 
@@ -19,6 +19,7 @@ const lockerMetrics = [
   ["Reliability", "Fallback and help rate by cause", "Where does access break?"],
   ["Safety", "Uncollected or expired orders", "Does the holding policy protect food quality?"],
   ["Operations", "Rider dwell and no-fit rate", "Does the service work for riders and hardware?"],
+  ["Accessibility", "Unassisted access by accommodation need", "Can people with mobility, vision, or dexterity constraints collect successfully?"],
 ];
 
 const priorityMetrics = [
@@ -159,7 +160,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p>Prototype decisions—not facts from the brief. Each one needs validation with operations, hardware, and users.</p>
           </div>
           <div className="decision-record-list">
-            <article><span>ACCESS</span><b>Show QR and code on one screen.</b><p>The locker scans the QR; the 4-digit code remains visible when scanning fails.</p><small>Validate: scan reliability and code comprehension</small></article>
+            <article><span>ACCESS</span><b>Show QR and code on one screen.</b><p>The ready screen supports QR access and a visible 4-digit fallback. The exact scanning direction depends on the installed hardware.</p><small>Validate: hardware flow, scan reliability, and code comprehension</small></article>
             <article><span>CAPACITY</span><b>Reserve space after acceptance.</b><p>Assign the exact compartment at rider arrival, using order size and live status.</p><small>Validate: reservation window and no-fit rate</small></article>
             <article><span>WAYFINDING</span><b>Repeat the place when it matters.</b><p>Use the photo at selection; repeat the floor and landmark at collection.</p><small>Validate: first-attempt identification</small></article>
             <article><span>COMPLETION</span><b>Let users close the loop.</b><p>Keep “Order collected” manual, with auto-complete after three minutes as a safety net.</p><small>Validate: confirmation and false-complete rate</small></article>
@@ -272,6 +273,15 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="capacity-fallback"><span>IF THE HOLD FAILS</span><b>Keep the user informed</b><p>Offer a nearby box or a clearly named handoff fallback before the rider leaves.</p></div>
         </div>
 
+        <div className="confirmation-evidence">
+          <div>
+            <p className="eyebrow">Commitment check</p>
+            <h3>The selected Pickup Box stays visible before the order is placed.</h3>
+            <p>Delivery Info repeats the exact location, so users can verify the handoff before paying.</p>
+          </div>
+          <ProductScreen compact label="CHECKOUT CONFIRMATION" src="/case-01/checkout-confirmed.png" alt="LINE MAN checkout showing the selected Hospital Bangna Pickup Box inside Delivery Info before the order is placed" width={852} height={1934} />
+        </div>
+
         <div className="phone-stage real-ui-stage stage-black">
           <div className="stage-copy">
             <span className="stage-number">03</span>
@@ -296,10 +306,11 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <h3>Two access methods. One obvious fallback.</h3>
             <p>The QR is primary, the 4-digit code is always visible, and the next screen points to one compartment.</p>
             <ul className="check-list"><li>Time and place stay visible</li><li>Compartment 07 is lit in green</li><li>Manual confirmation has a three-minute safety net</li></ul>
+            <small className="stage-footnote">Prototype shown: compartments 01–09. Production must mirror the installed locker configuration.</small>
           </div>
           <div className="product-screen-group two-up">
             <ProductScreen label="READY TO COLLECT" src="/case-01/ready-to-collect.png" alt="LINE MAN ready-to-collect screen with QR code, pickup code, location, and remaining time" />
-            <ProductScreen label="COMPARTMENT 07" src="/case-01/compartment-07.png" alt="LINE MAN collection screen highlighting Pickup Box compartment 07" correction="compartment" />
+            <ProductScreen label="COMPARTMENT 07" src="/case-01/compartment-07.png" alt="Prototype LINE MAN collection map showing compartments 01–09 with Pickup Box compartment 07 highlighted" correction="compartment" />
           </div>
         </div>
 
@@ -398,28 +409,21 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>{isPriority ? <>The feature works when<br />the upgrade feels worth it.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
-        {!isPriority && <div className="feedback-evidence">
-          <div className="feedback-copy">
-            <p className="eyebrow">Close the learning loop</p>
-            <h3>Rate the box separately from the rider.</h3>
-            <p>A separate prompt turns broad satisfaction into signals about convenience, placement, peace of mind, and ease of pickup.</p>
-          </div>
-          <div className="product-screen-group two-up">
-            <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="LINE MAN completed-order page asking users to rate the Pickup Box separately" correction="feedback" />
-            <ProductScreen label="ACTIONABLE SIGNALS" src="/case-01/pickup-feedback-selected.png" alt="LINE MAN Pickup Box feedback screen with five stars and service-specific tags" correction="feedback" />
-          </div>
-        </div>}
-
         <div className="test-plan">
           {isPriority ? <>
             <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
             <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
             <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
           </> : <>
-            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 people in a simulated lobby across selection, wayfinding, QR failure, code fallback, and compartment identification. Record assistance and error severity.</p><b>Gate: zero unresolved critical failures</b></article>
-            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Pilot at 2–3 locations. Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p><b>Initial target: ≥95% first-attempt access</b></article>
+            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 people in a simulated lobby across selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p><b>Gate: zero unresolved critical failures</b></article>
+            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Pilot at 2–3 locations. Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p><b>Pilot output: baseline first, then an operations-agreed launch threshold</b></article>
             <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
           </>}
+        </div>
+
+        <div className="metrics-table">
+          <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
+          {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
         </div>
 
         {!isPriority && <div className="instrumentation-map">
@@ -436,10 +440,17 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </ol>
         </div>}
 
-        <div className="metrics-table">
-          <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
-          {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
-        </div>
+        {!isPriority && <div className="feedback-evidence">
+          <div className="feedback-copy">
+            <p className="eyebrow">Ongoing signal</p>
+            <h3>Rate the box separately from the rider.</h3>
+            <p>A separate prompt turns broad satisfaction into signals about convenience, placement, peace of mind, and ease of pickup.</p>
+          </div>
+          <div className="product-screen-group two-up">
+            <ProductScreen label="SERVICE-SPECIFIC PROMPT" src="/case-01/pickup-feedback.png" alt="LINE MAN completed-order page asking users to rate the Pickup Box separately" correction="feedback" />
+            <ProductScreen label="ACTIONABLE SIGNALS" src="/case-01/pickup-feedback-selected.png" alt="LINE MAN Pickup Box feedback screen with five stars and service-specific tags" correction="feedback" />
+          </div>
+        </div>}
 
         <div className="closing-card">
           <p className="eyebrow">{isPriority ? "The principle I would protect" : "What I would explore next"}</p>
