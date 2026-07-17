@@ -28,7 +28,7 @@ const priorityMetrics = [
   ["Choice", "Priority selection lift", "Does the clearer value proposition improve adoption?"],
   ["Appeal", "Perceived feature value", "Does faster delivery plus giving back feel worth the premium?"],
   ["Emotion", "Post-delivery satisfaction", "Does the feature leave users feeling positive about their choice?"],
-  ["Clarity", "Contribution comprehension", "Do users understand that up to 50% applies to the Priority fee?"],
+  ["Clarity", "Price-and-impact comprehension", "Do users understand the higher Priority price and that up to 50% of the added premium supports charity?"],
 ];
 
 function ProductScreen({
@@ -350,7 +350,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="priority-hero-copy">
           <p className="eyebrow">A feature-led persuasion case study</p>
           <h1>Priority with<br /><em>Purpose.</em></h1>
-          <p className="hero-intro">A purpose-led Priority feature that makes upgrading feel better: users get their food sooner, and up to 50% of the Priority fee supports charity.</p>
+          <p className="hero-intro">A purpose-led Priority model that adds a visible premium to faster delivery: users get their food sooner, and up to 50% of the added amount supports charity.</p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
             <span>Scope<br /><b>UX · Strategy · Persuasion</b></span>
@@ -371,10 +371,10 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>Give Priority a reason<br />to feel worth it.</h2>
         </div>
         <div className="challenge-grid">
-          <article className="challenge-card orange"><span className="card-index">A</span><h3>Beyond speed</h3><p>Priority competes on arrival time alone. The feature needs an additional benefit that makes the premium feel more meaningful.</p><div className="scribble">functional + emotional value</div></article>
-          <article className="challenge-card acid"><span className="card-index">B</span><h3>A positive payoff</h3><p>Users receive the fastest delivery and the good feeling that part of their fee supports something beyond the order.</p><div className="scribble">faster → gives back → feels good</div></article>
+          <article className="challenge-card orange"><span className="card-index">A</span><h3>Beyond speed</h3><p>Priority competes on arrival time alone. Raising its price needs an additional benefit that makes the higher premium feel worthwhile.</p><div className="scribble">functional + emotional value</div></article>
+          <article className="challenge-card acid"><span className="card-index">B</span><h3>A positive payoff</h3><p>Users knowingly pay more for the fastest delivery, while part of that added premium supports something beyond the order.</p><div className="scribble">pay more → move faster → give back</div></article>
         </div>
-        <div className="north-star"><p>North-star question</p><blockquote>How might we make Priority feel more rewarding—not simply more urgent?</blockquote></div>
+        <div className="north-star"><p>North-star question</p><blockquote>How might we raise the price of Priority while making the upgrade feel more rewarding—not simply more urgent?</blockquote></div>
       </section>
       </>}
 
@@ -383,16 +383,16 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="section-heading priority-heading">
           <p className="eyebrow">02 · The proposed model</p>
           <h2>Move faster.<br />Pass good forward.</h2>
-          <p>Faster delivery, with up to 50% of the Priority fee supporting charity.</p>
+          <p>A higher Priority price delivers faster food and gives part of the added premium a purpose.</p>
         </div>
 
-        <div className="concept-assumption"><span>FEATURE PROMISE</span><p>One upgrade delivers two benefits: the fastest available arrival and the feeling that part of the fee gives back. The percentage can vary by campaign, up to 50% of the Priority fee.</p></div>
+        <div className="concept-assumption"><span>PRICING MECHANISM</span><p>Priority with Purpose deliberately costs more than Priority today. The increase funds the added benefit: up to 50% of that purpose uplift supports charity, while the user still receives the fastest available delivery.</p></div>
 
-        <div className="price-logic" aria-label="Delivery pricing and donation breakdown">
-          <div><span>LOW-COST</span><b>฿20</b><p>Save money<br />Wait longer</p></div>
-          <div><span>NORMAL</span><b>฿30</b><p>Standard match<br />Standard time</p></div>
-          <div className="logic-priority"><span>PRIORITY + PURPOSE</span><b>฿50</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
-          <div className="logic-note"><b>UP TO<br />50%</b><p>of the Priority fee supports charity.</p></div>
+        <div className="price-logic" aria-label="Priority with Purpose price increase and contribution model">
+          <div><span>PRIORITY TODAY</span><b>BASE FEE</b><p>Fastest delivery<br />Speed-only premium</p></div>
+          <div><span>PURPOSE UPLIFT</span><b>ADDED</b><p>A clear increase<br />shown before selection</p></div>
+          <div className="logic-priority"><span>PRIORITY WITH PURPOSE</span><b>NEW PRICE</b><p>Fastest delivery<br /><strong>+ charity contribution</strong></p></div>
+          <div className="logic-note"><b>UP TO<br />50%</b><p>of the added uplift supports charity.</p></div>
         </div>
 
         <div className="priority-layout">
@@ -403,9 +403,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="ethics-panel">
             <div className="ethics-title"><span>WHY USERS MAY CHOOSE IT</span><h3>Fast feels good.</h3></div>
             <article><span>01</span><div><h4>Immediate functional value</h4><p>The fastest delivery window gives users a clear, practical reason to upgrade.</p></div></article>
-            <article><span>02</span><div><h4>A positive emotional benefit</h4><p>The same choice also lets users feel that part of their fee is doing something good.</p></div></article>
-            <article><span>03</span><div><h4>A memorable proposition</h4><p>“Up to 50% of the Priority fee gives back” is simple enough to notice and recall.</p></div></article>
-            <article><span>04</span><div><h4>Choice remains intact</h4><p>Normal and Low-cost stay visible as a supporting guardrail, not the main story.</p></div></article>
+            <article><span>02</span><div><h4>A positive emotional benefit</h4><p>The added purpose gives users another reason to feel good about paying the higher Priority price.</p></div></article>
+            <article><span>03</span><div><h4>A reason for the increase</h4><p>“Up to 50% of the extra you pay goes to charity” connects the price uplift directly to a memorable benefit.</p></div></article>
+            <article><span>04</span><div><h4>The trade-off stays visible</h4><p>The higher price, contribution, Normal, and Low-cost options remain clear before the user confirms.</p></div></article>
           </div>
         </div>
 
@@ -427,9 +427,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         {isPriority ? <>
         <div className="test-plan">
           <>
-            <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
-            <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
-            <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
+            <article><span>BEFORE BUILD</span><h3>Price-value test</h3><p>Ask whether the added purpose makes a higher Priority price feel worthwhile and whether users understand what the increase funds.</p><b>Signal: users recall the price and both benefits</b></article>
+            <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare today&apos;s Priority price with the higher Priority with Purpose price while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: willingness to pay survives the uplift</b></article>
+            <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus contribution confirmation justifies the higher price after the experience is complete.</p><b>Signal: stronger perceived value after delivery</b></article>
           </>
         </div>
         <div className="metrics-table">
