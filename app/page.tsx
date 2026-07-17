@@ -419,7 +419,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <div className="impact-flow">
-          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose → receive → feel good</h3><p>The selection screen makes the faster arrival and gives-back benefit concrete. After delivery, the impact screen closes the loop with time saved, lives impacted, and the causes supported.</p></div>
+          <div className="impact-copy"><p className="eyebrow">The feature experience</p><h3>Choose. Receive.<br />Feel good.</h3><p>Choose Priority for faster delivery. After the order arrives, a simple impact receipt shows what the upgrade helped support.</p></div>
           <div className="priority-impact-screen">
             <ProductScreen label="REAL UI · POST-DELIVERY IMPACT" src="/case-02/priority-impact.png" alt="Priority gives back thank-you screen showing total time saved, lives impacted, supported charities, and a share-my-impact action" width={1206} height={2622} />
           </div>
