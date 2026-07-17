@@ -344,7 +344,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </div>
           <div className="handoff-visual">
             <div className="handoff-notification" aria-label="Pickup Box ready notification">
-              <span className="push-mark">M</span><div><small><span>LINE MAN</span><time>now</time></small><b>Order ready to collect</b><p>Hospital Bangna · Floor 1</p></div>
+              <span className="push-mark" aria-hidden="true"><Image src="/l-mark.svg" alt="" width={36} height={36} /></span><div><small><span>LINE MAN</span><time>now</time></small><b>Ready at your Pickup Box</b><p>Hospital Bangna · Floor 1</p></div>
             </div>
             <div className="product-screen-group two-up">
               <ProductScreen label="EN ROUTE CONTEXT" src="/case-01/rider-en-route.png" alt="LINE MAN tracking screen showing the rider heading to the Hospital Bangna Pickup Box" />

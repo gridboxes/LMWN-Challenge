@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "Delivery Experience — UX/UI Design Assignment";
-const description = "A two-part UX/UI design assignment exploring contactless locker pickup and ethical priority delivery.";
+const title = "Delivery Experience — Product Design Assignment";
+const description = "A two-part product design assignment exploring contactless locker pickup and ethical priority delivery.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const incoming = await headers();
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    openGraph: { title, description, type: "website", images: [{ url: image, width: 1536, height: 1024, alt: "UX/UI design assignment overview" }] },
+    openGraph: { title, description, type: "website", images: [{ url: image, width: 1536, height: 1024, alt: "Product design assignment overview" }] },
     twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }

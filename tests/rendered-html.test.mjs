@@ -27,7 +27,7 @@ test("renders the assignment homepage with two distinct responses", async () => 
     /Better delivery/,
     /by design/,
     /turning uncertain handoffs/,
-    /UX\/UI design assignment/,
+    /Product design assignment/,
     /Delivering<br\/>Certainty/,
     /Priority with<br\/>Purpose/,
     /Delivering Certainty/,
@@ -87,6 +87,8 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /EVERY/,
     /Full measurement framework/,
     /Success is a pickup/,
+    /Ready at your Pickup Box/,
+    /src="\/l-mark\.svg"/,
     /View Figma/,
     /https:\/\/www\.figma\.com\/design\/x6grHX2f2jISu0jkVTNbZc\/lmwn/,
   ]);
