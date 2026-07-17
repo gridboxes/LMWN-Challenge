@@ -529,7 +529,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       </section>
 
       <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-with-purpose"}>
-        <span>NEXT CASE STUDY</span><b>{isPriority ? "Delivering Certainty" : "Priority with Purpose"} →</b>
+          <span>{isPriority ? "THE OTHER RESPONSE" : "NEXT CASE STUDY"}</span><b>{isPriority ? "Delivering Certainty" : "Priority with Purpose"} →</b>
       </a>
       <footer><span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
     </main>
