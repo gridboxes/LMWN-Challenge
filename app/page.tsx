@@ -551,22 +551,20 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
       </section>
 
-      <div className={`case-exits ${!isPriority ? "has-figma" : ""}`}>
+      <div className="case-exits has-figma">
         <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-with-purpose"}>
           <span>{isPriority ? "THE OTHER RESPONSE" : "NEXT CASE STUDY"}</span><b>{isPriority ? "Delivering Certainty" : "Priority with Purpose"} →</b>
         </a>
-        {!isPriority && (
-          <a
-            className="figma-case"
-            href="https://www.figma.com/design/x6grHX2f2jISu0jkVTNbZc/lmwn?node-id=0-1&t=JRxmNgwj6fcl1TcI-1"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="View the Delivering Certainty project in Figma (opens in a new tab)"
-          >
-            <span>DESIGN SOURCE</span>
-            <b>View Figma ↗</b>
-          </a>
-        )}
+        <a
+          className="figma-case"
+          href="https://www.figma.com/design/x6grHX2f2jISu0jkVTNbZc/lmwn?node-id=0-1&t=JRxmNgwj6fcl1TcI-1"
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`View the ${isPriority ? "Priority with Purpose" : "Delivering Certainty"} project in Figma (opens in a new tab)`}
+        >
+          <span>DESIGN SOURCE</span>
+          <b>View Figma ↗</b>
+        </a>
       </div>
       <footer><span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
     </main>
@@ -581,9 +579,9 @@ export default function Home() {
         <nav aria-label="Case study navigation"><a href="/work/delivering-certainty" aria-label="Case study 1: Delivering Certainty">01</a><a href="/work/priority-with-purpose" aria-label="Case study 2: Priority with Purpose">02</a></nav>
       </header>
 
-      <section className="simple-hero" aria-label="UX/UI design assignment overview">
+      <section className="simple-hero" aria-label="Product design assignment overview">
         <div className="simple-intro">
-          <p className="simple-eyebrow">UX/UI design assignment · 2026</p>
+          <p className="simple-eyebrow">Product design assignment · 2026</p>
           <h1>Better delivery,<br /><em>by design.</em></h1>
           <p className="simple-summary">Two case studies in turning uncertain handoffs and ordinary upgrades into experiences worth choosing.</p>
         </div>

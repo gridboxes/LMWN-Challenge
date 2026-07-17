@@ -108,6 +108,8 @@ test("renders Priority with Purpose as a focused feature case study", async () =
     /up to 50%/i,
     /Fast feels good/,
     /the upgrade feels worth it/,
+    /View Figma/,
+    /https:\/\/www\.figma\.com\/design\/x6grHX2f2jISu0jkVTNbZc\/lmwn/,
   ]);
   assert.doesNotMatch(html, /฿10/);
   assert.doesNotMatch(html, /An ethical persuasion case study/);
