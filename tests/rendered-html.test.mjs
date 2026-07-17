@@ -49,7 +49,12 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
   const html = await expectPage("/work/delivering-certainty", [
     /Delivering Certainty — Product Design Case Study/,
     /The locker is only useful/,
-    /Operational uncertainty/,
+    /Operational uncertainty/i,
+    /Certainty<br\/>is a chain/,
+    /Confidence grows through evidence/i,
+    /6–8/,
+    /2–3/,
+    /Where does performance drift/,
     /EARLY WIREFRAMES/,
     /5 states \/ 2 recovery paths/,
     /7 2 4 8/,

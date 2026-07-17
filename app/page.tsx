@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FooterPixelScene } from "./pixel-art";
 import { CaseStudyNav } from "./case-study-nav";
+import { HomeGreeting } from "./home-greeting";
 
 const flowSteps = [
   ["01", "Choose", "Compare Pickup Box locations by availability, floor, and landmark."],
@@ -114,18 +115,30 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>The locker is only useful<br />if the handoff feels obvious.</h2>
         </div>
 
-        <div className="challenge-grid">
-          <article className="challenge-card acid">
-            <span className="card-index">A</span>
-            <h3>Physical uncertainty</h3>
-            <p>People need to know which locker to choose, when food arrives, and exactly how to open the right door in a busy shared space.</p>
-            <div className="scribble">location → status → access</div>
+        <div className="handoff-story" aria-label="Physical and operational uncertainty can break the pickup handoff">
+          <article className="uncertainty-note physical-note">
+            <span>01 · PHYSICAL UNCERTAINTY</span>
+            <h3>Can I find it<br />and open it?</h3>
+            <p>Location, arrival status, and the right door must stay unmistakable in a busy shared space.</p>
           </article>
-          <article className="challenge-card blue">
-            <span className="card-index">B</span>
-            <h3>Operational uncertainty</h3>
-            <p>Capacity, opening hours, food safety, and compartment fit can change. The interface must set expectations without pretending the hardware is always available.</p>
-            <div className="scribble">capacity → fallback → recovery</div>
+
+          <div className="handoff-core">
+            <p>THE HANDOFF</p>
+            <h3>Certainty<br />is a chain.</h3>
+            <div className="handoff-chain">
+              <span><b>LOCATE</b><small>Where?</small></span>
+              <i>→</i>
+              <span><b>TRACK</b><small>When?</small></span>
+              <i>→</i>
+              <span><b>ACCESS</b><small>How?</small></span>
+            </div>
+            <strong>Break any link → confidence drops.</strong>
+          </div>
+
+          <article className="uncertainty-note operational-note">
+            <span>02 · OPERATIONAL UNCERTAINTY</span>
+            <h3>Will the service<br />hold up?</h3>
+            <p>Capacity, opening hours, food safety, and compartment fit can change behind the interface.</p>
           </article>
         </div>
 
@@ -409,17 +422,53 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <h2>{isPriority ? <>The feature works when<br />the upgrade feels worth it.</> : <>Success is a pickup<br />without a second thought.</>}</h2>
         </div>
 
-        <div className="test-plan">
-          {isPriority ? <>
+        {isPriority ? <div className="test-plan">
+          <>
             <article><span>BEFORE BUILD</span><h3>Feature appeal test</h3><p>Ask users what makes Priority with Purpose attractive, what they expect to receive, and how the gives-back benefit affects the choice.</p><b>Signal: users recall both benefits</b></article>
             <article><span>PILOT</span><h3>Choice experiment</h3><p>Compare standard Priority with Priority with Purpose while keeping timing, placement, and the other delivery options consistent.</p><b>Signal: meaningful Priority selection lift</b></article>
             <article><span>AFTER DELIVERY</span><h3>Feel-good check</h3><p>Measure whether faster arrival plus the contribution confirmation makes the upgrade feel more worthwhile.</p><b>Signal: higher post-delivery satisfaction</b></article>
-          </> : <>
-            <article><span>BEFORE BUILD</span><h3>Formative prototype test</h3><p>Test 6–8 people in a simulated lobby across selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p><b>Gate: zero unresolved critical failures</b></article>
-            <article><span>CONTROLLED PILOT</span><h3>Validate the service</h3><p>Pilot at 2–3 locations. Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p><b>Pilot output: baseline first, then an operations-agreed launch threshold</b></article>
-            <article><span>SCALE</span><h3>Monitor by location</h3><p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p><b>Gate: no guardrail regression</b></article>
-          </>}
-        </div>
+          </>
+        </div> : <>
+          <div className="evaluation-thesis">
+            <span>CONFIDENCE GROWS THROUGH EVIDENCE</span>
+            <p>Test comprehension first, prove service reliability next, then monitor where performance drifts.</p>
+          </div>
+
+          <div className="evidence-roadmap" aria-label="Evaluation progression from prototype to pilot to scale">
+            <article className="evidence-phase phase-prototype">
+              <span className="phase-index">01</span>
+              <div className="phase-copy">
+                <span>PROTOTYPE</span>
+                <h3>Can people complete the handoff?</h3>
+                <p>Test the complete lobby journey: selection, wayfinding, QR failure, code fallback, and compartment identification. Add focused sessions for mobility, vision, and dexterity constraints.</p>
+                <b>Gate · zero unresolved critical failures</b>
+              </div>
+              <div className="phase-signal"><strong>6–8</strong><span>participants</span></div>
+            </article>
+
+            <article className="evidence-phase phase-pilot">
+              <span className="phase-index">02</span>
+              <div className="phase-copy">
+                <span>CONTROLLED PILOT</span>
+                <h3>Does the service hold up?</h3>
+                <p>Track first-attempt access, scan-to-open time, expired pickups, and rider no-fit events.</p>
+                <b>Pilot output · baseline first, then an operations-agreed launch threshold</b>
+              </div>
+              <div className="phase-signal"><strong>2–3</strong><span>locations</span></div>
+            </article>
+
+            <article className="evidence-phase phase-scale">
+              <span className="phase-index">03</span>
+              <div className="phase-copy">
+                <span>SCALE</span>
+                <h3>Where does performance drift?</h3>
+                <p>Compare locker models and buildings while watching food quality, support contacts, fallback, accessibility, and rider dwell.</p>
+                <b>Gate · no guardrail regression</b>
+              </div>
+              <div className="phase-signal"><strong>EVERY</strong><span>location</span></div>
+            </article>
+          </div>
+        </>}
 
         <div className="metrics-table">
           <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
@@ -500,6 +549,7 @@ export default function Home() {
       </section>
 
       <footer className="simple-footer">
+        <HomeGreeting />
         <div className="footer-note"><small>Made with care</small><b>by Sivakorn S.</b></div>
         <FooterPixelScene />
         <nav aria-label="Footer links">
