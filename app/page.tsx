@@ -5,6 +5,7 @@ import { FooterPixelScene } from "./pixel-art";
 import { CaseStudyNav } from "./case-study-nav";
 import { HomeGreeting } from "./home-greeting";
 import { SayHelloLink } from "./say-hello-link";
+import { ViewPortfolioLink } from "./view-portfolio-link";
 
 const flowSteps = [
   ["01", "Choose", "Compare Pickup Box locations by availability, floor, and landmark."],
@@ -31,6 +32,26 @@ const priorityMetrics = [
   ["Clarity", "Price-and-impact comprehension", "Do users understand the higher Priority price and that up to 50% of the added premium supports charity?"],
 ];
 
+function JourneyStateIcon({ step }: { step: string }) {
+  if (step === "01") {
+    return <svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" /><circle cx="12" cy="10" r="2" /></svg>;
+  }
+
+  if (step === "02") {
+    return <svg viewBox="0 0 24 24"><path d="m6 12 4 4 8-9" /></svg>;
+  }
+
+  if (step === "03") {
+    return <svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2" /><circle cx="19" cy="18" r="2" /><path d="M7 6h5a3 3 0 0 1 3 3 3 3 0 0 1-3 3h-1a3 3 0 0 0-3 3 3 3 0 0 0 3 3h6" /></svg>;
+  }
+
+  if (step === "04") {
+    return <svg className="flow-qr" viewBox="0 0 24 24"><path fillRule="evenodd" d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm8-2h8v8h-8V3Zm2 2v4h4V5h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Z" clipRule="evenodd" /><path d="M14 14h3v3h-3v-3Zm4 0h3v7h-3v-2h-3v2h-2v-3h5v-4Z" /></svg>;
+  }
+
+  return <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1" /><path d="m8 12 3 3 5-6" /></svg>;
+}
+
 function ProductScreen({
   src,
   alt,
@@ -46,14 +67,13 @@ function ProductScreen({
   width?: number;
   height?: number;
   compact?: boolean;
-  correction?: "handoff" | "compartment" | "feedback";
+  correction?: "compartment" | "feedback";
 }) {
   return (
     <figure className={`product-screen ${compact ? "compact" : ""}`}>
       <figcaption>{label}</figcaption>
       <div className="product-screen-frame">
         <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 760px) 72vw, 360px" unoptimized />
-        {correction === "handoff" && <span className="screen-copy-fix fix-handoff">Securing your order</span>}
         {correction === "compartment" && <span className="screen-copy-fix fix-compartment">Compartment 07</span>}
         {correction === "feedback" && <span className="screen-copy-fix fix-feedback">How was your Pickup Box experience?</span>}
       </div>
@@ -90,23 +110,38 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </p>
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
-            <span>Scope<br /><b>UX · UI · Strategy</b></span>
-            <span>Format<br /><b>Design exercise</b></span>
+            <span>Scope<br /><b>Checkout → collection</b></span>
+            <span>Context<br /><b>Product design challenge</b></span>
           </div>
         </div>
 
         <div className="hero-art" aria-label="Abstract delivery locker illustration">
           <div className="route route-a" />
           <div className="route route-b" />
-          <div className="route-dot dot-a">1</div>
-          <div className="route-dot dot-b">2</div>
-          <div className="route-dot dot-c">3</div>
+          <div className="route-dot dot-a" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" /><circle cx="12" cy="10" r="2" /></svg>
+          </div>
+          <div className="route-dot dot-b" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
+              <path d="M6 6h1v1H6zM17 6h1v1h-1zM6 17h1v1H6zM14 14h3v3h-3zM19 14h2v2M18 19h3v2M14 20h1" />
+            </svg>
+          </div>
+          <div className="route-dot dot-c" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2" /><circle cx="19" cy="18" r="2" /><path d="M7 6h5a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3h-1a3 3 0 0 0-3 3v0a3 3 0 0 0 3 3h6" /></svg>
+          </div>
           <div className="locker">
             <div className="locker-head"><span className="locker-lineman" aria-hidden="true"><i /></span><b>PICK-UP</b></div>
             {Array.from({ length: 8 }, (_, i) => <div className="locker-cell" key={i}><span>{i + 1}</span></div>)}
             <div className="locker-console"><span>SCAN</span><i /></div>
           </div>
-          <p className="art-note">Good delivery ends<br />with a clear handoff ↘</p>
+          <p className="art-note">
+            <span>Good delivery ends<br />with a clear handoff</span>
+            <svg className="art-note-arrow" viewBox="0 0 72 58" aria-hidden="true">
+              <path d="M4 11C18 0 38 2 38 15c0 12-17 16-21 7-3-7 8-13 18-8 12 6 17 21 17 36" />
+              <path d="m44 43 8 9 8-9" />
+            </svg>
+          </p>
         </div>
       </section>
 
@@ -154,28 +189,28 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
               <div className="path-trigger"><span>IF · 01</span><h4>Availability changes.</h4><p>Live capacity can shift after checkout.</p></div>
               <i aria-hidden="true">→</i>
               <div className="path-response"><span>DESIGN RESPONSE</span><b>Reserve after acceptance.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>No-fit rate</b></div>
+              <div className="path-proof"><span>MEASURE</span><b>Suitable compartment assigned</b></div>
             </article>
 
             <article className="decision-path path-access">
-              <div className="path-trigger"><span>IF · 02</span><h4>QR access fails.</h4><p>The exact scanning direction depends on the installed hardware.</p></div>
+              <div className="path-trigger"><span>IF · 02</span><h4>QR needs a fallback.</h4><p>Camera issues, damaged screens, or unfamiliar hardware can interrupt access.</p></div>
               <i aria-hidden="true">→</i>
               <div className="path-response"><span>DESIGN RESPONSE</span><b>Keep the 4-digit code visible.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>Access completion</b></div>
+              <div className="path-proof"><span>MEASURE</span><b>Successful locker access</b></div>
             </article>
 
             <article className="decision-path path-time">
               <div className="path-trigger"><span>IF · 03</span><h4>Food has a clock.</h4><p>Collection timing matters without needing to feel alarming.</p></div>
               <i aria-hidden="true">→</i>
               <div className="path-response"><span>DESIGN RESPONSE</span><b>Show the window. Keep collection explicit.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>Expired + false-complete rate</b></div>
+              <div className="path-proof"><span>MEASURE</span><b>Collected within the pickup window</b></div>
             </article>
 
             <article className="decision-path path-place">
               <div className="path-trigger"><span>IF · 04</span><h4>Shared spaces are noisy.</h4><p>People can lose the place between checkout and collection.</p></div>
               <i aria-hidden="true">→</i>
               <div className="path-response"><span>DESIGN RESPONSE</span><b>Repeat floor, landmark, and compartment.</b></div>
-              <div className="path-proof"><span>PROVE</span><b>First-attempt identification</b></div>
+              <div className="path-proof"><span>MEASURE</span><b>Correct locker found on the first try</b></div>
             </article>
           </div>
         </div>
@@ -190,7 +225,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         <div className="flow-grid">
           {flowSteps.map(([num, title, body]) => (
             <article className="flow-step" key={num}>
-              <span>{num}</span><div className="flow-icon" aria-hidden="true" />
+              <span>{num}</span><div className="flow-icon" aria-hidden="true"><JourneyStateIcon step={num} /></div>
               <h3>{title}</h3><p>{body}</p>
             </article>
           ))}
@@ -198,50 +233,54 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="wireframe-board" aria-label="End-to-end Pickup Box wireframes with recovery paths">
           <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 states / 2 recovery paths</b></div>
-          <div className="wire wire-choose">
-            <div className="wire-appbar"><i>×</i><b>Edit delivery instructions</b></div>
-            <div className="wire-address"><span>Address:</span><b>Hospital Bangna</b></div>
-            <h4>Delivery instructions</h4>
-            <div className="wire-instruction-row"><b className="selected"><i>▦</i><small>Pickup Box</small></b><b><i>⌖</i><small>Given spot</small></b><b><i>⌄</i><small>Hand to me</small></b></div>
-            <p className="wire-caption">Rider will place your order in a secure Pickup Box.</p>
-            <h4>Pickup Box location</h4>
-            <div className="wire-location-list"><b>Hospital Bangna, Floor 1<small>Near entrance 2</small><em>Available</em></b><b>Hospital Bangna, Floor 1<small>Information zone</small><em>Limited</em></b><b className="disabled">Hospital Bangna, Floor 2<small>Information zone</small><em>Full</em></b></div>
-            <div className="wire-button">Confirm</div><p className="wire-step-label">1. Choose a Pickup Box</p>
+          <div className="wire wire-lofi wire-choose">
+            <div className="lofi-screen-head"><span>←</span><b>Delivery setup</b></div>
+            <p className="lofi-kicker">DELIVERY METHOD</p>
+            <div className="lofi-choice-row"><span>Door</span><span className="active">Pickup Box</span></div>
+            <p className="lofi-kicker">CHOOSE A LOCATION</p>
+            <div className="lofi-option-list"><span><i />Locker option</span><span className="active"><i />Locker option</span><span><i />Locker option</span></div>
+            <p className="lofi-note">availability + landmark</p>
+            <div className="wire-button">Confirm choice</div>
           </div>
-          <div className="wire wire-confirm">
-            <div className="wire-appbar"><i>←</i><b>Tropical Summer Bowl</b></div>
-            <div className="wire-order-tabs"><b>Delivery</b><span>Pickup</span></div>
-            <h4>Delivery Info</h4>
-            <div className="wire-info-row"><i>⌖</i><b>Dcondo Ladkrabang</b></div>
-            <div className="wire-info-row"><i>▦</i><b>Place in a Pickup Box<small>Hospital Bangna, Floor 1 · Near entrance 2</small></b></div>
-            <h4>Delivery options</h4>
-            <div className="wire-speed-list"><span>Priority · &lt; 48 min <b>฿125</b></span><span className="selected">Normal · 65 min <b>฿109</b></span><span>Low-cost · &gt; 74 min <b>฿107</b></span></div>
-            <div className="wire-button">Order now · ฿160</div><p className="wire-step-label">2. Confirm before ordering</p>
+          <div className="wire wire-lofi wire-confirm">
+            <div className="lofi-screen-head"><span>←</span><b>Review order</b></div>
+            <p className="lofi-kicker">DELIVERY SUMMARY</p>
+            <div className="lofi-summary"><span><b>Order</b><i /></span><span><b>Delivery</b><i /></span><span className="active"><b>Pickup Box</b><i /></span></div>
+            <div className="lofi-placeholder"><i /><i /><i className="short" /></div>
+            <p className="lofi-note">review before commit</p>
+            <div className="wire-button">Place order</div>
           </div>
-          <div className="wire wire-track">
-            <div className="wire-track-map"><span>DESTINATION<br /><b>Hospital Bangna</b></span><i className="wire-route" /><i className="wire-rider-dot" /></div>
-            <div className="wire-track-card"><small>Low-cost delivery</small><b>Heading your way</b><p>Arrives around <strong>5 min</strong></p><div className="wire-progress"><i className="done" /><i className="done" /><i className="active" /><i /></div></div>
-            <div className="wire-track-details"><b>Rider + contact</b><span>Tropical Summer Bowl</span><span>Hospital Bangna · LINE MAN Pickup Box<small>Floor 1 · Near entrance 2</small></span></div>
-            <p className="wire-step-label">3. Track the handoff</p>
+          <div className="wire wire-lofi wire-track">
+            <div className="lofi-screen-head"><span>←</span><b>Track delivery</b></div>
+            <div className="lofi-map"><span>RIDER</span><i /><b>BOX</b></div>
+            <div className="lofi-status-card"><span>ON THE WAY</span><b>Rider → Pickup Box</b><div className="lofi-progress"><i className="done" /><i className="done" /><i className="active" /><i /></div></div>
+            <p className="lofi-note">reuse familiar tracking</p>
           </div>
-          <div className="wire wire-ready">
-            <h4 className="wire-state-title">Your food has arrived</h4><b className="wire-state-subtitle">Pick it up from the pickup box</b>
-            <div className="wire-progress state-progress"><i className="done" /><i /><i /></div>
-            <div className="wire-ready-panel"><b>Scan QR or enter code</b><div className="wire-code-cells"><i>7</i><i>2</i><i>4</i><i>8</i></div><div className="wire-qr">▦</div><small>How to use a pickup box</small><p><b>Pickup Box Location</b>Hospital Bangna, Floor 1 · Near entrance 2</p><p><b>Remaining Time</b>Please collect within 30 minutes</p></div>
-            <p className="wire-step-label">4. Unlock with QR or code</p>
+          <div className="wire wire-lofi wire-ready">
+            <div className="lofi-screen-head"><span>←</span><b>Ready for pickup</b></div>
+            <p className="lofi-kicker">TWO WAYS IN</p>
+            <div className="lofi-access"><div><span className="lofi-qr-mark">QR</span><b>Scan</b></div><div><span className="lofi-code-mark">••••</span><b>Enter code</b></div></div>
+            <div className="lofi-placeholder"><i /><i className="short" /></div>
+            <p className="lofi-note">keep fallback visible</p>
+            <div className="wire-button">Open compartment</div>
           </div>
-          <div className="wire wire-open">
-            <h4 className="wire-state-title">Look for the box lit in green.</h4><b className="wire-state-subtitle">Open it and collect your food</b>
-            <div className="wire-progress state-progress"><i className="done" /><i className="active" /><i /></div>
-            <div className="wire-compartment-panel"><b>Compartment Unit <strong>07</strong></b><div className="wire-compartment-grid"><i>01</i><i>05</i><i>02</i><i>06</i><i>03</i><i className="active">07</i><i>04</i><i>08</i><i className="empty" /><i>09</i></div><small>How to use a pickup box</small></div>
-            <div className="wire-button">Order collected</div><p className="wire-step-label">5. Collect + confirm</p>
+          <div className="wire wire-lofi wire-open">
+            <div className="lofi-screen-head"><span>←</span><b>Collect order</b></div>
+            <p className="lofi-kicker">FIND THE LIT DOOR</p>
+            <div className="lofi-locker-grid"><i /><i /><i /><i className="active">07</i><i /><i /><i /><i /></div>
+            <div className="lofi-placeholder"><i /><i className="short" /></div>
+            <p className="lofi-note">close the loop</p>
+            <div className="wire-button">Order collected</div>
+          </div>
+          <div className="wire-stage-row" aria-label="Wireframe stages">
+            <p><b>01</b><span>Choose</span></p>
+            <p><b>02</b><span>Confirm</span></p>
+            <p><b>03</b><span>Track</span></p>
+            <p><b>04</b><span>Unlock</span></p>
+            <p><b>05</b><span>Collect</span></p>
           </div>
           <div className="wire-arrow arrow-1">→</div><div className="wire-arrow arrow-2">→</div>
           <div className="wire-arrow arrow-3">→</div><div className="wire-arrow arrow-4">→</div>
-          <div className="wire-recovery-rail" aria-label="Two recovery paths">
-            <article><span>RECOVERY 01 · QR FAILURE</span><b>Use the visible 4-digit code</b><p>The order stays active while the user switches access method.</p></article>
-            <article><span>RECOVERY 02 · DOOR ERROR</span><b>Retry once, then get help</b><p>Locker and order details travel with the support request.</p></article>
-          </div>
         </div>
       </section>
 
@@ -292,7 +331,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <h3>The selected Pickup Box stays visible before the order is placed.</h3>
             <p>Delivery Info repeats the exact location, so users can verify the handoff before paying.</p>
           </div>
-          <ProductScreen compact label="CHECKOUT CONFIRMATION" src="/case-01/checkout-confirmed.png" alt="LINE MAN checkout showing the selected Hospital Bangna Pickup Box inside Delivery Info before the order is placed" width={852} height={1934} />
+          <ProductScreen compact label="CHECKOUT CONFIRMATION" src="/case-01/checkout-confirmed-clean.png" alt="LINE MAN checkout showing the selected Hospital Bangna Pickup Box inside Delivery Info before the order is placed" width={804} height={1750} />
         </div>
 
         <div className="phone-stage real-ui-stage stage-black">
@@ -303,12 +342,14 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p>The familiar map and rider card stay intact. Only the language changes to name the box handoff and the moment collection can begin.</p>
             <ul className="check-list"><li>Pickup Box stays visible as the destination</li><li>Rider arrival gets its own state</li><li>The ready alert has one action</li></ul>
           </div>
-          <div className="product-screen-group two-up">
-            <ProductScreen label="EN ROUTE CONTEXT" src="/case-01/rider-en-route.png" alt="LINE MAN tracking screen showing the rider heading to the Hospital Bangna Pickup Box" />
-            <ProductScreen label="RIDER AT THE BOX" src="/case-01/rider-at-locker.png" alt="LINE MAN tracking screen showing the rider placing the order in the Pickup Box" correction="handoff" />
-          </div>
-          <div className="handoff-notification" aria-label="Pickup Box ready notification">
-            <span className="push-mark">M</span><div><small>LINE MAN · NOW</small><b>Your order is ready to collect</b><p>Hospital Bangna, Floor 1 · Near entrance 2</p></div><strong>Open →</strong>
+          <div className="handoff-visual">
+            <div className="handoff-notification" aria-label="Pickup Box ready notification">
+              <span className="push-mark">M</span><div><small><span>LINE MAN</span><time>now</time></small><b>Order ready to collect</b><p>Hospital Bangna · Floor 1</p></div>
+            </div>
+            <div className="product-screen-group two-up">
+              <ProductScreen label="EN ROUTE CONTEXT" src="/case-01/rider-en-route.png" alt="LINE MAN tracking screen showing the rider heading to the Hospital Bangna Pickup Box" />
+              <ProductScreen label="RIDER AT THE BOX" src="/case-01/rider-at-locker.png" alt="LINE MAN tracking screen showing the rider placing the order in the Pickup Box" />
+            </div>
           </div>
         </div>
 
@@ -335,7 +376,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           </div>
           <div className="recovery-grid">
             <article><span>CAPACITY CHANGED</span><i>!</i><h3>This Pickup Box is full</h3><p>Your order is still with the rider. Choose the nearby Floor 1 box or switch to an attended handoff.</p><b>Recommended: nearby box · 2 min walk</b><button type="button">Choose fallback</button></article>
-            <article><span>SCAN FAILED</span><i>⌁</i><h3>QR not recognised</h3><p>Increase screen brightness, hold the QR under the locker scanner, or enter the code shown in the app.</p><b>Fallback code · 7 2 4 8</b><button type="button">Show access options</button></article>
+            <article><span>SCAN FAILED</span><i className="recovery-qr-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fillRule="evenodd" d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm8-2h8v8h-8V3Zm2 2v4h4V5h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Z" clipRule="evenodd" /><path d="M14 14h3v3h-3v-3Zm4 0h3v7h-3v-2h-3v2h-2v-3h5v-4Z" /></svg></i><h3>QR not recognised</h3><p>Increase screen brightness, hold the QR under the locker scanner, or enter the code shown in the app.</p><b>Fallback code · 7 2 4 8</b><button type="button">Show access options</button></article>
             <article><span>DOOR ERROR</span><i>×</i><h3>Compartment did not open</h3><p>The order stays active. Retry once, then connect to Pickup Box support with the locker and order details attached.</p><b>Order remains protected</b><button type="button">Get help</button></article>
           </div>
         </div>
@@ -352,7 +393,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
             <span>Scope<br /><b>Priority selection</b></span>
-            <span>Format<br /><b>Design exercise</b></span>
+            <span>Context<br /><b>Product design challenge</b></span>
           </div>
         </div>
         <div className="priority-hero-art" aria-label="Delivery speed comparison illustration">
@@ -446,11 +487,6 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
         </div>
         </> : <>
-        <div className="evidence-rule">
-          <span>Confidence grows through evidence</span>
-          <p>Test comprehension first, prove service reliability next, then monitor where performance drifts.</p>
-        </div>
-
         <div className="validation-roadmap" aria-label="Pickup Box validation from prototype to scale">
           <article className="roadmap-prototype">
             <span className="roadmap-index">01</span>
@@ -487,32 +523,19 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <details className="measurement-details">
-          <summary><span>Full measurement framework</span><b>7 metrics · 8 service events</b><i>Open detail +</i></summary>
+          <summary><span>Full measurement framework</span><b>7 service metrics</b><i>Open detail +</i></summary>
           <div className="metrics-table">
             <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
             {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
           </div>
 
-          <div className="instrumentation-map">
-          <div><p className="eyebrow">Measurement contract</p><h3>Measure the handoff, not just the rating.</h3></div>
-          <ol>
-            <li><span>01</span><b>locker_selected</b></li>
-            <li><span>02</span><b>capacity_reserved</b></li>
-            <li><span>03</span><b>ready_notified</b></li>
-            <li><span>04</span><b>scan_started</b></li>
-            <li><span>05</span><b>access_granted</b></li>
-            <li><span>06</span><b>door_opened</b></li>
-            <li><span>07</span><b>order_collected</b></li>
-            <li><span>08</span><b>fallback_or_help</b></li>
-          </ol>
-          </div>
         </details>
         </>}
 
         {!isPriority && <div className="feedback-evidence">
           <div className="feedback-copy">
             <p className="eyebrow">Ongoing signal</p>
-            <h3>Rate the box separately from the rider.</h3>
+            <h3>Measure the handoff, not just the delivery.</h3>
             <p>A separate prompt turns broad satisfaction into signals about convenience, placement, peace of mind, and ease of pickup.</p>
           </div>
           <div className="product-screen-group two-up">
@@ -523,14 +546,28 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
 
         <div className="closing-card">
           <p className="eyebrow">{isPriority ? "The principle I would protect" : "What I would explore next"}</p>
-          <h3>{isPriority ? "Make Priority worth choosing: faster for the user, positive beyond the order." : "Validate the reservation window, accessibility at the physical locker, multi-order pickup, and rider recovery when no compartment fits."}</h3>
+          <h3>{isPriority ? "Make Priority worth choosing: faster for the user, positive beyond the order." : "Capacity prediction, multi-order pickup, physical-locker accessibility, and rider recovery when no compartment fits."}</h3>
           <a href="#overview">Back to the top ↑</a>
         </div>
       </section>
 
-      <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-with-purpose"}>
+      <div className={`case-exits ${!isPriority ? "has-figma" : ""}`}>
+        <a className="next-case" href={isPriority ? "/work/delivering-certainty" : "/work/priority-with-purpose"}>
           <span>{isPriority ? "THE OTHER RESPONSE" : "NEXT CASE STUDY"}</span><b>{isPriority ? "Delivering Certainty" : "Priority with Purpose"} →</b>
-      </a>
+        </a>
+        {!isPriority && (
+          <a
+            className="figma-case"
+            href="https://www.figma.com/design/x6grHX2f2jISu0jkVTNbZc/lmwn?node-id=0-1&t=JRxmNgwj6fcl1TcI-1"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View the Delivering Certainty project in Figma (opens in a new tab)"
+          >
+            <span>DESIGN SOURCE</span>
+            <b>View Figma ↗</b>
+          </a>
+        )}
+      </div>
       <footer><span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span><p>Product design exercise · 2026</p><b>END</b></footer>
     </main>
   );
@@ -544,9 +581,9 @@ export default function Home() {
         <nav aria-label="Case study navigation"><a href="/work/delivering-certainty" aria-label="Case study 1: Delivering Certainty">01</a><a href="/work/priority-with-purpose" aria-label="Case study 2: Priority with Purpose">02</a></nav>
       </header>
 
-      <section className="simple-hero" aria-label="Product design assignment overview">
+      <section className="simple-hero" aria-label="UX/UI design assignment overview">
         <div className="simple-intro">
-          <p className="simple-eyebrow">Product design assignment · 2026</p>
+          <p className="simple-eyebrow">UX/UI design assignment · 2026</p>
           <h1>Better delivery,<br /><em>by design.</em></h1>
           <p className="simple-summary">Two case studies in turning uncertain handoffs and ordinary upgrades into experiences worth choosing.</p>
         </div>
@@ -556,7 +593,7 @@ export default function Home() {
           <a className="response-tile response-locker" href="/work/delivering-certainty" aria-label="Read Problem 1: Delivering Certainty">
             <span>01</span><div><small>Last-mile experience</small><b>Delivering<br />Certainty</b></div>
             <div className="tile-preview mini-locker" aria-hidden="true">
-              <span className="mini-locker-head">M / PICK-UP</span><span /><span /><span className="active" /><span /><span /><span />
+              <span className="mini-locker-head">LM / PICK-UP</span><span /><span /><span className="active" /><span /><span /><span />
             </div><i>→</i>
           </a>
           <a className="response-tile response-priority" href="/work/priority-with-purpose" aria-label="Read Problem 2: Priority with Purpose">
@@ -574,7 +611,7 @@ export default function Home() {
         <FooterPixelScene />
         <nav aria-label="Footer links">
           <SayHelloLink />
-          <a href="#top">Back to top ↑</a>
+          <ViewPortfolioLink />
         </nav>
       </footer>
     </main>
