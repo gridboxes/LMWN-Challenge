@@ -142,42 +142,40 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <blockquote>How might we make the user feel in control at every handoff—from checkout to compartment?</blockquote>
         </div>
 
-        <div className="decision-stories">
-          <div className="decision-stories-heading">
-            <p className="eyebrow">Three moments that can break confidence</p>
-            <h3>Design the recovery before the happy path.</h3>
-            <p>Each decision starts with a real service risk, changes what the interface communicates, and ends with something observable to validate.</p>
+        <div className="decision-map">
+          <div className="decision-map-heading">
+            <p className="eyebrow">Uncertainty in · decision out</p>
+            <h3>Turn real-world friction into an explicit response.</h3>
+            <p>Prototype choices—not facts from the brief. Each response still needs validation with users, operations, and installed hardware.</p>
           </div>
 
-          <div className="decision-story-list">
-            <article className="decision-story story-capacity">
-              <div className="story-index"><span>01</span><b>CAPACITY SHIFTS</b></div>
-              <div className="story-arc">
-                <div className="story-risk"><span>WHAT CAN GO WRONG</span><h4>The available box disappears after checkout.</h4></div>
-                <i aria-hidden="true">↓</i>
-                <div className="story-response"><span>DESIGN RESPONSE</span><h4>Show live status early. Reserve after acceptance.</h4><p>Users see availability before committing; operations assign suitable capacity only after the restaurant accepts.</p><small>Validate · reservation window and rider no-fit rate</small></div>
-              </div>
-              <div className="story-screen"><ProductScreen compact label="UI EVIDENCE · LIVE LOCATION STATUS" src="/case-01/locker-options.png" alt="Pickup Box location choices showing availability before checkout" /></div>
+          <div className="decision-paths">
+            <article className="decision-path path-availability">
+              <div className="path-trigger"><span>IF · 01</span><h4>Availability changes.</h4><p>Live capacity can shift after checkout.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Reserve after acceptance.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>No-fit rate</b></div>
             </article>
 
-            <article className="decision-story story-access">
-              <div className="story-index"><span>02</span><b>ACCESS STALLS</b></div>
-              <div className="story-arc">
-                <div className="story-risk"><span>WHAT CAN GO WRONG</span><h4>The QR fails while food has a clock.</h4></div>
-                <i aria-hidden="true">↓</i>
-                <div className="story-response"><span>DESIGN RESPONSE</span><h4>Keep the fallback visible on the ready screen.</h4><p>Pair QR access with a 4-digit code and a calm 30-minute collection window. The exact scanning direction depends on the installed hardware.</p><small>Validate · scan reliability, code comprehension, and expired pickups</small></div>
-              </div>
-              <div className="story-screen"><ProductScreen compact label="UI EVIDENCE · QR + CODE" src="/case-01/ready-to-collect.png" alt="Ready-to-collect screen showing QR access, a four-digit fallback code, location, and collection window" /></div>
+            <article className="decision-path path-access">
+              <div className="path-trigger"><span>IF · 02</span><h4>QR access fails.</h4><p>The exact scanning direction depends on the installed hardware.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Keep the 4-digit code visible.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>Access completion</b></div>
             </article>
 
-            <article className="decision-story story-place">
-              <div className="story-index"><span>03</span><b>THE LOBBY IS NOISY</b></div>
-              <div className="story-arc">
-                <div className="story-risk"><span>WHAT CAN GO WRONG</span><h4>The user reaches the locker but loses the place.</h4></div>
-                <i aria-hidden="true">↓</i>
-                <div className="story-response"><span>DESIGN RESPONSE</span><h4>Repeat the cue at the moment it matters.</h4><p>Carry the floor and landmark into collection, then highlight the exact compartment instead of asking users to remember it.</p><small>Validate · first-attempt locker and compartment identification</small></div>
-              </div>
-              <div className="story-screen"><ProductScreen compact label="UI EVIDENCE · COMPARTMENT CUE" src="/case-01/compartment-07.png" alt="Pickup Box compartment map highlighting compartment 07" correction="compartment" /></div>
+            <article className="decision-path path-time">
+              <div className="path-trigger"><span>IF · 03</span><h4>Food has a clock.</h4><p>Collection timing matters without needing to feel alarming.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Show the window. Keep collection explicit.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>Expired + false-complete rate</b></div>
+            </article>
+
+            <article className="decision-path path-place">
+              <div className="path-trigger"><span>IF · 04</span><h4>Shared spaces are noisy.</h4><p>People can lose the place between checkout and collection.</p></div>
+              <i aria-hidden="true">→</i>
+              <div className="path-response"><span>DESIGN RESPONSE</span><b>Repeat floor, landmark, and compartment.</b></div>
+              <div className="path-proof"><span>PROVE</span><b>First-attempt identification</b></div>
             </article>
           </div>
         </div>
