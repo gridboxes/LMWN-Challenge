@@ -51,7 +51,7 @@ test("renders Delivering Certainty as a focused locker case study", async () => 
     /The locker is only useful/,
     /Operational uncertainty/,
     /EARLY WIREFRAMES/,
-    /5 states \/ 2 recovery paths/,
+    /5 core states/,
     /TWO WAYS IN/,
     /Delivery setup/,
     /keep fallback visible/,

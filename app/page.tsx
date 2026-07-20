@@ -16,7 +16,8 @@ const flowSteps = [
 ];
 
 const lockerMetrics = [
-  ["Adoption", "Locker selection rate", "Do people understand and trust the option?"],
+  ["Adoption", "Locker selection rate", "Do people choose the option?"],
+  ["Clarity", "First-use flow comprehension rate", "Can people explain how selection, tracking, and collection work before ordering?"],
   ["Access", "First-attempt access rate", "Can users unlock without help?"],
   ["Efficiency", "Median scan-to-door-open time", "Is the physical handoff quick?"],
   ["Reliability", "Fallback and help rate by cause", "Where does access break?"],
@@ -230,8 +231,8 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           ))}
         </div>
 
-        <div className="wireframe-board" aria-label="End-to-end Pickup Box wireframes with recovery paths">
-          <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 states / 2 recovery paths</b></div>
+        <div className="wireframe-board" aria-label="End-to-end Pickup Box wireframes">
+          <div className="board-title"><span>EARLY WIREFRAMES</span><b>5 core states</b></div>
           <div className="wire wire-lofi wire-choose">
             <div className="lofi-screen-head"><span>←</span><b>Delivery setup</b></div>
             <p className="lofi-kicker">DELIVERY METHOD</p>
@@ -286,7 +287,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <section className="solution section-pad" id="solution">
         <div className="section-heading">
           <p className="eyebrow">03 · The locker experience</p>
-          <h2>Context first.<br />Code when it counts.</h2>
+          <h2>One clear next step.<br />At every handoff.</h2>
         </div>
 
         <div className="phone-stage real-ui-stage stage-green">
@@ -358,7 +359,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p className="eyebrow">Retrieve without guessing</p>
             <h3>Two access methods. One obvious fallback.</h3>
             <p>The QR is primary, the 4-digit code is always visible, and the next screen points to one compartment.</p>
-            <ul className="check-list"><li>Time and place stay visible</li><li>Compartment 07 is lit in green</li><li>Manual confirmation has a three-minute safety net</li></ul>
+            <ul className="check-list"><li>Time and place stay visible</li><li>Compartment 07 is lit in green</li><li>Collection auto-confirms after three minutes</li></ul>
             <small className="stage-footnote">Prototype shown: compartments 01–09. Production must mirror the installed locker configuration.</small>
           </div>
           <div className="product-screen-group two-up">
@@ -374,9 +375,9 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
             <p>Explain what happened, preserve the order, and recommend one next step.</p>
           </div>
           <div className="recovery-grid">
-            <article><span>CAPACITY CHANGED</span><i>!</i><h3>This Pickup Box is full</h3><p>Your order is still with the rider. Choose the nearby Floor 1 box or switch to an attended handoff.</p><b>Recommended: nearby box · 2 min walk</b><button type="button">Choose fallback</button></article>
-            <article><span>SCAN FAILED</span><i className="recovery-qr-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fillRule="evenodd" d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm8-2h8v8h-8V3Zm2 2v4h4V5h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Z" clipRule="evenodd" /><path d="M14 14h3v3h-3v-3Zm4 0h3v7h-3v-2h-3v2h-2v-3h5v-4Z" /></svg></i><h3>QR not recognised</h3><p>Increase screen brightness, hold the QR under the locker scanner, or enter the code shown in the app.</p><b>Fallback code · 7 2 4 8</b><button type="button">Show access options</button></article>
-            <article><span>DOOR ERROR</span><i>×</i><h3>Compartment did not open</h3><p>The order stays active. Retry once, then connect to Pickup Box support with the locker and order details attached.</p><b>Order remains protected</b><button type="button">Get help</button></article>
+            <article><span>CAPACITY CHANGED</span><i>!</i><h3>This Pickup Box is full</h3><p>Your order is still with the rider. Choose the nearby Floor 1 box or switch to an attended handoff.</p><b>Recommended: nearby box · 2 min walk</b><div className="recovery-action">Choose fallback</div></article>
+            <article><span>SCAN FAILED</span><i className="recovery-qr-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fillRule="evenodd" d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm8-2h8v8h-8V3Zm2 2v4h4V5h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Z" clipRule="evenodd" /><path d="M14 14h3v3h-3v-3Zm4 0h3v7h-3v-2h-3v2h-2v-3h5v-4Z" /></svg></i><h3>QR not recognised</h3><p>Increase screen brightness, hold the QR under the locker scanner, or enter the code shown in the app.</p><b>Fallback code · 7 2 4 8</b><div className="recovery-action">Show access options</div></article>
+            <article><span>DOOR ERROR</span><i>×</i><h3>Compartment did not open</h3><p>The order stays active. Retry once, then connect to Pickup Box support with the locker and order details attached.</p><b>Order remains protected</b><div className="recovery-action">Get help</div></article>
           </div>
         </div>
       </section>
@@ -522,7 +523,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
         </div>
 
         <details className="measurement-details">
-          <summary><span>Full measurement framework</span><b>7 service metrics</b><i>Open detail +</i></summary>
+          <summary><span>Full measurement framework</span><b>{metrics.length} service metrics</b><i>Open detail +</i></summary>
           <div className="metrics-table">
             <div className="metric-row table-head"><span>Lens</span><span>Metric</span><span>Question answered</span></div>
             {metrics.map(([lens, metric, question]) => <div className="metric-row" key={lens}><span>{lens}</span><b>{metric}</b><p>{question}</p></div>)}
@@ -562,7 +563,19 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           aria-label={`View the ${isPriority ? "Priority with Purpose" : "Delivering Certainty"} project in Figma (opens in a new tab)`}
         >
           <span>DESIGN SOURCE</span>
-          <b>View Figma ↗</b>
+          <b>
+            <span className="figma-link-copy">View Figma</span>
+            <svg className="figma-arrow-icon" aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+              <rect className="figma-pixel-green" x="2" y="14" width="4" height="4" />
+              <rect className="figma-pixel-blue" x="6" y="10" width="4" height="4" />
+              <rect className="figma-pixel-purple" x="10" y="6" width="4" height="4" />
+              <rect className="figma-pixel-purple" x="6" y="2" width="4" height="4" />
+              <rect className="figma-pixel-orange" x="10" y="2" width="4" height="4" />
+              <rect className="figma-pixel-red" x="14" y="2" width="4" height="4" />
+              <rect className="figma-pixel-orange" x="14" y="6" width="4" height="4" />
+              <rect className="figma-pixel-red" x="14" y="10" width="4" height="4" />
+            </svg>
+          </b>
         </a>
       </div>
       <footer>
