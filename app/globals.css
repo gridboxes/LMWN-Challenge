@@ -355,7 +355,9 @@ footer { min-height:160px; padding:50px max(5vw,56px); display:flex; justify-con
 .has-figma .next-case b { font-size:clamp(42px,5vw,72px); }
 .figma-case b { width:max-content; display:inline-flex; align-items:center; gap:.16em; font-size:clamp(32px,3.15vw,52px); line-height:.95; letter-spacing:-.055em; white-space:nowrap; }
 .figma-case .figma-link-copy { font:inherit; letter-spacing:inherit; }
-.figma-arrow-icon { width:.86em; height:.86em; flex:none; shape-rendering:crispEdges; filter:drop-shadow(1px 1px 0 rgba(17,17,15,.28)); }
+.figma-eyebrow { display:inline-flex; align-items:center; gap:8px; width:max-content; }
+.figma-eyebrow .figma-pixel-icon { width:12px; height:18px; flex:none; shape-rendering:crispEdges; filter:drop-shadow(1px 1px 0 rgba(17,17,15,.28)); }
+.external-link-icon { width:.78em; height:.78em; flex:none; fill:currentColor; }
 .figma-pixel-red { fill:#f24e1e; }.figma-pixel-orange { fill:#ff7262; }.figma-pixel-purple { fill:#a259ff; }.figma-pixel-blue { fill:#1abcfe; }.figma-pixel-green { fill:#0acf83; }
 .next-case:hover b,.figma-case:hover b { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:8px; }
 

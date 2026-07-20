@@ -111,7 +111,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
             <span>Scope<br /><b>Checkout → collection</b></span>
-            <span>Context<br /><b>Product design challenge</b></span>
+            <span>Context<br /><b>Design challenge</b></span>
           </div>
         </div>
 
@@ -393,12 +393,12 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           <div className="hero-meta">
             <span>Role<br /><b>Product designer</b></span>
             <span>Scope<br /><b>Priority selection</b></span>
-            <span>Context<br /><b>Product design challenge</b></span>
+            <span>Context<br /><b>Design challenge</b></span>
           </div>
         </div>
         <div className="priority-hero-art" aria-label="Delivery speed comparison illustration">
           <span className="speed-sticker">FAST<br />FEELS<br />GOOD</span>
-          <div className="speed-line speed-line-fast"><b>PRIORITY</b><strong>15–20 min</strong><i /></div>
+          <div className="speed-line speed-line-fast"><b>PRIORITY GIVES BACK</b><strong>15–20 min</strong><i /></div>
           <div className="speed-line"><b>NORMAL</b><strong>30–40 min</strong><i /></div>
           <div className="speed-line"><b>LOW-COST</b><strong>45–60 min</strong><i /></div>
         </div>
@@ -562,18 +562,20 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
           rel="noreferrer"
           aria-label={`View the ${isPriority ? "Priority with Purpose" : "Delivering Certainty"} project in Figma (opens in a new tab)`}
         >
-          <span>DESIGN SOURCE</span>
+          <span className="figma-eyebrow">
+            <span>DESIGN SOURCE</span>
+            <svg className="figma-pixel-icon" aria-hidden="true" focusable="false" viewBox="0 0 14 20">
+              <rect className="figma-pixel-red" x="1" y="1" width="6" height="6" />
+              <rect className="figma-pixel-orange" x="7" y="1" width="6" height="6" />
+              <rect className="figma-pixel-purple" x="1" y="7" width="6" height="6" />
+              <rect className="figma-pixel-blue" x="7" y="7" width="6" height="6" />
+              <rect className="figma-pixel-green" x="1" y="13" width="6" height="6" />
+            </svg>
+          </span>
           <b>
             <span className="figma-link-copy">View Figma</span>
-            <svg className="figma-arrow-icon" aria-hidden="true" focusable="false" viewBox="0 0 20 20">
-              <rect className="figma-pixel-green" x="2" y="14" width="4" height="4" />
-              <rect className="figma-pixel-blue" x="6" y="10" width="4" height="4" />
-              <rect className="figma-pixel-purple" x="10" y="6" width="4" height="4" />
-              <rect className="figma-pixel-purple" x="6" y="2" width="4" height="4" />
-              <rect className="figma-pixel-orange" x="10" y="2" width="4" height="4" />
-              <rect className="figma-pixel-red" x="14" y="2" width="4" height="4" />
-              <rect className="figma-pixel-orange" x="14" y="6" width="4" height="4" />
-              <rect className="figma-pixel-red" x="14" y="10" width="4" height="4" />
+            <svg className="external-link-icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16">
+              <path d="M6 3h7v7h-2V6.4l-7.3 7.3-1.4-1.4L9.6 5H6V3Z" />
             </svg>
           </b>
         </a>
@@ -581,7 +583,7 @@ export function CaseStudy({ variant }: { variant: "locker" | "priority" }) {
       <footer>
         <span>{isPriority ? "PRIORITY WITH PURPOSE" : "DELIVERING CERTAINTY"}</span>
         <p>Product design challenge · 2026</p>
-        <b>{isPriority ? "CASE 02 END" : "CASE 01 END"}</b>
+        <b>{isPriority ? "CASE 02" : "CASE 01"}</b>
       </footer>
     </main>
   );
